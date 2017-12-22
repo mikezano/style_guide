@@ -2,7 +2,9 @@
 	.container
 		h1 Looking for interesting components to use in your app?
 		a( @click="collectMixins()") Download style_guide.scss
-		vuer(name="circle")
+		transition( name="move_left_right" mode="out-in" )
+			vuer(:name="file" v-if="file" :key="file")
+
 </template>
 
 <script>
@@ -13,24 +15,35 @@ export default {
 	name: 'style_guide_index_home',
 	data(){
 		return {
-			names: ['circle', 'spin'],
 			mixinRE: new RegExp("@mixin.*?end", "s"),
-			allMixins: ""
+			allMixins: "",
+			files: [],
+			file: null
 		}
+	},
+	mounted(){
+		let style_guide_files = this.getFiles();
+		for(var folder in style_guide_files){
+			style_guide_files[folder].forEach(file=>{
+				this.files.push(file);
+			});
+		}
+
+		this.file = this.files[Math.floor(Math.random()*this.files.length)];
+		setInterval(()=>{
+			this.file = this.files[Math.floor(Math.random()*this.files.length)];
+			console.log(this.file);
+		},5000);
 	},
 	methods: {
 		collectMixins(){
 			this.allMixins = "";
-			let style_guide_files = this.getFiles();
-
-			for(var folder in style_guide_files){
-				style_guide_files[folder].forEach(file=>{
-					let component = this.getComponent(file);
-					let source = component.source.replace(/\t/g,'  ');
-					let result = source.match(this.mixinRE);
-					this.allMixins += result!= null ? result + "\n\r" : "";
-				});
-			}
+			this.files.forEach(file=>{
+				let component = this.getComponent(file);
+				let source = component.source.replace(/\t/g,'  ');
+				let result = source.match(this.mixinRE);
+				this.allMixins += result!= null ? result + "\n\r" : "";
+			});
 			this.download();
 		},
 		download(){
@@ -60,5 +73,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+	@import '../../sass/move_left_right';
 	.container{width:600px;}
 </style>

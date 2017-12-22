@@ -25,6 +25,12 @@ import {mapGetters} from 'vuex'
 export default {
 	name: 'viewer',
 	props: ['name'],
+	watch: {
+		name: function(newVal, oldVal){
+			this.getSources();
+			this.addStyleBlock();
+		}
+	},
 	data () {
 		return {
 			scss: null,
@@ -105,7 +111,6 @@ label {
 	text-align: center;
 	margin:0 2px;
 	border-bottom: 4px solid #bebebe;
-	transition: all .2s ease-out;
 }
 label:hover {
 	cursor: pointer;
@@ -123,8 +128,6 @@ input:checked + label {
 	grid-template-columns: 40% 60%;
 	grid-template-rows: 40px auto;
 	width:800px;
-	//height:auto;
-	transition: all .2s ease-out;
 
 	&__header{
 		grid-column:1;
