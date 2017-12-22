@@ -7,14 +7,10 @@
 			p Experiments
 		
 		ul
-			router-link(to="/environment" tag="li") Environment
-			router-link(to="/background" tag="li") Animated Background
-			router-link(to="/gsap" tag="li") Green Sock
-			router-link(to="/svg_rectangles" tag="li") Green Sock SVG
-			router-link(to="/guess_number" tag="li") Guess Number
-			router-link(to="/animations" tag="li") Animations
-			router-link(to="/style_guide" tag="li") Style Guide
-			router-link(to="/async" tag="li") Async
+			router-link(to="/style_guide/drop_downs" tag="li") Drop Downs
+			router-link(to="/style_guide/buttons" tag="li") Buttons
+			router-link(to="/style_guide/tabs" tag="li") Tabs
+			router-link(to="/style_guide/cards" tag="li") Cards
 </template>
 
 <script>
