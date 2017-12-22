@@ -14,7 +14,7 @@
 
 
 <script>
-	export default{name: "circle_grow"}
+	export default{name: "circle"}
 </script>
 
 <style lang="scss" scoped>

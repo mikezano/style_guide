@@ -2,9 +2,11 @@
 	.container
 		h1 Looking for interesting components to use in your app?
 		a( @click="collectMixins()") Download style_guide.scss
+		vuer(name="circle")
 </template>
 
 <script>
+import vuer from '@/components/vuer/vuer'
 import {mapGetters} from 'vuex'
 
 export default {
@@ -50,6 +52,9 @@ export default {
 	computed: {
 		...mapGetters(['getComponent', 'getFiles'])
 	},
+	components: {
+		vuer
+	}	
 }
 </script>
 

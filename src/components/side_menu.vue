@@ -4,7 +4,7 @@
 			icon(name="close" class="close-icon")
 		.header
 			img(src="./../assets/logo.png")
-			p Style Guide
+			router-link(to="/style_guide" tag="p") Style Guide
 		
 		ul
 			router-link(to="/style_guide/drop_downs" tag="li") Drop Downs
@@ -24,7 +24,7 @@ export default {
 			 this.$emit('closeMenu');
 		}
 	},
-  components:{
+	components:{
 		icon
 	}
 }
