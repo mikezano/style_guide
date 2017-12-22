@@ -24,7 +24,6 @@
 
 <style lang="scss" scoped>
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import '../sass/colors';
 
 $color:rgb(random(150) ,random(150) ,random(150));
@@ -55,8 +54,9 @@ $color:rgb(random(150) ,random(150) ,random(150));
 		position:absolute;
 		left:0;
 		box-sizing:border-box;
-		border:$border-width solid darken($vue_green, 20%);
-		font-family:'Source Sans Pro',sans-serif;
+		border:$border-width solid darken($vue_green, 10%);
+
+		font-weight: bold;
 		line-height:$line-height; // 40px -10px
 		text-align:center;
 		text-transform:uppercase;
