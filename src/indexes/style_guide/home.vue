@@ -1,7 +1,7 @@
 <template lang="pug">
 	.container
 		h1 Looking for interesting components to use in your app?
-		a( @click="collectMixins()") Download style_guide.scss
+		rotate_down_btn(@click="collectMixins()")
 		transition( name="move_left_right" mode="out-in" )
 			vuer(:name="file" v-if="file" :key="file")
 
@@ -9,6 +9,7 @@
 
 <script>
 import vuer from '@/components/vuer/vuer'
+import rotate_down_btn from '@/components/rotate_down_btn'
 import {mapGetters} from 'vuex'
 
 export default {
@@ -66,7 +67,8 @@ export default {
 		...mapGetters(['getComponent', 'getFiles'])
 	},
 	components: {
-		vuer
+		vuer,
+		rotate_down_btn
 	}	
 }
 </script>

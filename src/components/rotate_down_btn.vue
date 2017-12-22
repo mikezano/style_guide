@@ -1,18 +1,17 @@
 <template lang="pug">
-	.container
+	.container-btn
 		.rotate_down
 			.text 
-				span Text
-				icon(name="download", scale="2")
+				span Download The Style Guide
 			.visual
-				span  Visual
+				span  style_guide.scss
 				icon(name="download", scale="2")
 		
 </template>
 
 
 <script>
-	export default{name: "rotate_down"}
+	export default{name: "rotate_down_btn"}
 </script>
 
 <style lang="scss" scoped>
@@ -20,13 +19,13 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 $color:rgb(random(150) ,random(150) ,random(150));
 
-.container{
-	width:200px;
+.container-btn{
+	width:100%;
 	height:60px;
 	cursor:pointer;
 	perspective:500px;
 }
-.container .rotate_down{
+.container-btn .rotate_down{
 	height:100%;
 	transform-style:preserve-3d;
 	-webkit-transform-style:preserve-3d;
