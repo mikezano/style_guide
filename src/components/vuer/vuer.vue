@@ -72,9 +72,6 @@ export default {
 		},
 		extractCode(source, re){
 			let code = source.match(re);
-			if(this.name == "circle"){
-				console.log(code);
-			}
 			let result = code[0].replace(/\n/g, ' ').trim();
 			return result;
 		},

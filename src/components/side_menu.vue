@@ -4,7 +4,7 @@
 			icon(name="close" class="close-icon")
 		.header
 			img(src="./../assets/logo.png")
-			p Experiments
+			p Style Guide
 		
 		ul
 			router-link(to="/style_guide/drop_downs" tag="li") Drop Downs
