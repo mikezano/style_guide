@@ -1,7 +1,7 @@
 <template lang="pug">
 	.container
 
-		drop_down(v-bind:items="routes.style_guide()")
+		h1.title_of_site STYLE GUIDE
 		transition(name="fade" mode="out-in")
 			router-view
 </template>
@@ -32,6 +32,7 @@ export default {
 
 @import '../../sass/fade';
 
+
 .container{
 	display:flex;
 	align-items:center;
@@ -39,6 +40,9 @@ export default {
 	flex-direction:column;
 	h1{
 		width:600px;
+		font-size:80px;
+		margin:0;
+		padding:0;
 	}
 }
 </style>

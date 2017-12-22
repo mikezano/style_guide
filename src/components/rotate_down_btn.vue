@@ -11,10 +11,11 @@
 		.threeD-btn
 			.threeD-btn__container
 				.threeD-btn__text 
-					span Download The Style Guide
+					span Download This Style Guide!
 				.threeD-btn__rollover
 					icon(name="download", scale="2")
-					span  style_guide.scss
+					| &nbsp;
+					span style_guide.scss
 </template>
 
 
