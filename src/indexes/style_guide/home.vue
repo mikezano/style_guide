@@ -1,5 +1,16 @@
 <template lang="pug">
 	.container
+		.title_of_site
+			//span.dot .
+			//span.ads AD&S
+			span.left_brace {
+			span.style STYLE
+			span.colon :
+			span.g G
+			span.ui UI
+			span.de DE
+			//span.semi-colon ;
+			span.right_brace }
 		h1 
 			span Looking for easy to use components to add into your 
 			span.ui UI
@@ -108,4 +119,19 @@ export default {
 		padding:10px 20px;
 	}
 	.ui{color:$vue_green;}
+.title_of_site{
+	font-size:60px;
+	font-weight:bold;
+	color:$vue_green_dark;
+	.dot, .left_brace, .right_brace,
+	.colon, .semi-colon{
+		color:#aaa;
+	}
+	.ui{
+		color:$vue_green;
+		font-size:70px;	
+	}
+	.style{color:$vue_green_dark;}
+	
+}	
 </style>

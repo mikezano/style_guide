@@ -1,8 +1,9 @@
 <template lang="pug">
-
-	transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
-		.list-item(v-for="item in currentSet", :key="item")
-			vuer(:name="item")
+	div
+		h1 Mixins
+		transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
+			.list-item(v-for="item in currentSet", :key="item")
+				vuer(:name="item")
 </template>
 
 

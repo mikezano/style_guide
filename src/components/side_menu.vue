@@ -6,11 +6,16 @@
 			img(src="./../assets/logo.png")
 			router-link(to="/style_guide" tag="p") Style Guide
 		
+		p Mixins
 		ul
 			router-link(to="/style_guide/drop_downs" tag="li") Drop Downs
 			router-link(to="/style_guide/buttons" tag="li") Buttons
 			router-link(to="/style_guide/tabs" tag="li") Tabs
 			router-link(to="/style_guide/cards" tag="li") Cards
+		hr
+		p How to
+		ul
+			router-link(to="/how_to/" tag="li") CSS Grid
 </template>
 
 <script>
@@ -87,6 +92,14 @@ background-size:40px 60px;
 	img{
 		width:30px;
 		height:30px;
+		transition: transform .2s ease-in;
+	}
+	&:hover{
+		cursor: pointer;
+		text-decoration: underline;
+		img{
+			transform: rotateX(180deg);
+		}
 	}
 }
 </style>
