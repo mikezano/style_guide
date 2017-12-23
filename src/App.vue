@@ -20,7 +20,7 @@ import side_menu from './components/side_menu'
 export default {
 	name: 'app',
 		data () {
-			return {isShowingSideMenu: true}
+			return {isShowingSideMenu: false}
 	},
 	components:{
 		side_menu,
