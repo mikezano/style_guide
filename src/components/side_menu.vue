@@ -12,10 +12,14 @@
 			router-link(to="/style_guide/buttons" tag="li") Buttons
 			router-link(to="/style_guide/tabs" tag="li") Tabs
 			router-link(to="/style_guide/cards" tag="li") Cards
-		hr
-		p How to
+		.divider
+		p How To
 		ul
-			router-link(to="/how_to/" tag="li") CSS Grid
+			router-link(to="/style_guide/grid_layouts" tag="li") CSS Grid
+		.divider
+		p Naming
+		ul
+			router-link(to="/bem", tag="li") B.E.M
 </template>
 
 <script>
@@ -47,7 +51,7 @@ $base2: hsla(211, 28%, 29%, 1);
 
 .side-menu{
 	width:200px;
-	position:absolute;
+	position:fixed;
 	z-index:100;
 	left:0px;
 	top:0;
@@ -68,17 +72,27 @@ background-size:40px 60px;
 	color:white;
 	box-shadow:2px 2px 20px gray;
 
+	p{
+		font-weight:bold;
+	}
+	.divider{
+		border-top:1px solid #555;
+		margin:10px;
+	}
 	ul{
 		list-style-type: none;
 		margin:0;
 		padding:0;
+		padding-left:10px;
+		text-align:left;
 	}	
 		li{
-			padding:10px 0;
-
-			a{
+			padding:5px 0;
+			font-size:14px;
+			color:#aaa;
+			&:hover{
 				color:white;
-				text-decoration:none;
+				cursor:pointer;
 			}
 		}
 }
@@ -92,13 +106,13 @@ background-size:40px 60px;
 	img{
 		width:30px;
 		height:30px;
-		transition: transform .2s ease-in;
+		transition: transform .3s ease-out;
 	}
 	&:hover{
 		cursor: pointer;
 		text-decoration: underline;
 		img{
-			transform: rotateX(180deg);
+			transform: rotateY(180deg);
 		}
 	}
 }
