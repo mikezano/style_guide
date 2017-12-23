@@ -1,5 +1,11 @@
-import style_guide			from '@/indexes/style_guide/style_guide'
+import components	from '@/indexes/style_guide/components'
+import home			from '@/indexes/style_guide/home'
+import style_guide	from '@/indexes/style_guide/style_guide'
+import test			from '@/indexes/test'
 
 export default {
-	style_guide
+	components,
+	home,
+	style_guide,
+	test
 }

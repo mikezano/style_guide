@@ -1,21 +1,14 @@
 <template lang="pug">
 	div
-		//.container-btn
-			.rotate_down
-				.text 
-					span Download The Style Guide
-				.visual
-					span  style_guide.scss
-					icon(name="download", scale="2")
-			
+
 		.threeD-btn
 			.threeD-btn__container
 				.threeD-btn__text 
-					span Download This Style Guide!
+					span Download This Library !
 				.threeD-btn__rollover
 					icon(name="download", scale="2")
 					| &nbsp;
-					span style_guide.scss
+					span stylish_guide.scss
 </template>
 
 

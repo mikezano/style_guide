@@ -1,11 +1,15 @@
 <template lang="pug">
 	.container
-		h1 Looking for interesting components to use in your app?
-		rotate_down_btn(@click="collectMixins()")
+		h1 
+			span Looking for easy to use components to add into your 
+			span.ui UI
+			span.question_mark ?
+		div(@click="collectMixins()")
+			rotate_down_btn
 		transition( name="move_left_right" mode="out-in" )
 			vuer(:name="file" v-if="file" :key="file")
 
-		button.player(@click="togglePlay()") 
+		button.player(@click="togglePlay()")
 			icon(name="play", scale="2" v-if="isPaused")
 			icon(name="pause", scale="2" v-else)
 </template>
@@ -69,7 +73,7 @@ export default {
 		download(){
 			var element = document.createElement('a');
 			element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.allMixins));
-			element.setAttribute('download', 'mixins.scss');
+			element.setAttribute('download', 'style_guide.scss');
 
 			element.style.display = 'none';
 			document.body.appendChild(element);
@@ -103,4 +107,5 @@ export default {
 		color:white;
 		padding:10px 20px;
 	}
+	.ui{color:$vue_green;}
 </style>
