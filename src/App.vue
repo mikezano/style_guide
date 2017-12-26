@@ -62,7 +62,7 @@ export default {
 	margin-top: 20px;
 }
 .navicon{
-	position:absolute;
+	position:fixed;
 	left:30px;
 	top:30px;
 	img{
