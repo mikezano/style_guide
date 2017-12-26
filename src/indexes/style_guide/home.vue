@@ -16,7 +16,7 @@
 			//span.semi-colon ;
 			span.right_brace }
 		h1 
-			span Looking for creative components to add into your
+			span Looking for creative components to add into your 
 			span.ui UI
 			span.question_mark ?
 		div(@click="collectMixins()")
