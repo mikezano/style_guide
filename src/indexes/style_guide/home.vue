@@ -1,5 +1,9 @@
 <template lang="pug">
 	.container
+		.title_logos
+			img(src="./../../assets/css3.svg" width=50 height=50)
+			icon(name="plus", scale="1")
+			img(src="./../../assets/sass.svg" width=50 height=50)
 		.title_of_site
 			//span.dot .
 			//span.ads AD&S
@@ -12,7 +16,7 @@
 			//span.semi-colon ;
 			span.right_brace }
 		h1 
-			span Looking for easy to use components to add into your 
+			span Looking for creative components to add into your
 			span.ui UI
 			span.question_mark ?
 		div(@click="collectMixins()")
@@ -119,19 +123,29 @@ export default {
 		padding:10px 20px;
 	}
 	.ui{color:$vue_green;}
-.title_of_site{
-	font-size:60px;
-	font-weight:bold;
-	color:$vue_green_dark;
-	.dot, .left_brace, .right_brace,
-	.colon, .semi-colon{
-		color:#aaa;
+
+	.title_of_site{
+		font-size:60px;
+		font-weight:bold;
+		color:$vue_green_dark;
+		.dot, .left_brace, .right_brace,
+		.colon, .semi-colon{
+			color:#aaa;
+		}
+		.ui{
+			color:$vue_green;
+			font-size:70px;	
+		}
+		.style{color:$vue_green_dark;}
+		
 	}
-	.ui{
-		color:$vue_green;
-		font-size:70px;	
+
+	.title_logos{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.fa-icon{
+			padding:0 10px;
+		}
 	}
-	.style{color:$vue_green_dark;}
-	
-}	
 </style>
