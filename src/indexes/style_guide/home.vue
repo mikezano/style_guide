@@ -21,18 +21,24 @@
 			span.question_mark ?
 		div(@click="collectMixins()")
 			rotate_down_btn
-		transition( name="move_left_right" mode="out-in" )
-			vuer(:name="file" v-if="file" :key="file")
 
-		button.player(@click="togglePlay()")
-			icon(name="play", scale="2" v-if="isPaused")
-			icon(name="pause", scale="2" v-else)
+		component_carousel
+		player
+
+		//- button
+		//- 	icon(name="step-backward")
+		//- button.player(@click="togglePlay()")
+		//- 	icon(name="play", scale="2" v-if="isPaused")
+		//- 	icon(name="pause", scale="2" v-else)
+		//- button
+		//- 	icon(name="step-forward")
 </template>
 
 <script>
-import vuer from '@/components/vuer/vuer'
-import rotate_down_btn from '@/components/rotate_down_btn'
 import {mapGetters} from 'vuex'
+import rotate_down_btn from '@/components/rotate_down_btn'
+import player from '@/components/player'
+import component_carousel from '@/components/component_carousel'
 
 export default {
 	name: 'style_guide_index_home',
@@ -40,41 +46,11 @@ export default {
 		return {
 			mixinRE: new RegExp("@mixin.*?end", "s"),
 			allMixins: "",
-			files: [],
-			file: null,
 			words: "Play",
-			intervalPlayer: null,
 			isPaused: false
 		}
 	},
-	mounted(){
-		let style_guide_files = this.getFiles();
-		for(var folder in style_guide_files){
-			style_guide_files[folder].forEach(file=>{
-				this.files.push(file);
-			});
-		}
-
-		this.file = this.files[Math.floor(Math.random()*this.files.length)];
-		this.intervalPlayer = setInterval(this.changeComponent, 5000);
-	},
 	methods: {
-		changeComponent(){
-			this.file = this.files[Math.floor(Math.random()*this.files.length)];
-			console.log(this.file);
-		},
-		togglePlay(){
-			
-			this.isPaused = !this.isPaused;
-			if(this.isPaused){
-				clearInterval(this.intervalPlayer);
-				this.intervalPlayer = null;
-			}
-			else{
-				this.changeComponent();
-				this.intervalPlayer = setInterval(this.changeComponent, 5000);
-			}
-		},
 		collectMixins(){
 			this.allMixins = "";
 			this.files.forEach(file=>{
@@ -105,23 +81,23 @@ export default {
 		...mapGetters(['getComponent', 'getFiles'])
 	},
 	components: {
-		vuer,
-		rotate_down_btn
-	}	
+		rotate_down_btn,
+		player,
+		component_carousel
+	}
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-	@import '../../sass/move_left_right';
 	@import '../../sass/colors';
 	.container{width:600px;}
-	.player{
-		border:4px solid darken($vue_green, 10%);
-		background-color: $vue_green;
-		color:white;
-		padding:10px 20px;
-	}
+	// .player{
+	// 	border:4px solid darken($vue_green, 10%);
+	// 	background-color: $vue_green;
+	// 	color:white;
+	// 	padding:10px 20px;
+	// }
 	.ui{color:$vue_green;}
 
 	.title_of_site{
