@@ -8,6 +8,7 @@ import vuer from '@/components/vuer/vuer'
 import {mapGetters} from 'vuex'
 
 export default {
+	name: 'component_carousel',
 	data(){
 		return {
 			files: [],
@@ -20,11 +21,6 @@ export default {
 			alert('from carousel');
 		}
 	},
-	created(){
-		this.$on('toggleplay', torf =>{
-			alert('from callback');
-		});
-	},
 	mounted(){
 		let style_guide_files = this.getFiles();
 		for(var folder in style_guide_files){
@@ -32,9 +28,6 @@ export default {
 				this.files.push(file);
 			});
 		}
-		console.log('yes')
-
-
 		this.file = this.files[Math.floor(Math.random()*this.files.length)];
 		this.intervalPlayer = setInterval(this.changeComponent, 5000);
 	},
@@ -43,8 +36,9 @@ export default {
 			this.file = this.files[Math.floor(Math.random()*this.files.length)];
 			console.log(this.file);
 		},
-		toggle(){
-			if(this.isPaused){
+		toggle(state){
+			console.log('here:' + state);
+			if(!state){
 				clearInterval(this.intervalPlayer);
 				this.intervalPlayer = null;
 			}
@@ -54,8 +48,13 @@ export default {
 			}
 		}
 	},
+	watch:{
+		isPlaying: function(state){
+			this.toggle(state);
+		}
+	},
 	computed: {
-		...mapGetters(['getComponent', 'getFiles'])
+		...mapGetters({isPlaying: 'getPlayingState', getFiles: 'getFiles'})
 	},
 	components:{
 		vuer

@@ -8,7 +8,8 @@ export const store = new Vuex.Store({
 
 	state: {
 		counter: 2,
-		registry: registry
+		registry: registry,
+		isPlaying: true
 	},
 	getters: {
 		tripleCounter: state => {
@@ -21,6 +22,9 @@ export const store = new Vuex.Store({
 		getFiles: (state, getters)=>()=>{
 			var result = state.registry.buildRegistry();
 			return result;
+		},
+		getPlayingState: state =>{
+			return state.isPlaying;
 		}
 	},
 	mutations: {
@@ -29,9 +33,15 @@ export const store = new Vuex.Store({
 		},
 		decrement: (state) => {
 			state.counter--;
+		},
+		toggleIsPlaying: (state) =>{
+			state.isPlaying = !state.isPlaying;
 		}
 	},
 	actions: {
+		toggleIsPlaying({commit}){
+			commit('toggleIsPlaying');
+		},
 		//parameter deconstruct
 		asyncDecrement: ({ commit }, asyncNum) => {
 			return new Promise((resolve, reject) => {

@@ -1,8 +1,9 @@
 <template lang="pug">
 	.player
+		span {{isPlaying}}
 		button.player__backward
 			icon(name="step-backward")
-		button.player__toggle-play(@click="togglePlay()")
+		button.player__toggle-play(@click="toggleIsPlaying()")
 			icon(name="play", scale="2" v-if="!isPlaying")
 			icon(name="pause", scale="2" v-else)
 		button.player__forward
@@ -10,27 +11,35 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations, mapActions} from 'vuex'
+
 export default {
 
 	data(){
 		return {
-			isPlaying: true
+
 		}
 	},
+	computed: {
+		...mapGetters({isPlaying: 'getPlayingState'}),
+		//...mapMutations({toggleIsPlaying: 'toggleIsPlaying'}),
+	},
 	methods:{
-		togglePlay(){
-			this.isPlaying = !this.isPlaying;
-			this.$emit('toggleplay', this.isPlaying);
-			console.log('hello');
-			// if(this.isPaused){
-			// 	clearInterval(this.intervalPlayer);
-			// 	this.intervalPlayer = null;
-			// }
-			// else{
-			// 	this.changeComponent();
-			// 	this.intervalPlayer = setInterval(this.changeComponent, 5000);
-			// }
-		},
+		...mapActions({toggleIsPlaying: 'toggleIsPlaying'}),
+		// togglePlay(){
+		// 	this.toggle();
+		// // 	this.togglePlayer();
+		// // 	//this.$emit('toggleplay', this.isPlaying);
+		// // 	console.log('hello');
+		// // 	// if(this.isPaused){
+		// // 	// 	clearInterval(this.intervalPlayer);
+		// // 	// 	this.intervalPlayer = null;
+		// // 	// }
+		// // 	// else{
+		// // 	// 	this.changeComponent();
+		// // 	// 	this.intervalPlayer = setInterval(this.changeComponent, 5000);
+		// // 	// }
+		// },
 		goBack(){
 			this.$emit('goBack');
 		},
