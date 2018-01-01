@@ -50,6 +50,10 @@ export default {
 			isPaused: false
 		}
 	},
+	mounted(){
+		//console.log(this.player);
+		//this.player.test();
+	},
 	methods: {
 		collectMixins(){
 			this.allMixins = "";

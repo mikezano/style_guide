@@ -26,25 +26,14 @@ export default {
 	},
 	methods:{
 		...mapActions({toggleIsPlaying: 'toggleIsPlaying'}),
-		// togglePlay(){
-		// 	this.toggle();
-		// // 	this.togglePlayer();
-		// // 	//this.$emit('toggleplay', this.isPlaying);
-		// // 	console.log('hello');
-		// // 	// if(this.isPaused){
-		// // 	// 	clearInterval(this.intervalPlayer);
-		// // 	// 	this.intervalPlayer = null;
-		// // 	// }
-		// // 	// else{
-		// // 	// 	this.changeComponent();
-		// // 	// 	this.intervalPlayer = setInterval(this.changeComponent, 5000);
-		// // 	// }
-		// },
 		goBack(){
 			this.$emit('goBack');
 		},
 		goForward(){
 			this.$emit('goForward');
+		},
+		test(){
+			alert('hello world');
 		}
 	}
 }

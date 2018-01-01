@@ -1,6 +1,9 @@
 <template lang="pug">
-	transition( name="move_left_right" mode="out-in" )
-		vuer(:name="file" v-if="file" :key="file")
+	div
+		div isPlaying: 
+		span {{isPlaying}}
+		transition( name="move_left_right" mode="out-in" )
+			vuer(:name="file" v-if="file" :key="file")
 </template>
 
 <script>
@@ -34,10 +37,8 @@ export default {
 	methods:{
 		changeComponent(){
 			this.file = this.files[Math.floor(Math.random()*this.files.length)];
-			console.log(this.file);
 		},
 		toggle(state){
-			console.log('here:' + state);
 			if(!state){
 				clearInterval(this.intervalPlayer);
 				this.intervalPlayer = null;
