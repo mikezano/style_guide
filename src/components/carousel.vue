@@ -1,7 +1,7 @@
 <template lang="pug">
 	div
 		component_carousel
-		player(goBack="testGoBack()")
+		player( :isPlaying="isPlaying")
 </template>
 
 <script>

@@ -22,8 +22,9 @@
 		div(@click="collectMixins()")
 			rotate_down_btn
 
-		component_carousel
-		player
+		//component_carousel
+		//player
+		carousel
 
 		//- button
 		//- 	icon(name="step-backward")
