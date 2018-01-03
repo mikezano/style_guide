@@ -1,7 +1,7 @@
 <template lang="pug">
 	div
 		component_carousel
-		player( :isPlaying="isPlaying")
+		player( :isPlaying="isPlaying" togglePlayer="togglePlayer()")
 </template>
 
 <script>
@@ -18,6 +18,9 @@ export default {
 	methods:{
 		testGoBack(){
 			alert('went back');
+		},
+		togglePlayer(){
+			alert('h');
 		}
 	},
 	components:{

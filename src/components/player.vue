@@ -3,7 +3,7 @@
 		span {{isPlaying}}
 		button.player__backward(@click="goBack()")
 			icon(name="step-backward")
-		button.player__toggle-play(@click="toggleIsPlaying()")
+		button.player__toggle-play(@click="togglePlayer()")
 			icon(name="play", scale="2" v-if="!isPlaying")
 			icon(name="pause", scale="2" v-else)
 		button.player__forward
@@ -22,12 +22,10 @@ export default {
 		}
 	},
 	props: ['isPlaying'],
-	computed: {
-		...mapGetters({isPlaying: 'getPlayingState'}),
-		//...mapMutations({toggleIsPlaying: 'toggleIsPlaying'}),
-	},
 	methods:{
-		...mapActions({toggleIsPlaying: 'toggleIsPlaying'}),
+		togglePlayer(){
+			this.$emit('togglePlayer');
+		},
 		goBack(){
 			this.$bus.$emit('goBack');
 			//EventBus.$emit('bam');
