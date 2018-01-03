@@ -27,6 +27,11 @@ export default {
 			alert('from carousel');
 		}
 	},
+	created(){
+		EventBus.$on('bam', ()=>{
+			debugger;
+		});
+	},
 	mounted(){
 		let style_guide_files = this.getFiles();
 		for(var folder in style_guide_files){
@@ -42,9 +47,9 @@ export default {
 			this.goBack();
 		});
 
-		EventBus.$on('bam', ()=>{
-			debugger;
-		});
+		// EventBus.$on('bam', ()=>{
+		// 	debugger;
+		// });
 	},
 	methods:{
 		goBack(){

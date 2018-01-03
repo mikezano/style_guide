@@ -21,6 +21,7 @@ export default {
 
 		}
 	},
+	props: ['isPlaying'],
 	computed: {
 		...mapGetters({isPlaying: 'getPlayingState'}),
 		//...mapMutations({toggleIsPlaying: 'toggleIsPlaying'}),
@@ -28,8 +29,8 @@ export default {
 	methods:{
 		...mapActions({toggleIsPlaying: 'toggleIsPlaying'}),
 		goBack(){
-			//this.$bus.$emit('goBack');
-			EventBus.$emit('bam');
+			this.$bus.$emit('goBack');
+			//EventBus.$emit('bam');
 		},
 		goForward(){
 			this.$emit('goForward');

@@ -39,6 +39,7 @@ import {mapGetters} from 'vuex'
 import rotate_down_btn from '@/components/rotate_down_btn'
 import player from '@/components/player'
 import component_carousel from '@/components/component_carousel'
+import carousel from '@/components/carousel'
 
 export default {
 	name: 'style_guide_index_home',
@@ -87,7 +88,8 @@ export default {
 	components: {
 		rotate_down_btn,
 		player,
-		component_carousel
+		component_carousel,
+		carousel
 	}
 }
 </script>
