@@ -8,6 +8,7 @@
 
 <script>
 import vuer from '@/components/vuer/vuer'
+import {EventBus} from '../event_bus'
 import {mapGetters} from 'vuex'
 
 export default {
@@ -16,7 +17,9 @@ export default {
 		return {
 			files: [],
 			file: null,
-			intervalPlayer: null
+			intervalPlayer: null,
+			file_carousel_list: [],
+			file_carousel_index: 0
 		}
 	},
 	events:{
@@ -33,10 +36,38 @@ export default {
 		}
 		this.file = this.files[Math.floor(Math.random()*this.files.length)];
 		this.intervalPlayer = setInterval(this.changeComponent, 5000);
+
+		this.$bus.$on('goBack',(d)=>{
+			debugger;
+			this.goBack();
+		});
+
+		EventBus.$on('bam', ()=>{
+			debugger;
+		});
 	},
 	methods:{
+		goBack(){
+			this.toggle(false);
+			this.file_carousel_index = this.file_carousel_index == 0 ? 0 : this.file_carousel_index--;
+			let file = this.file_carousel_list[this.file_carousel_index];
+			this.updateList(file);
+		},
+		selectRandomComponent(){
+			return this.files[Math.floor(Math.random()*this.files.length)];
+		},
 		changeComponent(){
-			this.file = this.files[Math.floor(Math.random()*this.files.length)];
+			let file = this.selectRandomComponent();
+			this.updateList(file);
+		},
+		updateList(file){
+			if(this.file_carousel_list.length > 5){
+				this.file_carousel_list = this.file_carousel_list.splice(0,1);
+			}
+			this.file_carousel_list.push(file);
+			this.file_carousel_index = this.file_carousel_list.length - 1;
+
+			this.file = file;
 		},
 		toggle(state){
 			if(!state){

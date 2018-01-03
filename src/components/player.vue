@@ -1,7 +1,7 @@
 <template lang="pug">
 	.player
 		span {{isPlaying}}
-		button.player__backward
+		button.player__backward(@click="goBack()")
 			icon(name="step-backward")
 		button.player__toggle-play(@click="toggleIsPlaying()")
 			icon(name="play", scale="2" v-if="!isPlaying")
@@ -12,6 +12,7 @@
 
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
+import {EventBus} from '../event_bus'
 
 export default {
 
@@ -27,7 +28,8 @@ export default {
 	methods:{
 		...mapActions({toggleIsPlaying: 'toggleIsPlaying'}),
 		goBack(){
-			this.$emit('goBack');
+			//this.$bus.$emit('goBack');
+			EventBus.$emit('bam');
 		},
 		goForward(){
 			this.$emit('goForward');

@@ -17,6 +17,9 @@ import Icon from 'vue-awesome/components/Icon'
 Vue.component('icon', Icon);
 //import registry from './components/vuer/registry';
 
+//https://medium.com/patrickleenyc/vue-js-simple-event-bus-for-cross-component-communication-85dd8f0fc750
+Vue.prototype.$bus = new Vue({});
+
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',
