@@ -1,9 +1,6 @@
 <template lang="pug">
-	div
-		div isPlaying: 
-		span {{isPlaying}}
-		transition( name="move_left_right" mode="out-in" )
-			vuer(:name="file" v-if="file" :key="file")
+	transition( name="move_left_right" mode="out-in" )
+		vuer(:name="file" v-if="file" :key="file")
 </template>
 
 <script>
@@ -22,6 +19,7 @@ export default {
 			file_carousel_index: 0
 		}
 	},
+	props: ['isPlaying'],
 	events:{
 		toggleplay(val){
 			alert('from carousel');
@@ -41,18 +39,10 @@ export default {
 		}
 		this.file = this.files[Math.floor(Math.random()*this.files.length)];
 		this.intervalPlayer = setInterval(this.changeComponent, 5000);
-
-		this.$bus.$on('goBack',(d)=>{
-			debugger;
-			this.goBack();
-		});
-
-		// EventBus.$on('bam', ()=>{
-		// 	debugger;
-		// });
 	},
 	methods:{
 		goBack(){
+			debugger;
 			this.toggle(false);
 			this.file_carousel_index = this.file_carousel_index == 0 ? 0 : this.file_carousel_index--;
 			let file = this.file_carousel_list[this.file_carousel_index];
@@ -69,6 +59,7 @@ export default {
 			if(this.file_carousel_list.length > 5){
 				this.file_carousel_list = this.file_carousel_list.splice(0,1);
 			}
+			debugger;
 			this.file_carousel_list.push(file);
 			this.file_carousel_index = this.file_carousel_list.length - 1;
 
@@ -91,7 +82,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters({isPlaying: 'getPlayingState', getFiles: 'getFiles'})
+		...mapGetters({getFiles: 'getFiles'})
 	},
 	components:{
 		vuer

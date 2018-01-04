@@ -27,7 +27,7 @@ export default {
 			this.$emit('togglePlayer');
 		},
 		goBack(){
-			this.$bus.$emit('goBack');
+			this.$emit('goBack');
 			//EventBus.$emit('bam');
 		},
 		goForward(){
