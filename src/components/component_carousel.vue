@@ -1,6 +1,8 @@
 <template lang="pug">
-	transition( name="move_left_right" mode="out-in" )
-		vuer(:name="file" v-if="file" :key="file")
+	div
+		div(v-for="file in file_carousel_list") {{ file }}
+		transition( name="move_left_right" mode="out-in" )
+			vuer(:name="file" v-if="file" :key="file")
 </template>
 
 <script>
@@ -44,9 +46,10 @@ export default {
 		goBack(){
 			debugger;
 			this.toggle(false);
-			this.file_carousel_index = this.file_carousel_index == 0 ? 0 : this.file_carousel_index--;
+			this.file_carousel_index = this.file_carousel_index == 0 ? 0 : --this.file_carousel_index;
 			let file = this.file_carousel_list[this.file_carousel_index];
-			this.updateList(file);
+			this.file = file;
+			this.$emit('carouselStop');
 		},
 		selectRandomComponent(){
 			return this.files[Math.floor(Math.random()*this.files.length)];
@@ -56,10 +59,10 @@ export default {
 			this.updateList(file);
 		},
 		updateList(file){
-			if(this.file_carousel_list.length > 5){
-				this.file_carousel_list = this.file_carousel_list.splice(0,1);
-			}
 			debugger;
+			if(this.file_carousel_list.length > 5){
+				this.file_carousel_list.splice(0,1);
+			}
 			this.file_carousel_list.push(file);
 			this.file_carousel_index = this.file_carousel_list.length - 1;
 

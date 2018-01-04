@@ -1,6 +1,9 @@
 <template lang="pug">
 	div
-		component_carousel( :isPlaying="isPlaying" ref="cc")
+		component_carousel(
+			:isPlaying="isPlaying"
+			v-on:carouselStop="carouselStop()"
+			ref="cc")
 		player( 
 			:isPlaying="isPlaying"
 			v-on:togglePlayer="togglePlayer()"
@@ -22,6 +25,9 @@ export default {
 		}
 	},
 	methods:{
+		carouselStop(){
+			alert('stop');
+		},
 		goBack(){
 			this.$refs.cc.goBack();
 		},
