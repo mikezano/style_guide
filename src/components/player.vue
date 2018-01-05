@@ -1,12 +1,11 @@
 <template lang="pug">
 	.player
-		span {{isPlaying}}
 		button.player__backward(@click="goBack()")
 			icon(name="step-backward")
 		button.player__toggle-play(@click="togglePlayer()")
 			icon(name="play", scale="2" v-if="!isPlaying")
 			icon(name="pause", scale="2" v-else)
-		button.player__forward
+		button.player__forward(@click="goForward()")
 			icon(name="step-forward")
 </template>
 
@@ -28,13 +27,9 @@ export default {
 		},
 		goBack(){
 			this.$emit('goBack');
-			//EventBus.$emit('bam');
 		},
 		goForward(){
 			this.$emit('goForward');
-		},
-		test(){
-			alert('hello world');
 		}
 	}
 }

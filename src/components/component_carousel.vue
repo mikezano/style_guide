@@ -44,10 +44,27 @@ export default {
 	},
 	methods:{
 		goBack(){
-			debugger;
-			this.toggle(false);
+			//this.toggle(false);
 			this.file_carousel_index = this.file_carousel_index == 0 ? 0 : --this.file_carousel_index;
 			let file = this.file_carousel_list[this.file_carousel_index];
+			this.stopAndChangeFile(file);
+			//this.file = file;
+			//this.$emit('carouselStop');
+		},
+		goForward(){
+			//this.toggle(false);
+			debugger;
+			this.file_carousel_index =
+				this.file_carousel_index == this.file_carousel_list.length-1 ? 
+				this.file_carousel_list.length-1 : 
+				++this.file_carousel_index;
+			let file = this.file_carousel_list[this.file_carousel_index];
+			this.stopAndChangeFile(file);
+			//this.file = file;
+			//this.$emit('carouselStop');
+		},
+		stopAndChangeFile(file){
+			this.toggle(false);
 			this.file = file;
 			this.$emit('carouselStop');
 		},
@@ -59,7 +76,6 @@ export default {
 			this.updateList(file);
 		},
 		updateList(file){
-			debugger;
 			if(this.file_carousel_list.length > 5){
 				this.file_carousel_list.splice(0,1);
 			}

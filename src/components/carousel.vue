@@ -26,13 +26,13 @@ export default {
 	},
 	methods:{
 		carouselStop(){
-			alert('stop');
+			this.isPlaying = false;
 		},
 		goBack(){
 			this.$refs.cc.goBack();
 		},
 		goForward(){
-
+			this.$refs.cc.goForward();
 		},
 		togglePlayer(){
 			debugger;
