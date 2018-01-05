@@ -1,6 +1,5 @@
 <template lang="pug">
 	div
-		div(v-for="file in file_carousel_list") {{ file }}
 		transition( name="move_left_right" mode="out-in" )
 			vuer(:name="file" v-if="file" :key="file")
 </template>

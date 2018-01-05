@@ -12,6 +12,7 @@
 			router-link(to="/style_guide/buttons" tag="li") Buttons
 			router-link(to="/style_guide/tabs" tag="li") Tabs
 			router-link(to="/style_guide/cards" tag="li") Cards
+			router-link(to="/style_guide/intros" tag="li") Intros
 		.divider
 		p How To
 		ul
