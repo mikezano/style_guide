@@ -145,5 +145,5 @@
 	}//intro end
 }
 
-@include intro();
+@include intro(2.5, red, blue, green);
 </style>
