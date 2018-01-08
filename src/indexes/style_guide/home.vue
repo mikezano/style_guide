@@ -46,6 +46,7 @@ export default {
 	name: 'style_guide_index_home',
 	data(){
 		return {
+			files: [],
 			mixinRE: new RegExp("@mixin.*?end", "s"),
 			allMixins: "",
 			words: "Play",
@@ -53,8 +54,12 @@ export default {
 		}
 	},
 	mounted(){
-		//console.log(this.player);
-		//this.player.test();
+		let style_guide_files = this.getFiles();
+		for(var folder in style_guide_files){
+			style_guide_files[folder].forEach(file=>{
+				this.files.push(file);
+			});
+		}
 	},
 	methods: {
 		collectMixins(){

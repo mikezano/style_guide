@@ -14,7 +14,7 @@
 
 
 <script>
-	export default{name: "circle"}
+	export default{name: 'circle_zoom'}
 </script>
 
 <style lang="scss" scoped>
