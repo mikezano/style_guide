@@ -13,6 +13,7 @@
 
 <style lang="scss" scoped>
 
+$stroke-dash: 400;
 .animation-container{
 	font-size: 2em;
 	opacity: 1;
@@ -23,13 +24,14 @@
 
 		text{
 			fill: transparent;
-			stroke-dashoffset: 320;
+			stroke-dashoffset: $stroke-dash;
 			stroke-width: 1;
 			stroke: orange;
-			stroke-dasharray: 320;
+			stroke-dasharray: $stroke-dash;
 			transition: 1.5s all ease;
 			animation: text 2s linear forwards;
 			font-size:100px;
+			box-shadow:2px 2px 3px black;
 		}
 	}
 }
