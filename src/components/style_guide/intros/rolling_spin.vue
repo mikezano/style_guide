@@ -2,7 +2,7 @@
 	.animation-container
 		svg
 			symbol#text
-				text(text-anchor='middle' x='50%', y='100' ) AD&S
+				text( alignment-baseline="hanging") AD&S
 			use.text(xlink:href='#text')
 		.presents Presents
 </template>
@@ -15,8 +15,7 @@
 
 $stroke-dash: 400;
 .animation-container{
-	font-size: 2em;
-	opacity: 1;
+
 	svg {
 		border:1px solid;
 		width:300px;
