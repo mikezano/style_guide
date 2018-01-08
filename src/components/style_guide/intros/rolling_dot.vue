@@ -1,17 +1,16 @@
 <template lang="pug">
-	#outer
-		.die
-		.words
-			.a A
-			.d D
-			.amp &
-			.s S
-			.presents Presents
-		.dot-container
-			.dot1
-			.dot2
-			.dot3
-	</div>
+	.intro
+		.intro__travel-dot
+		.intro__words
+			.intro__a A
+			.intro__d D
+			.intro__amp &
+			.intro__s S
+			.intro__presents Presents
+		.intro__dots
+			.intro__dot1
+			.intro__dot2
+			.intro__dot3
 </template>
 
 
@@ -21,74 +20,65 @@
 
 <style lang="scss" scoped>
 
-#outer{
+.intro{
 	display:flex;
 	align-items:flex-start;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 2em;
 	position:relative;
-}
-.words{
-	display:flex;
-	align-items:flex-start;
-	width:250px;
-}
-.dot-container{
-	display: flex;
-	justify-content:space-between;
-	width:40px;
-}
-.a, .d, .amp, .s {
-	font-weight: bold;
-	opacity: 0;
-	text-shadow: 4px 8px lightgray;
-	color: #444;
-	animation: slide-down .2s ease-in-out forwards;
-}
 
-.a {animation-delay: .1s;}
-.d {animation-delay: .2s;}
-.amp {animation-delay: .3s;}
-.s { animation-delay: .4s;}
+	&__travel-dot{
+		width:10px;
+		height: 10px;
+		border-radius: 5px;
+		background-color: orange;
+		position:absolute;
+		margin-top: 1em;
+		animation: move-dot 1.5s ease-in-out forwards;	width: 10px;
+	}
+	&__words{
+		display:flex;
+		align-items:flex-start;
+		width:250px;
+	}
+	&__a, &__d, &__amp, &__s {
+		font-weight: bold;
+		opacity: 0;
+		text-shadow: 4px 8px lightgray;
+		color: #444;
+		animation: slide-down .2s ease-in-out forwards;
+	}
+	&__a	{animation-delay: .1s;}
+	&__d	{animation-delay: .2s;}
+	&__amp	{animation-delay: .3s;}
+	&__s	{animation-delay: .4s;}
 
-.dot1, .dot2, .dot3 {
-	width: 10px;
-	height: 10px;
-	border-radius: 5px;
-	background-color: orange;
-	margin-top: .8em;
-	opacity: 0;
-	animation: jump 1s ease-in-out infinite;
-}
+	&__presents {
+		opacity: 0;
+		animation: fade-in-presents 1s ease-in-out .5s forwards;
+		margin: 0 10px;
+		color: gray;
+	}
 
-.presents {
-	opacity: 0;
-	animation: fade-in-presents 1s ease-in-out .5s forwards;
-	margin: 0 10px;
-	color: gray;
-}
+	&__dots{
+		display: flex;
+		justify-content:space-between;
+		width:40px;
+	}
 
-.dot1 {
-	animation-delay: 1.44s;
-}
-
-.dot2 {
-	animation-delay: 1.54s;
-}
-
-.dot3 {
-	animation-delay: 1.64s;
-}
-
-.die {
-	width: 10px;
-	height: 10px;
-	border-radius: 5px;
-	background-color: orange;
-	//background-size: 50%;
-	position:absolute;
-	margin-top: 1em;
-	animation: move-dot 1.5s ease-in-out forwards;
+	&__dot1, &__dot2, &__dot3 {
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+		background-color: orange;
+		margin-top: .8em;
+		opacity: 0;
+		animation: jump 1s ease-in-out infinite;
+	}
+	
+	&__dot1 {animation-delay: 1.44s;}
+	&__dot2 {animation-delay: 1.54s;}
+	&__dot3 {animation-delay: 1.64s;}
 }
 
 @keyframes slide-down {
