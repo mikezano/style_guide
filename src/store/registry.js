@@ -8,7 +8,8 @@ const files = require.context(`../components/style_guide/`, true, /\.vue$/);
 export default {
 	components,
 	get,
-	buildRegistry
+	buildRegistry,
+	collectMixins
 }
 
 for(var i = 0; i < components.length; i++){
@@ -37,4 +38,17 @@ function buildRegistry(){
 	});
 
 	return hash;
+}
+
+function collectMixins(){
+
+	this.allMixins = "";
+	let files = buildRegistry();
+	files.forEach(file=>{
+		let component = get(file);
+		let source = component.source.replace(/\t/g,'  ');
+		let result = source.match(this.mixinRE);
+		this.allMixins += result!= null ? result + "\n\r" : "";
+	});
+	console.log(this.allMixins);
 }
