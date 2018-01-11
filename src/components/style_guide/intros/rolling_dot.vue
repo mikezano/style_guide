@@ -142,8 +142,8 @@
 			margin-top: .8em;
 			opacity: 0;
 		}
-	}//intro end
-}
+	}
+}//intro end
 
 @include intro(2.5, red, blue, green);
 </style>

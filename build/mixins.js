@@ -57,13 +57,13 @@ files.forEach(function(file){
   // });
   var contents = fs.readFileSync(file.path, 'utf8');
   let result = contents.match(mixin_regex);
-  mixins_result += result;
+  mixins_result += result!= null ? result + "\n\r" : "";
 });
 //console.log("mixins:");
 console.log(mixins_result);
 
 
-fs.writeFile("./src/package/test.scss", mixins_result, function(err) {
+fs.writeFile("./package/ads_mixer.scss", mixins_result, function(err) {
   if(err) {
       return console.log(err);
   }
