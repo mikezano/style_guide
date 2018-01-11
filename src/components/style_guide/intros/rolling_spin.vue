@@ -5,6 +5,11 @@
 				text( x="50%" y="98%" text-anchor="middle") AD&S
 			use.text(xlink:href='#text')
 		.presents Presents
+		.container
+			.dot
+			.dot
+			.dot
+
 </template>
 
 <script>
@@ -21,6 +26,7 @@ $stroke-dash: 400;
 		svg {
 			width:15em;
 			height:4em;
+			animation: shadow 1s 2s linear forwards;
 
 			text{
 				fill: transparent;
@@ -42,9 +48,22 @@ $stroke-dash: 400;
 			opacity:0;
 			color:#444;
 		}
+
+		.container{
+			display: flex;
+			justify-content: center;
+		}
 	}
 
 
+	@keyframes shadow {
+		0%{
+			-webkit-filter: none;
+		}
+		100%{
+			-webkit-filter: drop-shadow( 1px 1px 1px #aaa );
+		}
+	}
 	@keyframes go-up {
 		from{
 			transform: translateY(1em);
@@ -66,4 +85,39 @@ $stroke-dash: 400;
 		}
 	}
 }//draw_in end
+	$animation-speed: 1000ms;
+	$dot-size: 10px;
+@mixin animation($delay: 0ms) {
+	animation: fx $animation-speed ease infinite $delay;
+}
+	.dot {
+
+	width: $dot-size;
+	height: $dot-size;
+	border: ($dot-size / 5) solid gray;
+	border-radius: 50%;
+	float: left;
+	margin: 0 ($dot-size / 2);
+	transform: scale(0);
+	@include animation();
+	&:nth-child(2) {
+		@include animation($animation-speed * 0.3);
+	}
+	&:nth-child(3) {
+		@include animation($animation-speed * 0.6);
+	}
+}
+
+
+@keyframes fx {
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@include draw_in();
 </style>
