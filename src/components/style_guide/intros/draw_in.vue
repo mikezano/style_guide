@@ -1,11 +1,11 @@
 <template lang="pug">
-	.animation-container
-		svg
+	.draw-in
+		svg.draw-in__svg
 			symbol#text
-				text( x="50%" y="98%" text-anchor="middle") AD&S
+				text.draw-in__ads( x="50%" y="98%" text-anchor="middle") AD&S
 			use.text(xlink:href='#text')
-		.presents Presents
-		.container
+		.draw-in__presents Presents
+		.draw-in__dots
 			.dot
 			.dot
 			.dot
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	export default{name: "rolling_spin"}
+	export default{name: "draw_in"}
 </script>
 
 <style lang="scss" scoped>
@@ -21,35 +21,34 @@
 $orange : orange;
 $stroke-dash: 400;
 @mixin draw_in(){
-	.animation-container{
+	.draw-in{
 
-		svg {
+		&__svg{
 			width:15em;
 			height:4em;
 			animation: shadow 1s 2s linear forwards;
-
-			text{
-				fill: transparent;
-				font-family:"Arial", Gadget, sans-serif;
-				font-weight:bold;
-				stroke-dashoffset: $stroke-dash;
-				stroke-width: 1;
-				stroke: $orange;
-				stroke-dasharray: $stroke-dash;
-				transition: 1.5s all ease;
-				animation: text 3s linear forwards;
-				font-size:5em;
-				box-shadow:2px 2px 3px black;
-			}
 		}
 
-		.presents{
+		&__ads{
+			fill: transparent;
+			font-family:"Arial", Gadget, sans-serif;
+			font-weight:bold;
+			stroke-dashoffset: $stroke-dash;
+			stroke-width: 2;
+			stroke: $orange;
+			stroke-dasharray: $stroke-dash;
+			animation: text 3s linear forwards;
+			font-size:5em;
+			box-shadow:2px 2px 3px black;
+		}
+
+		&__presents{
 			animation: go-up 1s 1s ease-in-out forwards;
 			opacity:0;
 			color:#444;
 		}
 
-		.container{
+		&__dots{
 			display: flex;
 			justify-content: center;
 		}
@@ -61,7 +60,7 @@ $stroke-dash: 400;
 			-webkit-filter: none;
 		}
 		100%{
-			-webkit-filter: drop-shadow( 1px 1px 1px #aaa );
+			-webkit-filter: drop-shadow( 1px 1px 4px #ccc );
 		}
 	}
 	@keyframes go-up {
@@ -88,7 +87,7 @@ $stroke-dash: 400;
 	$animation-speed: 1000ms;
 	$dot-size: 10px;
 @mixin animation($delay: 0ms) {
-	animation: fx $animation-speed ease infinite $delay;
+	animation: fx $animation-speed ease infinite $delay + 2s;
 }
 	.dot {
 
