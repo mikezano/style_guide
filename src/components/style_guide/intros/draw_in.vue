@@ -6,9 +6,9 @@
 			use.text(xlink:href='#text')
 		.draw-in__presents Presents
 		.draw-in__dots
-			.dot
-			.dot
-			.dot
+			.draw-in__dot
+			.draw-in__dot
+			.draw-in__dot
 
 </template>
 
@@ -18,11 +18,14 @@
 
 <style lang="scss" scoped>
 
-$orange : orange;
-$stroke-dash: 400;
-@mixin draw_in(){
+
+
+@mixin draw_in($color){
 	.draw-in{
 
+		$stroke-dash: 400;
+		$animation-speed: 1000ms;
+		$dot-size: 10px;
 		&__svg{
 			width:15em;
 			height:4em;
@@ -35,7 +38,7 @@ $stroke-dash: 400;
 			font-weight:bold;
 			stroke-dashoffset: $stroke-dash;
 			stroke-width: 2;
-			stroke: $orange;
+			stroke: $color;
 			stroke-dasharray: $stroke-dash;
 			animation: text 3s linear forwards;
 			font-size:5em;
@@ -52,16 +55,30 @@ $stroke-dash: 400;
 			display: flex;
 			justify-content: center;
 		}
+
+		&__dot {
+			width: $dot-size;
+			height: $dot-size;
+			border: ($dot-size / 5) solid gray;
+			border-radius: 50%;
+			float: left;
+			margin: 0 ($dot-size / 2);
+			transform: scale(0);
+
+			animation: fx $animation-speed ease infinite 2s;
+
+			&:nth-child(2) {
+				animation: fx $animation-speed ease infinite  2.3s;
+			}
+			&:nth-child(3) {
+				animation: fx $animation-speed ease infinite 2.6s;
+			}
+		}
 	}
 
-
 	@keyframes shadow {
-		0%{
-			-webkit-filter: none;
-		}
-		100%{
-			-webkit-filter: drop-shadow( 1px 1px 4px #ccc );
-		}
+		0%{filter: none;}
+		100%{filter: drop-shadow( 1px 1px 4px #ccc );}
 	}
 	@keyframes go-up {
 		from{
@@ -80,43 +97,20 @@ $stroke-dash: 400;
 		}
 		100%{
 			stroke-dashoffset: 0;
-			fill: lighten($orange, 20%);
+			fill: lighten($color, 20%);
+		}
+	}
+	@keyframes fx {
+		50% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
 		}
 	}
 }//draw_in end
-	$animation-speed: 1000ms;
-	$dot-size: 10px;
-@mixin animation($delay: 0ms) {
-	animation: fx $animation-speed ease infinite $delay + 2s;
-}
-	.dot {
-
-	width: $dot-size;
-	height: $dot-size;
-	border: ($dot-size / 5) solid gray;
-	border-radius: 50%;
-	float: left;
-	margin: 0 ($dot-size / 2);
-	transform: scale(0);
-	@include animation();
-	&:nth-child(2) {
-		@include animation($animation-speed * 0.3);
-	}
-	&:nth-child(3) {
-		@include animation($animation-speed * 0.6);
-	}
-}
 
 
-@keyframes fx {
-	50% {
-		transform: scale(1);
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-
-@include draw_in();
+@include draw_in(orange);
 </style>
