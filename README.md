@@ -54,4 +54,26 @@ Package can then be installed on other machines with:
 npm install ads_mixer
 ```
 
+### Creating npm package
+
+```bash
+#Start in a folder where all required files for the package will be
+
+#Walk through the steps presented in this command
+npm init
+
+#Make sure you are publishing under the correct npm account
+npm whoami
+
+#If you don't have an account you can create one with:
+npm adduser
+
+#Put packages up on npm
+npm publish
+```
+
+### Troubleshooting
+
+If you attempt to publish and recive a 'You do not have permission to publish' error you most likely do not have a unique package name.
+
 For detailed explanation on how things work with Vue.js, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
