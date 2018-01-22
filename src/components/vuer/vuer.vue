@@ -1,7 +1,7 @@
 <template lang="pug">
 	.ex
 		.ex__header
-			| {{name}}
+			| {{name.replace('_',' ')}}
 		.ex__output
 			component(:is="component")
 		.ex__code
