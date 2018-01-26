@@ -1,0 +1,23 @@
+{
+  "name": "mixifier",
+  "version": "0.0.1",
+  "description": "SASS mixins galore!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mikezano/style_guide.git"
+  },
+  "keywords": [
+    "SASS",
+    "CSS"
+  ],
+  "author": "Michael Manzano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikezano/style_guide/issues"
+  },
+  "homepage": "https://github.com/mikezano/style_guide#readme"
+}

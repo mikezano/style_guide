@@ -125,7 +125,6 @@ export default {
 			font-size:70px;	
 		}
 		.style{color:$vue_green_dark;}
-		
 	}
 
 	.title_logos{
