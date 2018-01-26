@@ -77,3 +77,8 @@ npm publish
 If you attempt to publish and recive a 'You do not have permission to publish' error you most likely do not have a unique package name.
 
 For detailed explanation on how things work with Vue.js, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+### References 
+
+Working with (submodules)[https://github.com/blog/2104-working-with-submodules]

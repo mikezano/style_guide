@@ -11,11 +11,11 @@
 			label(v-bind:for="pugId") PUG
 			.content
 				.content1
-					pre.language-css  
-						code(v-html="scss")
+					pre.language-css
+						code(v-html="scss" contenteditable="true")
 				.content2
 					pre.language-js
-						code(v-html="pug")
+						code(v-html="pug"  contenteditable="true")
 
 </template>
 
