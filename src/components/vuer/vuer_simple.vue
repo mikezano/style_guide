@@ -1,7 +1,7 @@
 <template lang="pug">
 	.ex
 		.ex__header
-			div {{name.replace('_',' ')}}
+			| {{name.replace('_',' ')}}
 		.ex__output
 			component(:is="component")
 </template>
@@ -44,10 +44,10 @@ export default {
 
 .ex{
 	border:1px solid darken($vue_green, 10%);
-	border-radius:3px;
+
 	background-color:  hsla(0, 0%, 92%, .8);
 	width:100%;
-	box-shadow:2px 2px 4px #aaa;
+	box-shadow:2px 2px 4px #ccc;
 	display:inline-block;
 	margin-bottom:20px;
 	
@@ -58,7 +58,7 @@ export default {
 		color: $vue_green;
 		font-size:20px;
 		font-weight:bold;
-		text-transform: uppercase;
+		text-transform: capitalize;
 		padding:10px;
 		margin:0 10px;
 		border-bottom: 1px solid $vue_green;

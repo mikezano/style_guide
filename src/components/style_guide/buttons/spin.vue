@@ -29,7 +29,7 @@
 		transition: 
 			transform .5s ease-out, 
 			color .7s ease-out;
-		display:flex;
+		display:inline-flex;
 		align-items: center;
 		justify-content: center;
 

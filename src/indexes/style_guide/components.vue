@@ -1,9 +1,10 @@
 <template lang="pug">
 	div
-		h1 {{$route.params.component.toUpperCase()}}
+		h1.title {{$route.params.component}}
 
-		.simple_container
-			vuer_simple(:name="item" v-for="item in currentSet")
+		transition-group.simple_container(name="list" tag="div")
+			.list-item(v-for="item in currentSet", :key="item")
+				vuer_simple(:name="item")
 
 		//transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
 			.list-item(v-for="item in currentSet", :key="item")
@@ -48,10 +49,6 @@ export default {
 					this.hash[folder] = [];
 				this.hash[folder].push(file);
 			});
-		},
-		afterLeave(e){
-			//this.currentSet = this.nextRoute;
-
 		}
 	},
 	watch :{
@@ -66,11 +63,15 @@ export default {
 
 <style lang="scss" scoped>
 
+.title{
+	text-transform:capitalize;
+}
 .simple_container{
 	column-count: 2;
 	column-gap:1rem;
 	//column-width:400px;
 	width:800px;
+
 	.flex-item{
 		border:1px solid gray;
 		background-color:  hsla(0, 0%, 92%, .5);
@@ -82,7 +83,7 @@ export default {
 }
 
 .list-item {
-  display: inline-block;
+  //display: inline-block;
 }
 .list-enter-active, .list-leave-active {
   transition: all .3s;
