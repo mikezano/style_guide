@@ -1,6 +1,6 @@
 <template lang="pug">
 	div
-		h1.title {{$route.params.component}}
+		h1.title {{$route.params.components}}
 
 		transition-group.simple_container(name="list" tag="div")
 			.list-item(v-for="item in currentSet", :key="item")
@@ -20,7 +20,7 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
 export default {
 	name: 'index_cards',
-	props: ['component'],
+	props: ['components'],
 	data () {
 		return {
 			hash: [],
@@ -32,7 +32,7 @@ export default {
 		this.buildRegistry();
 	},
 	mounted(){
-		this.currentSet = this.hash[this.component];
+		this.currentSet = this.hash[this.components];
 	},
 	methods: {
 		routeChanged(route){

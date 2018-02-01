@@ -13,10 +13,18 @@ export default new Router({
 			component: indexes.style_guide,
 			children: [
 				{path: '',				name: 'Home',			component: indexes.home},
-				{path: ':component',	name: 'Components',		component: indexes.components, props:true}
+				{
+					path: ':components',
+					name: 'Components',
+					component: indexes.components,
+					props:true,
+					children: [
+						{path: ':single_component', name: 'Component', component: indexes.single_component, props:true}
+					]
+				}
 			]
 		},
 		{path: '/test',					name: 'Test',					component: indexes.test},
-		{path: '/how_to_use',			name: 'How To Use',				component: indexes.how_to_use},
+		{path: '/how_to_use',			name: 'How To Use',				component: indexes.how_to_use}
 	]
 })

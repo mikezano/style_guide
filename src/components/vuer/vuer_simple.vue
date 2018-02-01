@@ -1,6 +1,8 @@
 <template lang="pug">
 	.ex
 		.ex__header
+			router-link(:to="name" ) 
+				icon(name="link" scale="1")
 			| {{name.replace('_',' ')}}
 		.ex__output
 			component(:is="component")
@@ -10,7 +12,7 @@
 import {mapGetters} from 'vuex'
 
 export default {
-	name: 'viewer_simple',
+	name: 'vuer_simple',
 	props: ['name'],
 	watch: {
 		name: function(newVal, oldVal){
@@ -19,11 +21,14 @@ export default {
 	},
 	data () {
 		return {
-			component: null
+			component: null,
+			route: ""
 		}
 	},
 	mounted(){
 		this.getSources();
+		this.route = 
+			`/style_guide/${this.$route.params.components}/${this.name}`;
 	},
 	computed: {
 		...mapGetters(['getComponent'])
