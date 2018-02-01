@@ -16,6 +16,7 @@ export default new Router({
 				{path: ':component',	name: 'Components',		component: indexes.components, props:true}
 			]
 		},
-		{path: '/test',					name: 'Test',					component: indexes.test},		
+		{path: '/test',					name: 'Test',					component: indexes.test},
+		{path: '/how_to_use',			name: 'How To Use',				component: indexes.how_to_use},
 	]
 })

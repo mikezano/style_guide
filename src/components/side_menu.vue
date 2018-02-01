@@ -6,7 +6,12 @@
 			img(src="./../assets/logo.png")
 			router-link(to="/style_guide" tag="p") Style Guide
 		
-		p Mixins
+		p Usage
+		ul
+			router-link(to="/how_to_use" tag="li") How to use
+			router-link(to="/test" tag="li") Test
+		.dvider
+		p Components
 		ul
 			router-link(to="/style_guide/drop_downs" tag="li") Drop Downs
 			router-link(to="/style_guide/buttons" tag="li") Buttons

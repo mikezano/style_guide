@@ -122,6 +122,7 @@ input:checked + label {
 
 .ex{
 	border:1px solid $vue_green;
+	border-radius:2px;
 	background-color:  hsla(0, 0%, 92%, .5);
 	margin:20px;
 	display:grid;
@@ -148,6 +149,7 @@ input:checked + label {
 		justify-content: center;
 	}
 	&__code{
+		
 		grid-row:1/3;
 		grid-column:2;
 
@@ -156,8 +158,13 @@ input:checked + label {
 		margin-top:10px;
 		
 		pre{
+			min-height:300px;
 			max-height:500px;
 			overflow:auto;
+			border-radius:2px;
+		}
+		code{
+			outline:none;
 		}
 	}
 }

@@ -1,7 +1,11 @@
 <template lang="pug">
 	div
-		h1 Mixins
-		transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
+		h1 {{$route.params.component.toUpperCase()}}
+
+		.simple_container
+			vuer_simple(:name="item" v-for="item in currentSet")
+
+		//transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
 			.list-item(v-for="item in currentSet", :key="item")
 				vuer(:name="item")
 </template>
@@ -9,6 +13,7 @@
 
 <script>
 import vuer from '@/components/vuer/vuer'
+import vuer_simple from '@/components/vuer/vuer_simple'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
@@ -19,7 +24,7 @@ export default {
 		return {
 			hash: [],
 			currentSet: null,
-			nextRoute: null
+			nextRoute: null,
 		}
 	},
 	beforeMount(){
@@ -53,12 +58,28 @@ export default {
 		'$route': 'routeChanged'
 	},
 	components: {
-		vuer
+		vuer,
+		vuer_simple
 	}
 }
 </script>
 
 <style lang="scss" scoped>
+
+.simple_container{
+	column-count: 2;
+	column-gap:1rem;
+	//column-width:400px;
+	width:800px;
+	.flex-item{
+		border:1px solid gray;
+		background-color:  hsla(0, 0%, 92%, .5);
+		border-radius:4px;
+		//width:300px;
+		//height:300px;
+		margin:10px;
+	}
+}
 
 .list-item {
   display: inline-block;
