@@ -2,13 +2,9 @@
 	div
 		h1.title {{$route.params.components}}
 
-		transition-group.simple_container( v-if="$route.params.single_component == null" name="list" tag="div" mode="out-in")
+		transition-group.container( v-if="$route.params.single_component == null" name="list" tag="div")
 			.list-item(v-for="item in currentSet", :key="item")
 				vuer_simple(:name="item")
-
-		//transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
-			.list-item(v-for="item in currentSet", :key="item")
-				vuer(:name="item")
 		router-view
 </template>
 
@@ -67,50 +63,17 @@ export default {
 .title{
 	text-transform:capitalize;
 }
-.simple_container{
+.container{
 	column-count: 2;
 	column-gap:1rem;
 	//column-width:400px;
 	width:800px;
-
-	.flex-item{
-		border:1px solid gray;
-		background-color:  hsla(0, 0%, 92%, .5);
-		border-radius:4px;
-		//width:300px;
-		//height:300px;
-		margin:10px;
-	}
 }
 
-.list-item {
-  //display: inline-block;
-}
-.list-enter-active, .list-leave-active {
-  transition: all .3s;
-}
-.list-leave-active{
-	position:absolute;
-}
-.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
-  opacity: 0;
- 
-}
-.list-enter{
-	transform: translateX(-30px);
-}
-.list-leave-to{
-	transform: translateX(30px);
-}
-.list-move{
-	transition: transform 1s;
-}
-.list-enter-to, .list-leave{
-	opacity:1;
-}
-.container{
-	display:flex;
-	flex-direction:column;
-	align-items: center;
-}
+.list-enter-active{ transition: all .5s; }
+.list-enter{ opacity: 0; }
+.list-enter{ transform: translateX(-30px); }
+.list-enter-to{ opacity:1; }
+.list-leave{ display:none; }
+
 </style>
