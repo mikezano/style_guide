@@ -2,13 +2,14 @@
 	div
 		h1.title {{$route.params.components}}
 
-		transition-group.simple_container(name="list" tag="div")
+		transition-group.simple_container( v-if="$route.params.single_component == null" name="list" tag="div" mode="out-in")
 			.list-item(v-for="item in currentSet", :key="item")
 				vuer_simple(:name="item")
 
 		//transition-group.container(name="list" tag="div" v-on:after-leave="afterLeave")
 			.list-item(v-for="item in currentSet", :key="item")
 				vuer(:name="item")
+		router-view
 </template>
 
 
@@ -29,7 +30,6 @@ export default {
 		}
 	},
 	beforeMount(){
-		console.log('rebuild');
 		this.buildRegistry();
 	},
 	mounted(){
@@ -38,12 +38,9 @@ export default {
 	methods: {
 		routeChanged(route){
 			this.currentSet = this.hash[route.params.components];
-			console.log(this.currentSet);
 		},
 		buildRegistry(){
 			//Loading file names from a folder
-			console.log('build registry');
-			console.log(files.keys());
 			files.keys().forEach((key) => {
 				let path = (key.replace(/(\.\/|\.vue)/g, ''));
 				let folder = path.substr(0, path.indexOf('/'));

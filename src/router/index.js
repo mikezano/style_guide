@@ -19,7 +19,7 @@ export default new Router({
 					component: indexes.components,
 					props:true,
 					children: [
-						{path: '/:single_component', name: 'Single Component', component: indexes.single_component, props:true}
+						{path: ':single_component', name: 'Single Component', component: indexes.single_component, props:true}
 					]
 				}
 			]

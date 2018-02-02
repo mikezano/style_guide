@@ -1,6 +1,6 @@
 <template lang="pug">
 	div
-		div {{route.params.component}}
+		div {{$route.params.component}}
 		vuer(:name="single_component")
 </template>
 
@@ -14,12 +14,6 @@ export default {
 	props: ['single_component'],
 	components: {
 		vuer
-	},
-	beforeMount(){
-		console.log('before mount');
-	},
-	mounted(){
-		console.log('hslkfa');
-	},	
+	}
 }
 </script>
