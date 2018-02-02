@@ -1,13 +1,13 @@
 <template lang="pug">
 	div
 		h1.title {{$route.params.components}}
-
-		transition-group.container( v-if="$route.params.single_component == null" name="list" tag="div")
-			.list-item(v-for="item in currentSet", :key="item")
-				vuer_simple(:name="item")
-		router-view
+		transition(name="fade" v-if="$route.params.single_component == null" mode="out-in")
+			transition-group.container( name="list" tag="div")
+				.list-item(v-for="item in currentSet", :key="item")
+					vuer_simple(:name="item")
+		transition(name="fade" v-if="$route.params.single_component != null" mode="out-in")
+			router-view
 </template>
-
 
 <script>
 import vuer from '@/components/vuer/vuer'
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '../../sass/fade';
 .title{
 	text-transform:capitalize;
 }

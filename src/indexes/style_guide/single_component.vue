@@ -1,6 +1,5 @@
 <template lang="pug">
 	div
-		div {{$route.params.single_component}}
 		vuer(:name="single_component")
 </template>
 
