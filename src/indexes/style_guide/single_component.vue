@@ -1,7 +1,7 @@
 <template lang="pug">
 	div
-		div {{$route.params.component}}
-		vuer(:name="item")
+		div {{route.params.component}}
+		vuer(:name="single_component")
 </template>
 
 <script>
@@ -10,10 +10,13 @@ import vuer from '@/components/vuer/vuer'
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
 export default {
-	name: 'single_component',
-	props: ['item'],
+	name: 'one_component',
+	props: ['single_component'],
 	components: {
 		vuer
+	},
+	beforeMount(){
+		console.log('before mount');
 	},
 	mounted(){
 		console.log('hslkfa');

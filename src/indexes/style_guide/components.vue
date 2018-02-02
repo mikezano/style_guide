@@ -29,6 +29,7 @@ export default {
 		}
 	},
 	beforeMount(){
+		console.log('rebuild');
 		this.buildRegistry();
 	},
 	mounted(){
@@ -36,10 +37,13 @@ export default {
 	},
 	methods: {
 		routeChanged(route){
-			this.currentSet = this.hash[route.params.component];
+			this.currentSet = this.hash[route.params.components];
+			console.log(this.currentSet);
 		},
 		buildRegistry(){
 			//Loading file names from a folder
+			console.log('build registry');
+			console.log(files.keys());
 			files.keys().forEach((key) => {
 				let path = (key.replace(/(\.\/|\.vue)/g, ''));
 				let folder = path.substr(0, path.indexOf('/'));

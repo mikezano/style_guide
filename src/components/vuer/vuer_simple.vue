@@ -1,7 +1,7 @@
 <template lang="pug">
 	.ex
 		.ex__header
-			router-link(:to="name" ) 
+			router-link(:to="route" ) 
 				icon(name="link" scale="1")
 			| {{name.replace('_',' ')}}
 		.ex__output
