@@ -33,14 +33,13 @@ files.forEach(function(file){
 	//capture single instance
 	let sass_code = contents.match(sass_regex)[1];
 
-	fs.writeFileSync("./mixifier/test.scss",sass_code);
+	fs.writeFileSync(`./mixifier/${file.path.replace(style_guide_path,'')}.scss`,sass_code);
 
 	sass.render({
-		file: `./mixifier/test.scss`,
-		data: sass_code
+		file: `./mixifier/${file.path.replace(style_guide_path,'')}.scss`
 	}, function(err, result){
 		console.log(result);
-		fs.writeFileSync("./mixifier/test_result.css",result.css.toString());
+		fs.writeFileSync(`./mixifier/${file.path.replace(style_guide_path,'')}.css`,result.css.toString());
 	});
 
 	//Aggregate all mixins to later save in one file
