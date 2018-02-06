@@ -64,10 +64,10 @@ export default {
 	text-transform:capitalize;
 }
 .container{
-	column-count: 2;
+	column-count: 1;
 	column-gap:1rem;
 	//column-width:400px;
-	width:800px;
+	width:600px;
 }
 
 .list-enter-active{ transition: all .5s; }
