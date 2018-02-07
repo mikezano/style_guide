@@ -1,0 +1,41 @@
+.circle {
+  border: none;
+  background-color: lightblue;
+  color: black;
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+  font-size: 12px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 4px black;
+  transition: transform .1s ease-out,  box-shadow .1s ease-out; }
+  .circle:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    background-color: #b9deea;
+    cursor: pointer; }
+  .circle:active {
+    transform: scale(1.05); }
+  .circle:focus {
+    outline: none; }
+
+.circle-lg {
+  border: none;
+  background-color: pink;
+  color: black;
+  width: 48px;
+  height: 48px;
+  margin: 4px;
+  font-size: 24px;
+  border-radius: 24px;
+  box-shadow: 2px 2px 4px black;
+  transition: transform .1s ease-out,  box-shadow .1s ease-out; }
+  .circle-lg:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    background-color: #ffcfd8;
+    cursor: pointer; }
+  .circle-lg:active {
+    transform: scale(1.05); }
+  .circle-lg:focus {
+    outline: none; }

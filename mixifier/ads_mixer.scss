@@ -1,0 +1,441 @@
+@mixin circle-btn($color, $size){
+	border:none;
+	background-color:$color;
+	color:black;
+	width: $size;
+	height: $size;
+	margin: 4px;
+	font-size: $size/2;
+	border-radius: $size/2;
+	box-shadow:2px 2px 4px hsla(0,0%,0%,1);
+	transition: 
+		transform .1s ease-out, 
+		box-shadow .1s ease-out;
+	&:hover{
+		transform:scale(1.1);
+		box-shadow:3px 3px 5px hsla(0,0%,0%,.5);
+		background-color:lighten($color, 3%);
+		cursor:pointer;
+	}
+	&:active{
+		transform:scale(1.05);
+	}
+	&:focus{
+		outline:none;
+	}
+}//cricle-btn end
+@mixin circle-btn($color, $size){
+	border:none;
+	background-color:$color;
+	color:black;
+	width: $size;
+	height: $size;
+	margin: 4px;
+	font-size: $size/2;
+	border-radius: $size/2;
+	box-shadow:2px 2px 4px hsla(0,0%,0%,1);
+	transition: 
+		transform .1s ease-out, 
+		box-shadow .1s ease-out;
+	&:hover{
+		transform:scale(1.1);
+		box-shadow:3px 3px 5px hsla(0,0%,0%,.5);
+		background-color:lighten($color, 3%);
+		cursor:pointer;
+	}
+	&:active{
+		transform:scale(1.05);
+	}
+	&:focus{
+		outline:none;
+	}
+}//cricle-btn end
+@mixin flip-btn(){
+	$selector: flip-btn;
+	&.#{$selector}{
+		$shadow-color: black;
+		box-shadow:2px 2px 4px $shadow-color;
+		transition: all 1s ease-in-out;
+		color:blue;
+		&:hover{
+			transform: rotateX(360deg);
+			box-shadow:4px 4px 8px lighten($shadow-color, 20%);
+		}
+	}
+}//zoom-btn end
+@mixin rollover($size, $color){
+	margin:4px;
+	.rollover{
+		width: 2 * $size;
+		height:$size;
+		overflow:hidden;
+		padding:0;
+		border:1px solid darken($color, 10%);
+		color:white;
+
+		&:hover{
+			.rollover__container{
+				margin-top: -1 * $size;
+				cursor:pointer;
+			}
+		}
+		&__container{
+			background-color:$color;
+			transition: all .5s ease-in-out;
+		}
+		&__main{
+			height:$size;
+			line-height:$size;
+			font-size: $size/2;
+		}
+		&__sub{
+			height:$size;
+			line-height:$size;
+			font-size: $size/3;
+		}
+	}
+}//rollover end
+@mixin spin-btn($color){
+	$selector: spin-btn;
+	&.#{$selector}{
+		margin:10px;
+		border:none;
+		background:none;
+		color:$color;
+		transition: 
+			transform .5s ease-out, 
+			color .7s ease-out;
+		display:inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		&:hover{
+			color:lighten($color,10%);
+			transform: rotate(360deg);
+		}
+	}
+}//spin-btn end
+@mixin zoom-btn($scale){
+	$selector: zoom-btn;
+	&.#{$selector}{
+		$shadow-color: black;
+		box-shadow:2px 2px 4px $shadow-color;
+		transition: all .2s ease-in-out;
+		color:blue;
+		&:hover{
+			transform: scale($scale);
+			box-shadow:4px 4px 8px lighten($shadow-color, 20%);
+		}
+	}
+}//zoom-btn end
+@mixin corner-card($color, $width){
+	$gray: hsla(0,0%,80%, 1);
+	$el: card;
+	&.#{$el}{
+		border:1px solid $gray;
+		background-color:white;
+		width: $width;
+		margin:8px;
+		padding:2px;
+		transition: box-shadow .2s ease-out;
+		&:hover{box-shadow:2px 2px 4px $gray;}
+		.#{$el}__header{
+			&__indicator{
+				position:absolute;
+				border-style: solid;
+				border-width: 30px 30px 0 0;
+				border-color: 
+					$color
+					transparent
+					transparent
+					transparent;
+			}
+			&__text{
+				text-align:center;
+				font-weight:bold;
+				line-height:30px;
+			}
+		}
+		.#{$el}__content{
+			text-align:left;
+			padding:4px;
+			font-size:14px;
+		}
+	}
+}//corner-card end
+@mixin indicator-card(){
+
+	$selector: indicator-card;
+	&.#{$selector}{
+		$color:darkgray;
+		border:1px solid darken($color, 20%);
+		transition: all .2s ease-out;
+		width:100%;
+		margin:10px;
+		&:hover{
+			box-shadow:2px 2px 4px black;
+		}
+		.#{$selector}__header{
+			background-color:darkgray;
+			padding:10px;
+		}
+		.#{$selector}__content{
+			background-color:white;
+			color:black;
+			padding:10px;
+		}
+
+		.circle{
+			//@include circle-button(lightblue, 24px);
+			float:right;
+			margin-top:16px;
+		}
+	}
+}//indicator-card end
+@mixin side-card($color, $titleSize, $width){
+	$gray: hsla(0,0%,80%, 1);
+	$el: scard;
+	&.#{$el}{
+		display:flex;
+		width:$width;
+		border:1px solid $gray;
+		margin:10px;
+		background-color:white;
+		.#{$el}__indicator{
+			background-color: $color;
+			width: $titleSize + ($titleSize/2px);
+			overflow: hidden;
+			text-overflow:ellipsis;
+			
+			&__text{
+				color:white;
+				font-weight:bold;
+				font-size:$titleSize;
+				margin-left:$titleSize + ($titleSize/8px);
+				margin-top:10px;
+				transform: rotate(90deg);
+				transform-origin: 0 0;
+			}
+		}
+		.#{$el}__content{
+			width:100%;
+			padding:8px;
+			text-align:left;
+		}
+	}
+}//side-card end
+@mixin draw_in($color){
+	.draw-in{
+
+		$stroke-dash: 400;
+		$animation-speed: 1000ms;
+		$dot-size: 10px;
+		&__svg{
+			width:15em;
+			height:4em;
+			animation: shadow 1s 2s linear forwards;
+		}
+
+		&__ads{
+			fill: transparent;
+			font-family:"Arial", Gadget, sans-serif;
+			font-weight:bold;
+			stroke-dashoffset: $stroke-dash;
+			stroke-width: 2;
+			stroke: $color;
+			stroke-dasharray: $stroke-dash;
+			animation: text 3s linear forwards;
+			font-size:5em;
+			box-shadow:2px 2px 3px black;
+		}
+
+		&__presents{
+			animation: go-up 1s 1s ease-in-out forwards;
+			opacity:0;
+			color:#444;
+		}
+
+		&__dots{
+			display: flex;
+			justify-content: center;
+		}
+
+		&__dot {
+			width: $dot-size;
+			height: $dot-size;
+			border: ($dot-size / 5) solid gray;
+			border-radius: 50%;
+			float: left;
+			margin: 0 ($dot-size / 2);
+			transform: scale(0);
+
+			animation: fx $animation-speed ease infinite 2s;
+
+			&:nth-child(2) {
+				animation: fx $animation-speed ease infinite  2.3s;
+			}
+			&:nth-child(3) {
+				animation: fx $animation-speed ease infinite 2.6s;
+			}
+		}
+	}
+
+	@keyframes shadow {
+		0%{filter: none;}
+		100%{filter: drop-shadow( 1px 1px 4px #ccc );}
+	}
+	@keyframes go-up {
+		from{
+			transform: translateY(1em);
+			opacity:0;
+		}
+		to{
+			transform: translateY(0);
+			opacity:1;
+		}
+	}
+	@keyframes text {
+		50%{
+			stroke-dashoffset: 0;
+			fill:transparent;
+		}
+		100%{
+			stroke-dashoffset: 0;
+			fill: lighten($color, 20%);
+		}
+	}
+	@keyframes fx {
+		50% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+}//draw_in end
+@mixin intro(
+	$scale: 1, 
+	$dot_color: orange, 
+	$ads_color: hsla(0, 0%, 27%, 1), 
+	$presents_color: hsla(0, 0%, 50%, 1)){
+
+	$travel_distance: 235px;
+
+	.intro{
+		display:flex;
+		align-items:flex-start;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 2em * $scale;
+		position:relative;
+
+
+		&__travel-dot, &__dot1, &__dot2, &__dot3 {
+			width:10px * $scale;
+			height: 10px * $scale;
+			border-radius: 5px * $scale;
+		}
+		&__travel-dot{
+			background-color: $dot_color;
+			position:absolute;
+			margin-top: 1em;
+			animation: move-dot 1.5s ease-in-out forwards;
+		}
+		&__words{
+			display:flex;
+			align-items:flex-start;
+			width:$travel_distance * $scale;
+		}
+		&__a, &__d, &__amp, &__s {
+			font-weight: bold;
+			opacity: 0;
+			text-shadow: (2px * $scale) (4px * $scale) hsla(0, 0%, 83%, .7);
+			color: $ads_color;
+			animation: slide-down .2s ease-in-out forwards;
+		}
+		&__a	{animation-delay: .1s;}
+		&__d	{animation-delay: .2s;}
+		&__amp	{animation-delay: .3s;}
+		&__s	{animation-delay: .4s;}
+
+		&__presents {
+			opacity: 0;
+			animation: fade-in-presents 1s ease-in-out .5s forwards;
+			margin: 0 10px;
+			color: $presents_color;
+		}
+
+		&__dots{
+			display: flex;
+			justify-content:space-between;
+			width:40px * $scale;
+		}
+
+		&__dot1, &__dot2, &__dot3 {
+			background-color: $dot_color;
+			margin-top: .8em;
+			opacity: 0;
+			animation: jump 1s ease-in-out infinite;
+		}
+		
+		&__dot1 {animation-delay: 1.44s;}
+		&__dot2 {animation-delay: 1.54s;}
+		&__dot3 {animation-delay: 1.64s;}
+	}
+
+	@keyframes slide-down {
+		0% {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes jump {
+		0% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(-10px);
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-in-presents {
+		0% {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes move-dot {
+		0% {transform: translateX(0);}
+		80% {
+			transform: translateX($travel_distance * $scale);
+			margin-top:1em;
+		}
+		95% {
+			transform: translateX($travel_distance * $scale);
+			margin-top: .8em;
+			opacity: 1;
+		}
+		100% {
+			transform: translateX($travel_distance * $scale);
+			margin-top: .8em;
+			opacity: 0;
+		}
+	}
+}//intro end
+

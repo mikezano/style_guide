@@ -33,14 +33,20 @@ files.forEach(function(file){
 	//capture single instance
 	let sass_code = contents.match(sass_regex)[1];
 
-	fs.writeFileSync(`./mixifier/${file.path.replace(style_guide_path,'')}.scss`,sass_code);
+	console.log("@@@@@@@@");
+	console.log(file.path);
 
-	sass.render({
-		file: `./mixifier/${file.path.replace(style_guide_path,'')}.scss`
-	}, function(err, result){
-		console.log(result);
-		fs.writeFileSync(`./mixifier/${file.path.replace(style_guide_path,'')}.css`,result.css.toString());
-	});
+	if(file.path == "./src/components/style_guide/buttons/circular.vue")
+	{
+		fs.writeFileSync(`./mixifier/buttons/circular.scss`,sass_code);
+
+		sass.render({
+			file: `./mixifier/buttons/circular.scss`
+		}, function(err, result){
+			console.log(result);
+			fs.writeFileSync(`./mixifier/buttons/circular.css`,result.css.toString());
+		});
+	}
 
 	//Aggregate all mixins to later save in one file
 	mixins_result += result!= null ? result + "\n\r" : "";
