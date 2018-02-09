@@ -1,14 +1,12 @@
 <template lang="pug">
-	div.container
-		.hexagon Hex
-		.hexagon Agon
+.container
+	.hexagon Hex
+	.hexagon Agon
 </template>
 
 
 <script>
-	export default{
-		name: 'hexagon'
-	}
+export default{name: 'hexagon'}
 </script>
 
 <style lang="scss" scoped>
@@ -21,51 +19,49 @@
 
 @mixin hexagon-btn($size: 100px, $color:#64C7CC){
 
+	.hexagon {
+		position: relative;
+		width: $size; 
+		height: $size * .57;
+		background-color: $color;
+		margin: $size * .28 10px;
+		transition: 
+			background-color .5s,
+			box-shadow .5s;
 
-.hexagon {
-  position: relative;
-  width: $size; 
-  height: $size * .57;
-  background-color: $color;
-  margin: $size * .28 10px;
-  transition: 
-  	background-color .5s,
-	box-shadow .5s;
+		&:hover{
+			background-color:lighten($color, 10%);
+			box-shadow:4px 4px 8px gray;
+		}
+	}
 
-  &:hover{
-	background-color:lighten($color, 10%);
-	box-shadow:4px 4px 8px gray;
-  }
-}
-
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  position: absolute;
-  left:0;
-  width: 0;
-  border-left: $size * .5 solid transparent;
-  border-right: $size * .5 solid transparent;
+	.hexagon:before,
+	.hexagon:after {
+	content: "";
+	position: absolute;
+	left:0;
+	width: 0;
+	border-left: $size * .5 solid transparent;
+	border-right: $size * .5 solid transparent;
 
 
-}
+	}
 
-.hexagon:before {
-  bottom: 100%;
-  border-bottom: $size * .28 solid $color;
-    &:hover{
+	.hexagon:before {
+		bottom: 100%;
+		border-bottom: $size * .28 solid $color;
+		&:hover{
+			border-bottom: $size * .28 solid lighten($color,10%);
+		}
+	}
 
-	border-bottom: $size * .28 solid lighten($color,10%);
-  }
-}
+	.hexagon:after {
+		top: 100%;
+		width: 0;
+		border-top: $size * .28 solid $color;
+	}
 
-.hexagon:after {
-  top: 100%;
-  width: 0;
-  border-top: $size * .28 solid $color;
-}
-
-}
+}// hexagon-btn end
 
 
 @include hexagon-btn(50px);

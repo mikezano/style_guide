@@ -14,7 +14,7 @@
 
 
 <script>
-	export default{name: 'circular'}
+export default{name: 'circular'}
 </script>
 
 <style lang="scss" scoped>

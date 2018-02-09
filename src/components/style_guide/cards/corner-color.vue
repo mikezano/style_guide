@@ -36,9 +36,7 @@
 
 
 <script>
-	export default{
-		name: "corner-color"
-	}
+export default{name: "corner-color"}
 </script>
 
 <style lang="scss" scoped>

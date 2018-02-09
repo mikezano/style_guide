@@ -1,12 +1,10 @@
 <template lang="pug">
-	button.flip-btn Watch this!
+button.flip-btn Watch this!
 </template>
 
 
 <script>
-	export default{
-		name: 'flip'
-	}
+export default{name: 'flip'}
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +21,7 @@
 			box-shadow:4px 4px 8px lighten($shadow-color, 20%);
 		}
 	}
-}//zoom-btn end
+}//flip end
 @include flip-btn();
 
 </style>
