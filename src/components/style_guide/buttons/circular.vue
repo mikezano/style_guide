@@ -1,15 +1,15 @@
 <template lang="pug">
-	.container
-		button.circle
-			icon(name="refresh" scale="1")
-		button.circle
-			icon(name="bath", scale="1")
-		button.circle
-			icon(name="blind", scale="1")
-		button.circle
-			icon(name="truck", scale="1")
-		button.circle-lg
-			icon(name="apple", scale="1")
+.container
+	button.circle
+		icon(name="refresh" scale="1")
+	button.circle
+		icon(name="bath", scale="1")
+	button.circle
+		icon(name="blind", scale="1")
+	button.circle
+		icon(name="truck", scale="1")
+	button.circle-lg
+		icon(name="apple", scale="1")
 </template>
 
 
@@ -19,6 +19,7 @@
 
 <style lang="scss" scoped>
 
+@import '../../sass/colors';
 @mixin circle-btn($color, $size){
 	border:none;
 	background-color:$color;
@@ -45,6 +46,6 @@
 		outline:none;
 	}
 }//cricle-btn end
-.circle{@include circle-btn(lightblue, 24px);}
+.circle{@include circle-btn($vue_green, 24px);}
 .circle-lg{@include circle-btn(pink, 48px);}
 </style>

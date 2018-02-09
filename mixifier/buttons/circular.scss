@@ -1,5 +1,6 @@
 
 
+@import '../../sass/colors';
 @mixin circle-btn($color, $size){
 	border:none;
 	background-color:$color;
@@ -26,5 +27,5 @@
 		outline:none;
 	}
 }//cricle-btn end
-.circle{@include circle-btn(lightblue, 24px);}
+.circle{@include circle-btn($vue_green, 24px);}
 .circle-lg{@include circle-btn(pink, 48px);}
