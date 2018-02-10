@@ -1,3 +1,3 @@
 <template lang="pug">
-	button.flip-btn Watch this!
+button.flip-btn Watch this!
 </template>

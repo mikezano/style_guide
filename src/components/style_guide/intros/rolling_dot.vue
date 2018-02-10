@@ -1,21 +1,21 @@
 <template lang="pug">
-	.intro
-		.intro__travel-dot
-		.intro__words
-			.intro__a A
-			.intro__d D
-			.intro__amp &
-			.intro__s S
-			.intro__presents Presents
-		.intro__dots
-			.intro__dot1
-			.intro__dot2
-			.intro__dot3
+.intro
+	.intro__travel-dot
+	.intro__words
+		.intro__a A
+		.intro__d D
+		.intro__amp &
+		.intro__s S
+		.intro__presents Presents
+	.intro__dots
+		.intro__dot1
+		.intro__dot2
+		.intro__dot3
 </template>
 
 
 <script>
-	export default{name: "rolling_dot"}
+export default{name: "rolling_dot"}
 </script>
 
 <style lang="scss" scoped>

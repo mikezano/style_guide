@@ -26,38 +26,43 @@
 
 <style lang="scss" scoped>
 
-@import '../../../sass/colors.scss';
+@import '../../../sass/colors';
+
+@mixin underlined_tabs(){
+
+	.content > div { 
+		display:none; 
+		font-size:14px;
+		padding: 10px;
+		height:300px;
+		border-bottom:1px solid lightgray;
+	}
+	input {display: none;}
+	label {
+		display: inline-block; 
+		padding: 5px 10px; 
+		text-align: center;
+		margin:0 2px;
+		border-bottom: 4px solid #bebebe;
+		transition: all .2s ease-out;
+	}
+	label:hover {
+		cursor: pointer;
+		border-bottom: 4px solid $vue_green;
+	}
+	input:checked + label {
+		border-bottom: 4px solid $vue_green;
+	}
+
+	#tab1:checked ~ .content .content1,
+	#tab2:checked ~ .content .content2,
+	#tab3:checked ~ .content .content3,
+	#tab4:checked ~ .content .content4{
+		display:block;
+	};
+
+}//underlined_tabs end
 
 
-.content > div { 
-	display:none; 
-	font-size:14px;
-	padding: 10px;
-	height:300px;
-	border-bottom:1px solid lightgray;
-}
-input {display: none;}
-label {
-	display: inline-block; 
-	padding: 5px 10px; 
-	text-align: center;
-	margin:0 2px;
-	border-bottom: 4px solid #bebebe;
-	transition: all .2s ease-out;
-}
-label:hover {
-	cursor: pointer;
-	border-bottom: 4px solid $vue_green;
-}
-input:checked + label {
-	border-bottom: 4px solid $vue_green;
-}
-
-#tab1:checked ~ .content .content1,
-#tab2:checked ~ .content .content2,
-#tab3:checked ~ .content .content3,
-#tab4:checked ~ .content .content4{
-	display:block;
-};
 
 </style>

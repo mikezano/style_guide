@@ -23,11 +23,13 @@ var walkSync = function(dir, filelist) {
 	return filelist;
 };
 
-var compile_sass = function(sass_code){
+var compile_sass = function(contents){
+	let sass_code = contents.match(sass_regex);
 	return sass.renderSync({
-		data: sass_code,
+		data: sass_code[1],
 		importer: function(url, prev, done){
-			var contents = fs.readFileSync(`./src/${url.replace("../../","")}.scss`, 'utf8');
+			console.log(url);
+			var contents = fs.readFileSync(`./src/${url.replace("../../../","")}.scss`, 'utf8');
 			return({contents: contents});
 		}
 	});
@@ -59,24 +61,21 @@ files.forEach(function(file){
 	var contents = fs.readFileSync(file.path, 'utf8');
 	let result = contents.match(mixin_regex);
 	let package_path = `./mixifier/${file.path.replace(style_guide_path,'').replace('.vue','')}`;
+	console.log(package_path);
 
-	//capture single instance
-	let sass_code = contents.match(sass_regex)[1];
-
-	//if(file.path == "./src/components/style_guide/intros/draw_in.vue")
-	//{
-		let css_markup = compile_sass(sass_code);
-		let html_markup = compile_pug(contents);
-		write_single_file(css_markup.css.toString(), html_markup, package_path);
-	//}
-
-	//Aggregate all mixins to later save in one file
-	mixins_result += result!= null ? result + "\n\r" : "";
-
+	console.log('css_markup');
+	let css_markup = compile_sass(contents);
+	console.log('html_markup');
+	let html_markup = compile_pug(contents);
+	console.log('pug_markup');
 	let pug_markup = contents.match(pug_regex);
 	let vue_markup = contents.match(vue_regex);
 
-	
+	write_single_file(css_markup.css.toString(), html_markup, package_path);
+	console.log('done writing');
+	//Aggregate all mixins to later save in one file
+	mixins_result += result!= null ? result + "\n\r" : "";
+
 	console.log(file.path.replace(style_guide_path,'').replace('.vue',''));
 
 

@@ -1,0 +1,56 @@
+<style type="text/css">
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+.container {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  perspective: 500px; }
+
+.container .rotate_down {
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: 0.25s;
+  -webkit-transition: 0.25s;
+  position: relative; }
+
+.rotate_down:hover {
+  transform: rotateX(-90deg); }
+
+.text, .visual {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  box-sizing: border-box;
+  border: 5px solid #12bd3d;
+  font-family: 'Source Sans Pro',sans-serif;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.text {
+  color: blue;
+  transform: translate3d(0, 0, 30px); }
+
+.visual {
+  color: #75353c;
+  background: #fff;
+  transform: rotateX(90deg) translate3d(0, 0, 30px); }
+
+</style>
+
+
+<div class="container">
+  <div class="rotate_down">
+    <div class="text"> <span>Text</span>
+      <icon name="download" scale="2"></icon>
+    </div>
+    <div class="visual"><span> Visual</span>
+      <icon name="download" scale="2"></icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<style type="text/css">
+.good {
+  margin: 4px; }
+  .good .rollover {
+    width: 100px;
+    height: 50px;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid #0062cc;
+    color: white; }
+    .good .rollover:hover .rollover__container {
+      margin-top: -50px;
+      cursor: pointer; }
+    .good .rollover__container {
+      background-color: #007bff;
+      transition: all .5s ease-in-out; }
+    .good .rollover__main {
+      height: 50px;
+      line-height: 50px;
+      font-size: 25px; }
+    .good .rollover__sub {
+      height: 50px;
+      line-height: 50px;
+      font-size: 16.66667px; }
+
+.bad {
+  margin: 4px; }
+  .bad .rollover {
+    width: 120px;
+    height: 60px;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid #990000;
+    color: white; }
+    .bad .rollover:hover .rollover__container {
+      margin-top: -60px;
+      cursor: pointer; }
+    .bad .rollover__container {
+      background-color: #cc0000;
+      transition: all .5s ease-in-out; }
+    .bad .rollover__main {
+      height: 60px;
+      line-height: 60px;
+      font-size: 30px; }
+    .bad .rollover__sub {
+      height: 60px;
+      line-height: 60px;
+      font-size: 20px; }
+
+</style>
+
+
+<div class="container">
+  <div class="good">
+    <button class="rollover">
+      <div class="rollover__container">
+        <div class="rollover__main">GOOD</div>
+        <div class="rollover__sub"> 
+          <icon name="thumbs-up"></icon>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div class="bad">
+    <button class="rollover">
+      <div class="rollover__container">
+        <div class="rollover__main">BAD</div>
+        <div class="rollover__sub"> 
+          <icon name="thumbs-down"></icon>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>

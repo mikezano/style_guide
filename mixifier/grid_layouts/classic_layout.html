@@ -1,0 +1,37 @@
+<style type="text/css">
+.container {
+  width: 100%;
+  margin: 20px; }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-gap: 2px; }
+  .grid-container .cell {
+    color: white;
+    border: 1px solid lightgrey;
+    text-align: center;
+    background-color: #3db881; }
+    .grid-container .cell.a, .grid-container .cell.e {
+      grid-column: 1/4; }
+    .grid-container .cell.b, .grid-container .cell.c, .grid-container .cell.d {
+      height: 100%; }
+
+</style>
+
+
+<div class="container">
+  <div class="grid-container">
+    <div class="cell a">Header</div>
+    <div class="cell b">Left</div>
+    <div class="cell c"> 
+      <p>
+        Veggies es bonus vobis, proinde vos
+        postulo essum magis kohlrabi welsh onion 
+        daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+      </p>
+    </div>
+    <div class="cell d">Right</div>
+    <div class="cell e">Footer</div>
+  </div>
+</div>

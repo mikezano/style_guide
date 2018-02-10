@@ -19,7 +19,6 @@ export default{name: 'circular'}
 
 <style lang="scss" scoped>
 
-@import '../../sass/colors';
 @mixin circle-btn($color, $size){
 	border:none;
 	background-color:$color;
@@ -46,6 +45,6 @@ export default{name: 'circular'}
 		outline:none;
 	}
 }//cricle-btn end
-.circle{@include circle-btn($vue_green, 24px);}
+.circle{@include circle-btn(orange, 24px);}
 .circle-lg{@include circle-btn(pink, 48px);}
 </style>
