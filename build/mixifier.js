@@ -9,7 +9,7 @@ const sass_regex = new RegExp("<style lang=\"scss\" scoped>([\\s\\S]*)<\/style>"
 const pug_regex = new RegExp("<template lang=\"pug\">([\\s\\S]*)<\/template>");
 const vue_regex = new RegExp("<template lang=\"pug\">[\\s\\S]*<\/template>");
 
-var walkSync = function(dir, filelist) {
+function walkSync(dir, filelist) {
 	var fs = fs || require('fs'), files = fs.readdirSync(dir);
 	filelist = filelist || [];
 	files.forEach(function(file) {
@@ -23,7 +23,7 @@ var walkSync = function(dir, filelist) {
 	return filelist;
 };
 
-var compile_sass = function(contents){
+function compile_sass(contents){
 	let sass_code = contents.match(sass_regex);
 	return sass.renderSync({
 		data: sass_code[1],
@@ -54,32 +54,29 @@ function createMarkupFile(path, markup){
 		console.log(`${path} saved!`);
 	});
 }
+//================================================
+//================== SCRIPT ======================
+//================================================
 
 let mixins_result = "";
 let files = walkSync(style_guide_path);
 files.forEach(function(file){
+
 	var contents = fs.readFileSync(file.path, 'utf8');
 	let result = contents.match(mixin_regex);
 	let package_path = `./mixifier/${file.path.replace(style_guide_path,'').replace('.vue','')}`;
 	console.log(package_path);
 
-	console.log('css_markup');
 	let css_markup = compile_sass(contents);
-	console.log('html_markup');
 	let html_markup = compile_pug(contents);
-	console.log('pug_markup');
 	let pug_markup = contents.match(pug_regex);
 	let vue_markup = contents.match(vue_regex);
 
 	write_single_file(css_markup.css.toString(), html_markup, package_path);
-	console.log('done writing');
+
 	//Aggregate all mixins to later save in one file
 	mixins_result += result!= null ? result + "\n\r" : "";
 
-	console.log(file.path.replace(style_guide_path,'').replace('.vue',''));
-
-
-	//package_path = package_path.replace('.vue', '.pug');
 	mkdirp(getDirName(package_path), function (err) {
 		if (err) return err;
 	
