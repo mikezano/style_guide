@@ -1,7 +1,6 @@
 <template lang="pug">
 div
 	button.small-zoom.zoom-btn Small Zoom
-	button.big-zoom.zoom-btn Big Zoom
 </template>
 
 
@@ -25,6 +24,4 @@ export default{name: 'zoom'}
 	}
 }//zoom-btn end
 .small-zoom{@include zoom-btn(1.1);}
-.big-zoom{@include zoom-btn(2.0);}
-
 </style>

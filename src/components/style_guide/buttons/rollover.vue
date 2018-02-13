@@ -6,12 +6,6 @@
 				.rollover__main GOOD
 				.rollover__sub 
 					icon(name="thumbs-up")
-	.bad
-		button.rollover
-			.rollover__container
-				.rollover__main BAD
-				.rollover__sub 
-					icon(name="thumbs-down")
 </template>
 
 <script>
@@ -54,5 +48,4 @@ export default {name: "rollover"}
 	}
 }//rollover end
 .good{ @include rollover(50px, $bs_blue);}
-.bad{ @include rollover(60px, $bs_red);}
 </style>
