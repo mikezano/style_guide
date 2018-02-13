@@ -28,7 +28,6 @@ function compile_sass(contents){
 	return sass.renderSync({
 		data: sass_code[1],
 		importer: function(url, prev, done){
-			console.log(url);
 			var contents = fs.readFileSync(`./src/${url.replace("../../../","")}.scss`, 'utf8');
 			return({contents: contents});
 		}
@@ -44,6 +43,7 @@ function compile_pug(contents){
 function write_single_file(css, html, path){
 	let data = `<style type="text/css">\n${css}\n</style>\n\n${html}`;
 	fs.writeFileSync(`${path}.html`,data);
+	console.log(`${path}.html saved!`);
 }
 
 function createMarkupFile(path, markup){
@@ -65,7 +65,6 @@ files.forEach(function(file){
 	var contents = fs.readFileSync(file.path, 'utf8');
 	let result = contents.match(mixin_regex);
 	let package_path = `./mixifier/${file.path.replace(style_guide_path,'').replace('.vue','')}`;
-	console.log(package_path);
 
 	let css_markup = compile_sass(contents);
 	let html_markup = compile_pug(contents);
