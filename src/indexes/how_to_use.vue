@@ -2,18 +2,20 @@
 	.container
 		.how_to_use
 			h1 How To Use
-			div First, install to your project
-			code npm install ads_mixer
+			div First, install to your project from either:
+			code npm install mixifier
+			div or:
 			code npm install git+https://git@github.intel.com/dejavu/mixifier.git
 
 			div
-				| Make all the mixins available by adding this important to your
-				| root sass file:
+				| Make all the mixins available to your sass files
+				| by adding this import to your root sass file:
 			code @import "~mixifier/mixer.scss";
 			
 
 			div 
-				| In your single component vue file import the component you want to use:
+				| In the javascript portion of your single component vue file
+				| import the component you want to use:
 
 			code import roll from 'mixifier/intros/rolling_dot'
 
@@ -24,7 +26,7 @@
 				|	roll
 				| }
 
-			div add the component in your template
+			div Add the component in your template
 			code 
 				| &lt;h1&gt; Foo &lt;/h1&gt;
 				br
@@ -42,6 +44,11 @@
 				br
 				| &lt;/compose&gt;
 				br
+		.single_file_markup
+			h1 Single File usage
+			div 
+				| If you are not using sass in your project you can alternatively use a
+				| plain ol' style block and html together
 
 
 
@@ -57,9 +64,11 @@ export default {
 <style lang="scss" scoped>
 	.container{
 		display:flex;
+		flex-direction: column;
 		justify-content: center;
+		align-items: center;
 	}
-	.how_to_use{
+	.how_to_use, .single_file_markup{
 		width:400px;
 		text-align:left;
 	}

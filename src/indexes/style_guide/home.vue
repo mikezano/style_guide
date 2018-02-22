@@ -1,5 +1,13 @@
 <template lang="pug">
 	.container
+		.card
+			.card-header
+				| Featured
+			.card-block
+				h4.card-title Special title treatment
+				p.card-text With supporting text below as a natural lead-in to additional content.
+				a.btn.btn-primary(href='#') Go somewhere
+				
 		.title_logos
 			img(src="./../../assets/css3.svg" width=50 height=50)
 			icon(name="plus", scale="1")

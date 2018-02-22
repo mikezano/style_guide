@@ -1,13 +1,23 @@
 <template lang="pug">
-	.ex
-		.ex__header
+	div
+		//- .ex
+		//- 	.ex__header
 
-			| {{name.replace('_',' ')}}
-		.ex__links
-			router-link(:to="route" ) 
-				icon(name="code" scale="2")
-		.ex__output
-			component(:is="component")
+		//- 		| {{name.replace('_',' ')}}
+		//- 	.ex__links
+		//- 		router-link(:to="route" ) 
+		//- 			icon(name="code" scale="2")
+		//- 	.ex__output
+		//- 		component(:is="component")
+
+		.card.my-5
+			.card-header
+				| {{name.replace('_',' ')}}
+			.card-block.p-5
+				.btn-circle
+					router-link(:to="route" ) 
+						icon(name="code" scale="2")
+				component(:is="component")
 </template>
 
 <script>
@@ -47,14 +57,27 @@ export default {
 
 @import '../../sass/global.scss';
 
+.card-header{
+	text-transform: capitalize;
+}
 
+.btn-circle{
+	width: 40px;
+	height: 40px;
+	border-radius:20px;
+	background-color:--gray;
+	position:absolute;
+	top:10px;
+	right:10px;
+}
 
 .ex{
 	border:1px solid darken($vue_green, 10%);
+	border-radius:3px;
 	position: relative;
 	background-color:  hsla(0, 0%, 92%, .8);
 	width:100%;
-	box-shadow:2px 2px 4px #ccc;
+	//box-shadow:2px 2px 4px #ccc;
 	display:inline-block;
 	margin-bottom:20px;
 	
@@ -66,7 +89,7 @@ export default {
 		text-transform: capitalize;
 		padding:10px;
 		margin:0 10px;
-		border-bottom: 1px solid $vue_green;
+		border-bottom: 1px dashed darken($vue_green, 10%);
 	}
 
 	&__links{
@@ -81,7 +104,7 @@ export default {
 		display:flex;
 		align-items: center;
 		justify-content: center;
-		padding:20px;
+		padding:40px;
 	}
 }
 </style>
