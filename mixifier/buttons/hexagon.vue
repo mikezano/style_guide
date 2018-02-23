@@ -1,4 +1,3 @@
 <template lang="pug">
-.container
-	.hexagon Hex
+.hexagon Hex
 </template>

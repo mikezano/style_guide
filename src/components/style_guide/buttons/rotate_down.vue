@@ -1,10 +1,10 @@
 <template lang="pug">
 .container
 	.rotate_down
-		.text 
+		.text.btn
 			span Text
 			icon(name="download", scale="2")
-		.visual
+		.visual.btn
 			span  Visual
 			icon(name="download", scale="2")
 </template>
@@ -15,6 +15,7 @@ export default{name: "rotate_down"}
 </script>
 
 <style lang="scss" scoped>
+@import '../../../sass/colors';
 @mixin rotate_down(){
 
 	@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
@@ -43,7 +44,7 @@ export default{name: "rotate_down"}
 		position:absolute;
 		left:0;
 		box-sizing:border-box;
-		border:5px solid rgb(18, 189, 61);
+		border:5px solid map-get($colors, danger);
 		font-family:'Source Sans Pro',sans-serif;
 		line-height:50px;
 		//font-size:17pt;

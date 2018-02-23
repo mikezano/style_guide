@@ -1,39 +1,39 @@
-@mixin circle-btn($color, $size){
-	border:none;
-	background-color:$color;
-	color:black;
-	width: $size;
-	height: $size;
-	margin: 4px;
-	font-size: $size/2;
-	border-radius: $size/2;
-	box-shadow:2px 2px 4px hsla(0,0%,0%,1);
-	transition: 
-		transform .1s ease-out, 
-		box-shadow .1s ease-out;
-	&:hover{
-		transform:scale(1.1);
-		box-shadow:3px 3px 5px hsla(0,0%,0%,.5);
-		background-color:lighten($color, 3%);
-		cursor:pointer;
-	}
-	&:active{
-		transform:scale(1.05);
-	}
-	&:focus{
-		outline:none;
+@mixin btn-circle($color:#ccc, $size:20px){
+	$selector: btn-circle;
+	&.#{$selector}{
+		border:none;
+		background-color:$color;
+		color:black;
+		width: $size*2;
+		height: $size*2;
+		margin: 4px;
+		font-size: $size;
+		line-height: $size*2;
+		border-radius: $size;
+		//box-shadow:2px 2px 4px hsla(0,0%,0%,1);
+		transition: 
+			transform .1s ease-out, 
+			box-shadow .1s ease-out;
+		&:hover{
+			transform:scale(1.05);
+			box-shadow:1px 1px 2px hsla(0,0%,0%,.5);
+			background-color:lighten($color, 3%);
+			cursor:pointer;
+		}
+		&:active{
+			transform:scale(1.05);
+		}
+		&:focus{
+			outline:none;
+		}
 	}
 }//cricle-btn end
 @mixin flip-btn(){
-	$selector: flip-btn;
+	$selector: btn-flip;
 	&.#{$selector}{
-		$shadow-color: black;
-		box-shadow:2px 2px 4px $shadow-color;
 		transition: all 1s ease-in-out;
-		color:blue;
 		&:hover{
 			transform: rotateX(360deg);
-			box-shadow:4px 4px 8px lighten($shadow-color, 20%);
 		}
 	}
 }//flip end
@@ -43,8 +43,11 @@
 		position: relative;
 		width: $size; 
 		height: $size * .57;
+		line-height: $size * .57;
 		background-color: $color;
+		font-size:$size/2;
 		margin: $size * .28 10px;
+		color:white;
 		transition: 
 			background-color .5s,
 			box-shadow .5s;
@@ -142,7 +145,7 @@
 		position:absolute;
 		left:0;
 		box-sizing:border-box;
-		border:5px solid rgb(18, 189, 61);
+		border:5px solid map-get($colors, danger);
 		font-family:'Source Sans Pro',sans-serif;
 		line-height:50px;
 		//font-size:17pt;

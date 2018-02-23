@@ -1,6 +1,5 @@
 <template lang="pug">
-.container
-	.hexagon Hex
+.hexagon Hex
 </template>
 
 
@@ -10,20 +9,24 @@ export default{name: 'hexagon'}
 
 <style lang="scss" scoped>
 
+@import '../../../sass/colors';
+
 .container{
 	display:flex;
 }
 
 //http://csshexagon.com/
-
 @mixin hexagon-btn($size: 100px, $color:#64C7CC){
 
 	.hexagon {
 		position: relative;
 		width: $size; 
 		height: $size * .57;
+		line-height: $size * .57;
 		background-color: $color;
+		font-size:$size/2;
 		margin: $size * .28 10px;
+		color:white;
 		transition: 
 			background-color .5s,
 			box-shadow .5s;
@@ -63,5 +66,5 @@ export default{name: 'hexagon'}
 }// hexagon-btn end
 
 
-@include hexagon-btn(50px);
+@include hexagon-btn(60px, map-get($colors, danger));
 </style>

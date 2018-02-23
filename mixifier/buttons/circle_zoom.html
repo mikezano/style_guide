@@ -1,63 +1,26 @@
 <style type="text/css">
-.circle {
+.default.btn-circle {
   border: none;
-  background-color: lightblue;
+  background-color: #ccc;
   color: black;
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   margin: 4px;
-  font-size: 12px;
-  border-radius: 12px;
-  box-shadow: 2px 2px 4px black;
+  font-size: 20px;
+  line-height: 40px;
+  border-radius: 20px;
   transition: transform .1s ease-out,  box-shadow .1s ease-out; }
-  .circle:hover {
-    transform: scale(1.1);
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-    background-color: #b9deea;
+  .default.btn-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    background-color: #d4d4d4;
     cursor: pointer; }
-  .circle:active {
+  .default.btn-circle:active {
     transform: scale(1.05); }
-  .circle:focus {
-    outline: none; }
-
-.circle-lg {
-  border: none;
-  background-color: pink;
-  color: black;
-  width: 48px;
-  height: 48px;
-  margin: 4px;
-  font-size: 24px;
-  border-radius: 24px;
-  box-shadow: 2px 2px 4px black;
-  transition: transform .1s ease-out,  box-shadow .1s ease-out; }
-  .circle-lg:hover {
-    transform: scale(1.1);
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-    background-color: #ffcfd8;
-    cursor: pointer; }
-  .circle-lg:active {
-    transform: scale(1.05); }
-  .circle-lg:focus {
+  .default.btn-circle:focus {
     outline: none; }
 
 </style>
 
 
-<div class="container">
-  <button class="circle">
-    <icon name="refresh" scale="1"></icon>
-  </button>
-  <button class="circle">
-    <icon name="bath" scale="1"></icon>
-  </button>
-  <button class="circle">
-    <icon name="blind" scale="1"></icon>
-  </button>
-  <button class="circle">
-    <icon name="truck" scale="1"></icon>
-  </button>
-  <button class="circle-lg">
-    <icon name="apple" scale="1"></icon>
-  </button>
-</div>
+<div class="default btn-circle">🤷</div>

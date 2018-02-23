@@ -4,13 +4,16 @@
 
 .hexagon {
   position: relative;
-  width: 50px;
-  height: 28.5px;
-  background-color: #64C7CC;
-  margin: 14px 10px;
+  width: 60px;
+  height: 34.2px;
+  line-height: 34.2px;
+  background-color: #ed1c24;
+  font-size: 30px;
+  margin: 16.8px 10px;
+  color: white;
   transition: background-color .5s, box-shadow .5s; }
   .hexagon:hover {
-    background-color: #8ad5d9;
+    background-color: #f14b52;
     box-shadow: 4px 4px 8px gray; }
 
 .hexagon:before,
@@ -19,23 +22,21 @@
   position: absolute;
   left: 0;
   width: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent; }
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent; }
 
 .hexagon:before {
   bottom: 100%;
-  border-bottom: 14px solid #64C7CC; }
+  border-bottom: 16.8px solid #ed1c24; }
   .hexagon:before:hover {
-    border-bottom: 14px solid #8ad5d9; }
+    border-bottom: 16.8px solid #f14b52; }
 
 .hexagon:after {
   top: 100%;
   width: 0;
-  border-top: 14px solid #64C7CC; }
+  border-top: 16.8px solid #ed1c24; }
 
 </style>
 
 
-<div class="container">
-  <div class="hexagon">Hex</div>
-</div>
+<div class="hexagon">Hex</div>

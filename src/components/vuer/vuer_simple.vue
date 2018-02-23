@@ -1,27 +1,22 @@
 <template lang="pug">
-	div
-		//- .ex
-		//- 	.ex__header
 
-		//- 		| {{name.replace('_',' ')}}
-		//- 	.ex__links
-		//- 		router-link(:to="route" ) 
-		//- 			icon(name="code" scale="2")
-		//- 	.ex__output
-		//- 		component(:is="component")
-
-		.card.my-5
-			.card-header
-				| {{name.replace('_',' ')}}
-			.card-block.p-5
-				.btn-circle
-					router-link(:to="route" ) 
-						icon(name="code" scale="2")
-				component(:is="component")
+	.card.my-5
+		.card-header
+			| {{name.replace('_',' ')}}
+		.card-block.p-5
+			.btn-circle-group
+				.code.btn-circle
+					router-link(:to="route" tag="div") 
+						| ❔
+			//- .btn-circle
+			//- 	router-link(:to="route" ) 
+			//- 		icon(name="code" scale="2")
+			component(:is="component")
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import circle_zoom from '@/components/style_guide/buttons/circle_zoom'
 
 export default {
 	name: 'vuer_simple',
@@ -49,6 +44,9 @@ export default {
 		getSources(){
 			this.component = this.getComponent(this.name);
 		}
+	},
+	components: {
+		circle_zoom
 	}
 }
 </script>
@@ -56,19 +54,22 @@ export default {
 <style lang="scss" scoped>
 
 @import '../../sass/global.scss';
+@import '../../../mixifier/ads_mixer';
 
+@include btn-circle(lightgray, 20px);
+
+.fa-icon{
+	width:auto;
+	height: .5em;
+}
 .card-header{
 	text-transform: capitalize;
 }
 
-.btn-circle{
-	width: 40px;
-	height: 40px;
-	border-radius:20px;
-	background-color:--gray;
+.btn-circle-group{
 	position:absolute;
-	top:10px;
-	right:10px;
+	right:16px;
+	top:22px;
 }
 
 .ex{
