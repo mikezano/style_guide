@@ -10,14 +10,15 @@
 </script>
 
 <style lang="scss" scoped>
-@mixin btn-circle($color:#aaa, $size:20px){
+@mixin btn-circle($color:#ccc, $size:20px){
 	$selector: btn-circle;
 	&.#{$selector}{
-		border:none;
+		border:1px solid darken($color, 20%);
 		background-color:$color;
 		color:black;
 		width: $size*2;
 		height: $size*2;
+		text-align:center;
 		margin: 4px;
 		font-size: $size;
 		line-height: $size*2;

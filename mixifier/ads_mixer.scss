@@ -1,7 +1,7 @@
-@mixin btn-circle($color:#ccc, $size:20px){
+@mixin btn-circle($color:#aaa, $size:20px){
 	$selector: btn-circle;
 	&.#{$selector}{
-		border:none;
+		border:1px solid darken($color, 20%);
 		background-color:$color;
 		color:black;
 		width: $size*2;
@@ -21,7 +21,7 @@
 			cursor:pointer;
 		}
 		&:active{
-			transform:scale(1.05);
+			transform:scale(1.02);
 		}
 		&:focus{
 			outline:none;

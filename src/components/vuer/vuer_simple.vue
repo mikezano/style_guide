@@ -1,17 +1,14 @@
 <template lang="pug">
-
-	.card.my-5
-		.card-header
-			| {{name.replace('_',' ')}}
-		.card-block.p-5
-			.btn-circle-group
-				.code.btn-circle
-					router-link(:to="route" tag="div") 
-						| ❔
-			//- .btn-circle
-			//- 	router-link(:to="route" ) 
-			//- 		icon(name="code" scale="2")
+	.single_one
+		h2 {{name.replace('_',' ')}}
+		.sample
+			| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere ligula venenatis, hendrerit enim ac, fringilla lacus. Nunc nec cursus felis. Donec sollicitudin enim sit amet dolor dictum vulputate. Duis interdum condimentum nibh et egestas. Proin facilisis, felis id vehicula hendrerit, justo lectus placerat 
+		.flexible
 			component(:is="component")
+		code
+			
+		hr
+
 </template>
 
 <script>
@@ -56,8 +53,9 @@ export default {
 @import '../../sass/global.scss';
 @import '../../../mixifier/ads_mixer';
 
-@include btn-circle(lightgray, 20px);
+//@include btn-circle(white, 20px);
 
+.single_on
 .fa-icon{
 	width:auto;
 	height: .5em;
@@ -66,10 +64,16 @@ export default {
 	text-transform: capitalize;
 }
 
+.flexible{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .btn-circle-group{
 	position:absolute;
 	right:16px;
-	top:22px;
+	top:24px;
 }
 
 .ex{

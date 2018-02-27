@@ -25,6 +25,10 @@ export const store = new Vuex.Store({
 		},
 		getPlayingState: state =>{
 			return state.isPlaying;
+		},
+		getHtmlSingleFiles: (state, getters)=>()=>{
+			var result = state.registry.buildHtmlSingleFiles();
+			return result;
 		}
 	},
 	mutations: {

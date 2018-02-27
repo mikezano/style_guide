@@ -2,15 +2,16 @@
 	div
 		h1.title {{$route.params.components}}
 		transition(name="fade" v-if="$route.params.single_component == null" mode="out-in")
-			transition-group.container( name="list" tag="div")
+			transition-group( name="list" tag="div")
 				.list-item(v-for="item in currentSet", :key="item")
-					vuer_simple(:name="item")
+					vuer_alt(:name="item")
 		transition(name="fade" v-if="$route.params.single_component != null" mode="out-in")
 			router-view
 </template>
 
 <script>
-import vuer from '@/components/vuer/vuer'
+import {mapGetters} from 'vuex'
+import vuer_alt from '@/components/vuer/vuer_alt'
 import vuer_simple from '@/components/vuer/vuer_simple'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
@@ -25,10 +26,14 @@ export default {
 			nextRoute: null,
 		}
 	},
+	computed: {
+		...mapGetters(['getHtmlSingleFiles'])
+	},	
 	beforeMount(){
 		this.buildRegistry();
 	},
 	mounted(){
+		this.getHtmlSingleFiles();
 		this.currentSet = this.hash[this.components];
 	},
 	methods: {
@@ -52,7 +57,7 @@ export default {
 		'$route': 'routeChanged'
 	},
 	components: {
-		vuer,
+		vuer_alt,
 		vuer_simple
 	}
 }
@@ -60,14 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../sass/fade';
+
 .title{
-	text-transform:capitalize;
-}
-.container{
-	column-count: 1;
-	column-gap:1rem;
-	//column-width:400px;
-	width:600px;
+	text-transform:uppercase;
+	font-weight:bold;
 }
 
 .list-enter-active{ transition: all .5s; }

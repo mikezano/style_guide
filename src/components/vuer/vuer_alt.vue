@@ -1,0 +1,132 @@
+<template lang="pug">
+	.vuer
+		.vuer__links
+			.vuer__examples(title="See examples")
+				router-link(:to="route" tag="div")
+					icon(name="code" scale="2")
+			.vuer__copy(title="Copy SCSS+PUG")
+				icon(name="copy" scale="2")
+			.vuer__copy(title="Copy HTML+CSS")
+				icon(name="copy" scale="2")
+
+		.vuer__header
+			| {{name.replace('_',' ')}}
+		.vuer__component
+			component(:is="component")
+		.vuer__scss
+			label SCSS:
+			pre.language-css
+				code(v-html="scss" contenteditable="true")
+		.vuer__pug
+			label PUG:
+			pre.language-js
+				code(v-html="pug"  contenteditable="true")
+</template>
+
+<script>
+import {mapGetters} from 'vuex'
+import circle_zoom from '@/components/style_guide/buttons/circle_zoom'
+
+export default {
+	name: 'viewer_alt',
+	props: ['name'],
+	watch: {
+		name: function(newVal, oldVal){
+			this.getSources();
+		}
+	},
+	data () {
+		return {
+			scss: null,
+			pug: null,
+			mixin: null,
+			component: null,
+			route: "",
+			pugRE: new RegExp("(?<=<template lang=\"pug\">).*?(?=<\/template>)", "s"),
+			scssRE: new RegExp("(?<=<style lang=\"scss\" scoped>).*?(?=<\/style>)", "s"),
+		}
+	},
+	mounted(){
+		this.getSources();
+		this.route = 
+			`/style_guide/${this.$route.params.components}/${this.name}`;
+	},
+	computed: {
+		...mapGetters(['getComponent'])
+	},
+	methods: {
+		getSCSSPUG(){
+			//RETRIEVE DEFAULT
+		},
+		getSources(){
+			this.component = this.getComponent(this.name);
+			let source = 
+				this.component
+				.source
+				.replace(/\t/g,'  ');
+
+			this.pug = this.extractCode(source, this.pugRE);
+			this.scss = this.extractCode(source, this.scssRE);
+		},
+		extractCode(source, re){
+			let code = source.match(re);
+			let result = code[0].replace(/\n/g, ' ').trim();
+			return result;
+		}
+	},
+	components: {
+		circle_zoom
+	}
+}
+</script>
+
+<style lang="scss" scoped>
+
+@import '../../sass/global.scss';
+
+.vuer__links{
+	display:flex;
+	position: absolute;
+	justify-content: flex-end;
+	top:1.5rem;
+	right:1rem;
+	.vuer__examples, .vuer__copy{
+		width:50px;
+	}
+
+}
+.vuer__examples{
+	//@include btn-circle(black, 40px);
+}
+
+.vuer{
+	padding:1rem;
+	margin-bottom:3rem;
+	border:1px solid lightgray;
+	position:relative;
+
+	&__component{
+		margin:2rem 0;
+	}
+
+	&__header{
+		text-transform:uppercase;
+		font-weight:bold;
+		font-size:2rem;
+	}
+
+	&__scss, &__pug{
+		padding:0;
+
+		label{
+			margin:0;
+			text-transform:uppercase;
+			font-weight:bold;
+		}
+
+		code{
+			max-height:20rem;
+		}
+	}
+}
+</style>
