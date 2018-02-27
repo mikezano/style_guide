@@ -7,12 +7,16 @@ const ctxraw_html = require.context('!!raw-loader!../../mixifier/', true, /.*.ht
 const components = ctx.keys().map(ctx)
 const components_source = ctxraw.keys().map(ctxraw)
 
+const components_html = ctx_html.keys().map(ctx_html)
+const components_source_html = ctxraw_html.keys().map(ctxraw_html)
+
 const files = require.context(`../components/style_guide/`, true, /\.vue$/);
 const htmlFiles = require.context(`../../mixifier/`, true, /\.html$/);
 
 
 export default {
 	components,
+	components_html,
 	get,
 	buildRegistry,
 	collectMixins,
@@ -23,8 +27,22 @@ for(var i = 0; i < components.length; i++){
 	components[i].source = components_source[i];
 }
 
+for(var i = 0; i < components_html.length; i++){
+	console.log(components_html[i]);
+	//components_html[i].source = components_source_html[i];
+}
+
+
 function get(name){
 	for(var c of components){
+		if(c.name == name){
+			return c;
+		}
+	}
+}
+
+function geHtmlSingleFile(name){
+	for(var c of components_html){
 		if(c.name == name){
 			return c;
 		}
@@ -38,6 +56,8 @@ function buildHtmlSingleFiles(){
 		let path = (key.replace(/(\.\/|\.html)/g, ''));
 		let folder = path.substr(0, path.indexOf('/'));
 		let file = path.substr(path.indexOf('/')+1, path.length);
+
+
 
 		if(!hash[folder])
 			hash[folder] = [];
