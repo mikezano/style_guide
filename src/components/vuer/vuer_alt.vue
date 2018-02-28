@@ -104,6 +104,7 @@ export default {
 	margin-bottom:3rem;
 	border:1px solid lightgray;
 	position:relative;
+	background-color: hsla(0, 0%, 0%, .05);
 
 	&__component{
 		margin:2rem 0;

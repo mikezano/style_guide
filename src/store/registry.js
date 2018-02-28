@@ -7,7 +7,7 @@ const ctxraw_html = require.context('!!raw-loader!../../mixifier/', true, /.*.ht
 const components = ctx.keys().map(ctx)
 const components_source = ctxraw.keys().map(ctxraw)
 
-const components_html = ctx_html.keys().map(ctx_html)
+const components_html = ctx_html.keys().map(ctx_html);
 const components_source_html = ctxraw_html.keys().map(ctxraw_html)
 
 const files = require.context(`../components/style_guide/`, true, /\.vue$/);
@@ -28,10 +28,17 @@ for(var i = 0; i < components.length; i++){
 }
 
 for(var i = 0; i < components_html.length; i++){
-	console.log(components_html[i]);
+	//console.log(components_html[i]);
 	//components_html[i].source = components_source_html[i];
 }
 
+let singleFileHash = []
+htmlFiles.keys().forEach((key,index)=>{
+	let path = (key.replace(/(\.\/|\.html)/g, ''));
+	let file = path.substr(path.indexOf('/')+1, path.length);
+	singleFileHash[file] = components_html[index]
+});
+console.log(singleFileHash['zoom']);
 
 function get(name){
 	for(var c of components){
@@ -52,8 +59,10 @@ function geHtmlSingleFile(name){
 function buildHtmlSingleFiles(){
 	let hash = [];
 	//Loading file names from a folder
-	htmlFiles.keys().forEach((key) => {
+	htmlFiles.keys().forEach((key, index) => {
+		//console.log(key,index);
 		let path = (key.replace(/(\.\/|\.html)/g, ''));
+		//console.log(path);
 		let folder = path.substr(0, path.indexOf('/'));
 		let file = path.substr(path.indexOf('/')+1, path.length);
 
@@ -63,7 +72,7 @@ function buildHtmlSingleFiles(){
 			hash[folder] = [];
 		hash[folder].push(file);
 	});
-	console.log(hash);
+	//console.log(hash);
 	return hash;
 }
 
