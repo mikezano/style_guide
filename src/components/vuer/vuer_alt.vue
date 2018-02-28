@@ -4,7 +4,7 @@
 			.vuer__examples(title="See examples")
 				router-link(:to="route" tag="div")
 					icon(name="code" scale="2")
-			.vuer__copy(title="Copy SCSS+PUG")
+			.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
 				icon(name="copy" scale="2")
 			.vuer__copy(title="Copy HTML+CSS")
 				icon(name="copy" scale="2")
@@ -52,11 +52,11 @@ export default {
 			`/style_guide/${this.$route.params.components}/${this.name}`;
 	},
 	computed: {
-		...mapGetters(['getComponent'])
+		...mapGetters(['getComponent', 'getHtmlSingleFile'])
 	},
 	methods: {
 		getSCSSPUG(){
-			//RETRIEVE DEFAULT
+			console.log(this.getHtmlSingleFile('zoom'));
 		},
 		getSources(){
 			this.component = this.getComponent(this.name);

@@ -17,6 +17,7 @@ const htmlFiles = require.context(`../../mixifier/`, true, /\.html$/);
 export default {
 	components,
 	components_html,
+	singleFileHash,
 	get,
 	buildRegistry,
 	collectMixins,
