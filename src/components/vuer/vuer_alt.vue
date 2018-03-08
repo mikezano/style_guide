@@ -106,7 +106,6 @@ export default {
 	.vuer__examples, .vuer__copy{
 		width:50px;
 	}
-
 }
 .vuer__examples, .vuer__copy{
 	border:none;
