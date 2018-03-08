@@ -34,11 +34,8 @@ export const store = new Vuex.Store({
 			var result = state.registry.buildHtmlSingleFiles();
 			return result;
 		},
-		getHtmlSingleFile: (state, getters)=>(name)=>{
-			console.log(name);
-			console.log(state.registry.singleFileHash);
-			var result = state.registry.singleFileHash[name];
-			return result;
+		getHtmlSingleFile: (state, getters)=>(name)=>{;
+			return state.registry.singleFileHash[name];
 		}
 	},
 	mutations: {

@@ -1,12 +1,12 @@
 <template lang="pug">
 	.vuer
 		.vuer__links
-			.vuer__examples(title="See examples")
+			button.vuer__examples(title="See examples")
 				router-link(:to="route" tag="div")
 					icon(name="code" scale="2")
-			.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
+			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
 				icon(name="copy" scale="2")
-			.vuer__copy(title="Copy HTML+CSS")
+			button.vuer__copy(title="Copy HTML+CSS")
 				icon(name="copy" scale="2")
 
 		.vuer__header
@@ -56,7 +56,20 @@ export default {
 	},
 	methods: {
 		getSCSSPUG(){
-			console.log(this.getHtmlSingleFile('zoom'));
+			//https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3
+			let htmlSingleFile = this.getHtmlSingleFile(this.name);
+			// Create the textarea input to hold our text.
+			const element = document.createElement('textarea');
+			element.value = htmlSingleFile;
+			// Add it to the document so that it can be focused.
+			document.body.appendChild(element);
+			// Focus on the element so that it can be copied.
+			element.focus();
+			element.setSelectionRange(0, element.value.length);
+			// Execute the copy command.
+			document.execCommand('copy');
+			// Remove the element to keep the document clear.
+			document.body.removeChild(element);
 		},
 		getSources(){
 			this.component = this.getComponent(this.name);
@@ -95,8 +108,9 @@ export default {
 	}
 
 }
-.vuer__examples{
-	//@include btn-circle(black, 40px);
+.vuer__examples, .vuer__copy{
+	border:none;
+	background:none;
 }
 
 .vuer{

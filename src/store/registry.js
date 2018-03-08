@@ -13,33 +13,17 @@ const components_source_html = ctxraw_html.keys().map(ctxraw_html)
 const files = require.context(`../components/style_guide/`, true, /\.vue$/);
 const htmlFiles = require.context(`../../mixifier/`, true, /\.html$/);
 
-
-export default {
-	components,
-	components_html,
-	singleFileHash,
-	get,
-	buildRegistry,
-	collectMixins,
-	buildHtmlSingleFiles
-}
-
 for(var i = 0; i < components.length; i++){
 	components[i].source = components_source[i];
 }
 
-for(var i = 0; i < components_html.length; i++){
-	//console.log(components_html[i]);
-	//components_html[i].source = components_source_html[i];
-}
 
-let singleFileHash = []
+const singleFileHash = []
 htmlFiles.keys().forEach((key,index)=>{
 	let path = (key.replace(/(\.\/|\.html)/g, ''));
 	let file = path.substr(path.indexOf('/')+1, path.length);
 	singleFileHash[file] = components_html[index]
 });
-console.log(singleFileHash['zoom']);
 
 function get(name){
 	for(var c of components){
@@ -104,4 +88,14 @@ function collectMixins(){
 		this.allMixins += result!= null ? result + "\n\r" : "";
 	});
 	console.log(this.allMixins);
+}
+
+export default {
+	components,
+	components_html,
+	singleFileHash,
+	get,
+	buildRegistry,
+	collectMixins,
+	buildHtmlSingleFiles
 }
