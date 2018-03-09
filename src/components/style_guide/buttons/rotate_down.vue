@@ -1,12 +1,12 @@
 <template lang="pug">
-.container
-	.rotate_down
-		.text.btn
-			span Text
-			icon(name="download", scale="2")
-		.visual.btn
-			span  Visual
-			icon(name="download", scale="2")
+.rotating-btn
+	.rotating-btn__container
+		.rotating-btn__main
+			span Main
+			| 😊
+		.rotating-btn__alt
+			span  Alt
+			| 😮
 </template>
 
 
@@ -16,38 +16,31 @@ export default{name: "rotate_down"}
 
 <style lang="scss" scoped>
 @import '../../../sass/colors';
-@mixin rotate_down(){
+@mixin rotating-btn(){
 
-	@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-	$color:rgb(random(150) ,random(150) ,random(150));
-
-	.container{
+	.rotating-btn{
 		width:200px;
 		height:60px;
 		cursor:pointer;
 		perspective:500px;
 	}
-	.container .rotate_down{
+	.rotating-btn .rotating-btn__container{
 		height:100%;
 		transform-style:preserve-3d;
-		-webkit-transform-style:preserve-3d;
 		transition:0.25s;
-		-webkit-transition:0.25s;
 		position:relative;
 	}
-	.rotate_down:hover{
+	.rotating-btn__container:hover{
 		transform:rotateX(-90deg);
 	}
-	.text, .visual{
+	.rotating-btn__main, .rotating-btn__alt{
 		width:100%;
 		//height:100%;
 		position:absolute;
 		left:0;
 		box-sizing:border-box;
-		border:5px solid map-get($colors, danger);
-		font-family:'Source Sans Pro',sans-serif;
+		border:5px solid map-get($colors, warning);
 		line-height:50px;
-		//font-size:17pt;
 		text-align:center;
 		text-transform:uppercase;
 		background-color:#fff;
@@ -55,17 +48,14 @@ export default{name: "rotate_down"}
 		align-items: center;
 		justify-content: center;
 	}
-	.text{
-		color:blue;
+	.rotating-btn__main{
 		transform: translate3d(0, 0, 30px);
 	}
-	.visual{
-		color:$color;
-		background:#fff;
+	.rotating-btn__alt{
 		transform: rotateX(90deg) translate3d(0, 0, 30px);
 	}
 }//rotate_down end
 
-@include rotate_down();
+@include rotating-btn();
 
 </style>

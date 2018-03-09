@@ -19,7 +19,7 @@
 				router-link(to="/style_guide/tabs" tag="li") Tabs
 				router-link(to="/style_guide/cards" tag="li") Cards
 				router-link(to="/style_guide/intros" tag="li") Intros
-
+			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
 				router-link(to="/style_guide/grid_layouts" tag="li") CSS Grid
@@ -107,11 +107,13 @@ $base2: hsla(211, 28%, 29%, 1);
 	&__section-header{
 		margin:10px 0;
 		font-weight:bold;
+		margin-left:10px;
 	}
 
 	p{
 		font-weight:bold;
 	}
+
 	.divider{
 		border-top:1px solid #555;
 		margin:10px;
