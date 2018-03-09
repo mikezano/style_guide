@@ -11,16 +11,16 @@
 
 
 <script>
-export default{name: "rotate_down"}
+export default{name: "rotating"}
 </script>
 
 <style lang="scss" scoped>
 @import '../../../sass/colors';
-@mixin rotating-btn(){
+@mixin rotating-btn($width, $height){
 
 	.rotating-btn{
-		width:200px;
-		height:60px;
+		width:$width;
+		height:$height;
 		cursor:pointer;
 		perspective:500px;
 	}
@@ -35,14 +35,11 @@ export default{name: "rotate_down"}
 	}
 	.rotating-btn__main, .rotating-btn__alt{
 		width:100%;
-		//height:100%;
 		position:absolute;
-		left:0;
 		box-sizing:border-box;
-		border:5px solid map-get($colors, warning);
-		line-height:50px;
+		border: ($height * .05) solid map-get($colors, primary);
+		line-height: ($height * .95);
 		text-align:center;
-		text-transform:uppercase;
 		background-color:#fff;
 		display:flex;
 		align-items: center;
@@ -56,6 +53,6 @@ export default{name: "rotate_down"}
 	}
 }//rotate_down end
 
-@include rotating-btn();
+@include rotating-btn(200px, 60px);
 
 </style>
