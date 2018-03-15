@@ -1,70 +1,18 @@
 <style type="text/css">
 .plus.spin-btn {
-  margin: 10px;
   border: none;
   background: none;
   color: #007e33;
   transition: transform .5s ease-out,  color .7s ease-out;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center; }
   .plus.spin-btn:hover {
     color: #00b148;
-    transform: rotate(360deg); }
-
-.wheelchair.spin-btn {
-  margin: 10px;
-  border: none;
-  background: none;
-  color: #007bff;
-  transition: transform .5s ease-out,  color .7s ease-out;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center; }
-  .wheelchair.spin-btn:hover {
-    color: #3395ff;
-    transform: rotate(360deg); }
-
-.refresh.spin-btn {
-  margin: 10px;
-  border: none;
-  background: none;
-  color: #ff8800;
-  transition: transform .5s ease-out,  color .7s ease-out;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center; }
-  .refresh.spin-btn:hover {
-    color: #ffa033;
-    transform: rotate(360deg); }
-
-.cog.spin-btn {
-  margin: 10px;
-  border: none;
-  background: none;
-  color: #cc0000;
-  transition: transform .5s ease-out,  color .7s ease-out;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center; }
-  .cog.spin-btn:hover {
-    color: red;
-    transform: rotate(360deg); }
+    transform: rotate(360deg) scale(1.5);
+    cursor: pointer; }
 
 </style>
 
 
-<div class="container">
-  <button class="plus spin-btn">
-    <icon name="plus" scale="5"></icon>
-  </button>
-  <button class="wheelchair spin-btn">
-    <icon name="wheelchair-alt" scale="4"></icon>
-  </button>
-  <button class="refresh spin-btn">
-    <icon name="refresh" scale="2"></icon>
-  </button>
-  <button class="cog spin-btn">
-    <icon name="cog" scale="1"></icon>
-  </button>
-</div>
+<button class="plus spin-btn">⚽</button>

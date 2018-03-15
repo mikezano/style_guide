@@ -1,4 +1,4 @@
-@mixin btn-circle($color:#aaa, $size:20px){
+@mixin btn-circle($color:#ccc, $size:20px){
 	$selector: btn-circle;
 	&.#{$selector}{
 		border:1px solid darken($color, 20%);
@@ -6,6 +6,7 @@
 		color:black;
 		width: $size*2;
 		height: $size*2;
+		text-align:center;
 		margin: 4px;
 		font-size: $size;
 		line-height: $size*2;
@@ -85,25 +86,23 @@
 	}
 
 }// hexagon-btn end
-@mixin rollover($size, $color){
-	margin:4px;
+@mixin rollover($size, $backgroundColor, $textColor){
+	$selector: rollover;
 	.rollover{
 		width: 2 * $size;
 		height:$size;
 		overflow:hidden;
-		padding:0;
-		border:1px solid darken($color, 10%);
-		color:white;
-
+		color:$textColor;
+		text-align:center;
+		&__container{
+			background-color:$backgroundColor;
+			transition: all .5s ease-in-out;
+		}
 		&:hover{
 			.rollover__container{
 				margin-top: -1 * $size;
 				cursor:pointer;
 			}
-		}
-		&__container{
-			background-color:$color;
-			transition: all .5s ease-in-out;
 		}
 		&__main{
 			height:$size;
@@ -117,72 +116,61 @@
 		}
 	}
 }//rollover end
-@mixin rotate_down(){
+@mixin rotating-btn($width, $height, $color, $fontColor){
 
-	@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-	$color:rgb(random(150) ,random(150) ,random(150));
-
-	.container{
-		width:200px;
-		height:60px;
+	.rotating-btn{
+		width:$width;
+		height:$height;
 		cursor:pointer;
 		perspective:500px;
+		color:$fontColor;
 	}
-	.container .rotate_down{
+	.rotating-btn .rotating-btn__container{
 		height:100%;
 		transform-style:preserve-3d;
-		-webkit-transform-style:preserve-3d;
 		transition:0.25s;
-		-webkit-transition:0.25s;
 		position:relative;
 	}
-	.rotate_down:hover{
+	.rotating-btn__container:hover{
 		transform:rotateX(-90deg);
 	}
-	.text, .visual{
+	.rotating-btn__main, .rotating-btn__alt{
 		width:100%;
-		//height:100%;
 		position:absolute;
-		left:0;
 		box-sizing:border-box;
-		border:5px solid map-get($colors, danger);
-		font-family:'Source Sans Pro',sans-serif;
-		line-height:50px;
-		//font-size:17pt;
+		border: ($height * .05) solid $color;
+		line-height: ($height * .95);
 		text-align:center;
-		text-transform:uppercase;
-		background-color:#fff;
+		background-color:lighten($color, 20%);
 		display:flex;
 		align-items: center;
 		justify-content: center;
 	}
-	.text{
-		color:blue;
-		transform: translate3d(0, 0, 30px);
+	.rotating-btn__main{
+		transform: translate3d(0, 0, $height/2);
 	}
-	.visual{
-		color:$color;
-		background:#fff;
-		transform: rotateX(90deg) translate3d(0, 0, 30px);
+	.rotating-btn__alt{
+		transform: rotateX(90deg) translate3d(0, 0, $height/2);
 	}
 }//rotate_down end
-@mixin spin-btn($color){
+@mixin spin-btn($color, $scale){
 	$selector: spin-btn;
 	&.#{$selector}{
-		margin:10px;
+		
 		border:none;
 		background:none;
 		color:$color;
 		transition: 
 			transform .5s ease-out, 
 			color .7s ease-out;
-		display:inline-flex;
+		display:flex;
 		align-items: center;
 		justify-content: center;
 
 		&:hover{
 			color:lighten($color,10%);
-			transform: rotate(360deg);
+			transform: rotate(360deg) scale($scale);
+			cursor: pointer;
 		}
 	}
 }//spin-btn end

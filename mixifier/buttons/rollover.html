@@ -1,40 +1,34 @@
 <style type="text/css">
-.good {
-  margin: 4px; }
-  .good .rollover {
-    width: 100px;
+.good .rollover {
+  width: 100px;
+  height: 50px;
+  overflow: hidden;
+  color: white;
+  text-align: center; }
+  .good .rollover__container {
+    background-color: #007bff;
+    transition: all .5s ease-in-out; }
+  .good .rollover:hover .rollover__container {
+    margin-top: -50px;
+    cursor: pointer; }
+  .good .rollover__main {
     height: 50px;
-    overflow: hidden;
-    padding: 0;
-    border: 1px solid #0062cc;
-    color: white; }
-    .good .rollover:hover .rollover__container {
-      margin-top: -50px;
-      cursor: pointer; }
-    .good .rollover__container {
-      background-color: #007bff;
-      transition: all .5s ease-in-out; }
-    .good .rollover__main {
-      height: 50px;
-      line-height: 50px;
-      font-size: 25px; }
-    .good .rollover__sub {
-      height: 50px;
-      line-height: 50px;
-      font-size: 16.66667px; }
+    line-height: 50px;
+    font-size: 25px; }
+  .good .rollover__sub {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16.66667px; }
 
 </style>
 
 
-<div class="container">
-  <div class="good">
-    <button class="rollover">
-      <div class="rollover__container">
-        <div class="rollover__main">GOOD</div>
-        <div class="rollover__sub"> 
-          <icon name="thumbs-up"></icon>
-        </div>
-      </div>
-    </button>
+<div class="good">
+  <div class="rollover">
+    <div class="rollover__container">
+      <div class="rollover__main">GOOD</div>
+      <div class="rollover__sub">
+         💚</div>
+    </div>
   </div>
 </div>
