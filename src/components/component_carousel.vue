@@ -1,11 +1,13 @@
 <template lang="pug">
 	div
 		transition( name="move_left_right" mode="out-in" )
-			vuer(:name="file" v-if="file" :key="file")
+			vuer_alt_simple(:name="file" v-if="file" :key="file")
 </template>
 
 <script>
 import vuer from '@/components/vuer/vuer'
+import vuer_alt from '@/components/vuer/vuer_alt'
+import vuer_alt_simple from '@/components/vuer/vuer_alt_simple'
 import {EventBus} from '../event_bus'
 import {mapGetters} from 'vuex'
 
@@ -103,7 +105,9 @@ export default {
 		...mapGetters({getFiles: 'getFiles'})
 	},
 	components:{
-		vuer
+		vuer,
+		vuer_alt,
+		vuer_alt_simple
 	}
 }
 </script>

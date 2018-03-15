@@ -82,7 +82,8 @@ $base2: hsla(211, 28%, 29%, 1);
 
 	&__header{
 		background:linear-gradient(to right, $base1 , $base2);
-		padding: 1rem 0;
+		padding: 2rem 0;
+		margin-left:0rem;
 		display:flex;
 		justify-content: center;
 		align-items: center;
@@ -98,6 +99,7 @@ $base2: hsla(211, 28%, 29%, 1);
 				transform: rotateY(180deg);
 			}
 		}
+		p{margin:0;}
 	}
 
 	&__sections{

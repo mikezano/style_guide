@@ -1,5 +1,5 @@
 <template lang="pug">
-	div
+	.container
 		component_carousel(
 			:isPlaying="isPlaying"
 			v-on:carouselStop="carouselStop()"
@@ -46,3 +46,11 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.container{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
+</style>

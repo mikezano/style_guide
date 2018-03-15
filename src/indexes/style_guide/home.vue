@@ -1,12 +1,5 @@
 <template lang="pug">
 	.container
-		.card
-			.card-header
-				| Featured
-			.card-block
-				h4.card-title Special title treatment
-				p.card-text With supporting text below as a natural lead-in to additional content.
-				a.btn.btn-primary(href='#') Go somewhere
 				
 		.title_logos
 			img(src="./../../assets/css3.svg" width=50 height=50)
@@ -24,23 +17,14 @@
 			//span.semi-colon ;
 			span.right_brace }
 		h1 
-			span Looking for creative components to add into your 
+			span Need creative components to add into your 
 			span.ui UI
 			span.question_mark ?
 		div(@click="collectMixins()")
 			rotate_down_btn
+		.container-carousel
+			carousel
 
-		//component_carousel
-		//player
-		carousel
-
-		//- button
-		//- 	icon(name="step-backward")
-		//- button.player(@click="togglePlay()")
-		//- 	icon(name="play", scale="2" v-if="isPaused")
-		//- 	icon(name="pause", scale="2" v-else)
-		//- button
-		//- 	icon(name="step-forward")
 </template>
 
 <script>
@@ -111,6 +95,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 	@import '../../sass/colors';
+
+	.container-carousel{
+		margin-top:2rem;
+	}
 	.container{width:600px;}
 	// .player{
 	// 	border:4px solid darken($vue_green, 10%);
