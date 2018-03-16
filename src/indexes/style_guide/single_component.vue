@@ -1,6 +1,8 @@
 <template lang="pug">
 	div
-		vuer(:name="single_component")
+		| {{single_component}}
+
+		vuer(name="circle_zoom_examples")
 </template>
 
 <script>
