@@ -11,17 +11,18 @@
 		.face.btn-circle
 			| 🤢
 
-	vuer_alt(name="circle_zoom")
-
+	vuer_examples(name="circle_zoom_examples")
 </template>
 
 <script>
 import vuer_alt from '@/components/vuer/vuer_alt'
+import vuer_examples from '@/components/vuer/vuer_examples'
 
 export default{
 	name: 'test',
 	components: {
-		vuer_alt
+		vuer_alt,
+		vuer_examples
 	}
 }
 </script>

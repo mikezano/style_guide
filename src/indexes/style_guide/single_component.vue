@@ -1,12 +1,14 @@
 <template lang="pug">
 	div
-		| {{single_component}}
-
-		vuer(name="circle_zoom_examples")
+		span {{single_component}}
+		vuer_examples(name="circle_zoom_examples")
 </template>
 
 <script>
 import vuer from '@/components/vuer/vuer'
+import vuer_alt from '@/components/vuer/vuer_alt'
+import vuer_alt_simple from '@/components/vuer/vuer_alt_simple'
+import vuer_examples from '@/components/vuer/vuer_examples'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
@@ -14,7 +16,10 @@ export default {
 	name: 'one_component',
 	props: ['single_component'],
 	components: {
-		vuer
+		vuer,
+		vuer_alt,
+		vuer_alt_simple,
+		vuer_examples
 	}
 }
 </script>

@@ -1,27 +1,28 @@
 <template lang="pug">
-.container
-	h1 Examples
-	.examples
-		.default.btn-circle
-			| 🤷
-		.fruit.btn-circle
-			| 🍓
-		.vegetable.btn-circle
-			| 🥕
-		.face.btn-circle
-			| 🤢
 
-	vuer_alt(name="circle_zoom")
+.examples
+	.default.btn-circle
+		| 🤷
+	.fruit.btn-circle
+		| 🍓
+	.vegetable.btn-circle
+		| 🥕
+	.face.btn-circle
+		| 🤢
+
+	//vuer_examples(name="circle_zoom_examples")
 
 </template>
 
 <script>
 import vuer_alt from '@/components/vuer/vuer_alt'
+import vuer_examples from '@/components/vuer/vuer_examples'
 
 export default{
 	name: 'circle_zoom_examples',
 	components: {
-		vuer_alt
+		vuer_alt,
+		vuer_examples
 	}
 }
 </script>

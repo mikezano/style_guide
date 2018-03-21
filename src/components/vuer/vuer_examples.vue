@@ -1,23 +1,19 @@
 <template lang="pug">
 	.vuer
-		//.vuer__links
-			button.vuer__examples(title="See examples")
-				router-link(:to="route" tag="div")
-					icon(name="code" scale="2")
-			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
-				icon(name="copy" scale="2")
-			button.vuer__copy(title="Copy HTML+CSS")
-				icon(name="copy" scale="2")
-
-		.vuer__header
-			| {{name.replace('_',' ')}}
 		.vuer__component
 			component(:is="component")
+		.vuer__scss
+			label SCSS:
+			pre.language-css
+				code(v-html="scss" contenteditable="true")
+		.vuer__pug
+			label PUG:
+			pre.language-js
+				code(v-html="pug"  contenteditable="true")
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
-import circle_zoom from '@/components/style_guide/buttons/circle_zoom'
 
 export default {
 	name: 'viewer_alt_simple',
@@ -78,9 +74,6 @@ export default {
 			let result = code[0].replace(/\n/g, ' ').trim();
 			return result;
 		}
-	},
-	components: {
-		circle_zoom
 	}
 }
 </script>

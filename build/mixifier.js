@@ -31,7 +31,7 @@ function compile_sass(contents){
 			var contents = fs.readFileSync(`./src/${url.replace("../../../","")}.scss`, 'utf8');
 			return({contents: contents});
 		}
-	});
+	});;
 }
 
 function compile_pug(contents){
