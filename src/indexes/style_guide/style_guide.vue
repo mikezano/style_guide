@@ -5,9 +5,6 @@
 </template>
 
 <script>
-
-import vuer from '@/components/vuer/vuer'
-import drop_down from '@/components/drop_down'
 import routes from '@/models/routes'
 
 export default {
@@ -17,10 +14,6 @@ export default {
 			msg: 'Zano',
 			routes: routes
 		}
-	},
-	components:{
-		vuer,
-		drop_down
 	}
 }
 </script>

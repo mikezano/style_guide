@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import vuer from '@/components/vuer/vuer'
-import vuer_alt from '@/components/vuer/vuer_alt'
 import vuer_alt_simple from '@/components/vuer/vuer_alt_simple'
 import {EventBus} from '../event_bus'
 import {mapGetters} from 'vuex'
@@ -105,8 +103,6 @@ export default {
 		...mapGetters({getFiles: 'getFiles'})
 	},
 	components:{
-		vuer,
-		vuer_alt,
 		vuer_alt_simple
 	}
 }

@@ -12,7 +12,6 @@
 <script>
 import {mapGetters} from 'vuex'
 import vuer_alt from '@/components/vuer/vuer_alt'
-import vuer_simple from '@/components/vuer/vuer_simple'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
@@ -57,8 +56,7 @@ export default {
 		'$route': 'routeChanged'
 	},
 	components: {
-		vuer_alt,
-		vuer_simple
+		vuer_alt
 	}
 }
 </script>
