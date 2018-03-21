@@ -9,9 +9,11 @@ export default{name: 'flip'}
 
 <style lang="scss" scoped>
 
-@mixin flip-btn(){
+@mixin flip-btn($width: auto){
 	$selector: btn-flip;
 	&.#{$selector}{
+
+		width: $width;
 		transition: all 1s ease-in-out;
 		&:hover{
 			transform: rotateX(360deg);

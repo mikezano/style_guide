@@ -9,9 +9,6 @@
 		| 🥕
 	.face.btn-circle
 		| 🤢
-
-	//vuer_examples(name="circle_zoom_examples")
-
 </template>
 
 <script>

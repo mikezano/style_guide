@@ -1,7 +1,5 @@
 <template lang="pug">
-	div
-		span {{single_component}}
-		vuer_examples(name="circle_zoom_examples")
+	vuer_examples(:name="example")
 </template>
 
 <script>
@@ -15,6 +13,11 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 export default {
 	name: 'one_component',
 	props: ['single_component'],
+	data () {
+		return {
+			example: this.single_component + "_examples"
+		}
+	},
 	components: {
 		vuer,
 		vuer_alt,

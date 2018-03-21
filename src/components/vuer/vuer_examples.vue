@@ -61,6 +61,7 @@ export default {
 		},
 		getSources(){
 			this.component = this.getComponent(this.name);
+			console.log(this.component);
 			let source = 
 				this.component
 				.source
