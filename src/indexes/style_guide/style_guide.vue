@@ -29,12 +29,6 @@ export default {
 	align-items:center;
 	justify-content:center;
 	flex-direction:column;
-	h1{
-		width:600px;
-		font-size:80px;
-		margin:0;
-		padding:0;
-	}
 }
 
 </style>

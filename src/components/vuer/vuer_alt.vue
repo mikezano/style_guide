@@ -118,6 +118,7 @@ export default {
 	border:1px solid lightgray;
 	position:relative;
 	background-color: hsla(0, 0%, 0%, .05);
+	max-width:30rem;
 
 	&__component{
 		margin:2rem 0;

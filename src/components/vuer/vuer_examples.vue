@@ -2,11 +2,11 @@
 	.vuer
 		.vuer__component
 			component(:is="component")
-		.vuer__scss
+		//.vuer__scss
 			label SCSS:
 			pre.language-css
 				code(v-html="scss" contenteditable="true")
-		.vuer__pug
+		//.vuer__pug
 			label PUG:
 			pre.language-js
 				code(v-html="pug"  contenteditable="true")

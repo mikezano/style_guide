@@ -99,7 +99,7 @@ export default {
 	.container-carousel{
 		margin-top:2rem;
 	}
-	.container{width:600px;}
+	//.container{width:600px;}
 	// .player{
 	// 	border:4px solid darken($vue_green, 10%);
 	// 	background-color: $vue_green;
