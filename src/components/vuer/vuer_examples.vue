@@ -18,7 +18,7 @@
 import {mapGetters} from 'vuex'
 
 export default {
-	name: 'viewer_alt_simple',
+	name: 'vuer_examples',
 	props: ['name'],
 	watch: {
 		name: function(newVal, oldVal){
@@ -37,8 +37,6 @@ export default {
 		}
 	},
 	mounted(){
-		console.log(this.getEl());
-		document.body.appendChild(this.getEl());
 		this.getSources();
 		this.route = 
 			`/style_guide/${this.$route.params.components}/${this.name}`;
@@ -65,7 +63,6 @@ export default {
 		},
 		getSources(){
 			this.component = this.getComponent(this.name);
-			console.log(this.component);
 			let source = 
 				this.component
 				.source

@@ -1,6 +1,7 @@
 <template lang="pug">
 	div
 		h1.title {{$route.params.components}}
+		vuer_transition
 		transition(name="fade" v-if="$route.params.single_component != null" mode="in-out")
 			router-view
 		transition(name="fade" v-if="$route.params.single_component == null" mode="out-in")
@@ -12,30 +13,34 @@
 <script>
 import {mapGetters} from 'vuex'
 import vuer_alt from '@/components/vuer/vuer_alt'
+import vuer_transition from '@/components/vuer/vuer_transition'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
 export default {
-	name: 'index_cards',
+	name: 'components',
 	props: ['components'],
 	data () {
 		return {
 			hash: [],
 			currentSet: null,
-			nextRoute: null,
+			nextRoute: null
 		}
 	},
-	computed: {
-		...mapGetters(['getHtmlSingleFiles'])
-	},	
 	beforeMount(){
 		this.buildRegistry();
 	},
 	mounted(){
 		this.getHtmlSingleFiles();
 		this.currentSet = this.hash[this.components];
+	},	
+	computed: {
+		...mapGetters(['getHtmlSingleFiles'])
 	},
 	methods: {
+		elChanged(newEl, oldEl){
+			console.log("El Changed 2", newEl, oldEl);
+		},
 		routeChanged(route){
 			this.currentSet = this.hash[route.params.components];
 		},
@@ -52,11 +57,12 @@ export default {
 			});
 		}
 	},
-	watch :{
-		'$route': 'routeChanged'
+	watch: {
+		'$route': 'routeChanged',
 	},
 	components: {
-		vuer_alt
+		vuer_alt,
+		vuer_transition
 	}
 }
 </script>

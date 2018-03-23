@@ -47,7 +47,6 @@ export default {
 		}
 	},
 	mounted(){
-		console.log(this.$el);
 		this.getSources();
 		this.route = 
 			`/style_guide/${this.$route.params.components}/${this.name}`;
@@ -58,9 +57,7 @@ export default {
 	},
 	methods: {
 		setTheEl(){
-			console.log(this.$el);
-			console.log("Change the element");
-			this.$store.commit('setEl', this.$el);
+			this.$store.commit('setEl', {el: this.$el, name: this.name});
 		},
 
 		getSCSSPUG(){

@@ -37,9 +37,6 @@ export const store = new Vuex.Store({
 		},
 		getHtmlSingleFile: (state, getters)=>(name)=>{;
 			return state.registry.singleFileHash[name];
-		},
-		getEl: (state, getters)=>()=>{
-			return state.el;
 		}
 	},
 	mutations: {
@@ -52,8 +49,9 @@ export const store = new Vuex.Store({
 		toggleIsPlaying: (state) =>{
 			state.isPlaying = !state.isPlaying;
 		},
-		setEl: (state, el) =>{
-			state.el = el;
+		setEl: (state, data) =>{
+			console.log("setEl:", data.el, data.name);
+			state.el = data.el;
 		}
 	},
 	actions: {
