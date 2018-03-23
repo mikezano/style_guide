@@ -37,12 +37,14 @@ export default {
 		}
 	},
 	mounted(){
+		console.log(this.getEl());
+		document.body.appendChild(this.getEl());
 		this.getSources();
 		this.route = 
 			`/style_guide/${this.$route.params.components}/${this.name}`;
 	},
 	computed: {
-		...mapGetters(['getComponent', 'getHtmlSingleFile'])
+		...mapGetters(['getComponent', 'getHtmlSingleFile', 'getEl'])
 	},
 	methods: {
 		getSCSSPUG(){

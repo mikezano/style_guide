@@ -1,7 +1,7 @@
 <template lang="pug">
-	.vuer(:ref="vuer")
+	.vuer
 		.vuer__links
-			button.vuer__examples(title="See examples")
+			button.vuer__examples(title="See examples" @click="setTheEl")
 				router-link(:to="route" tag="div")
 					icon(name="code" scale="2")
 			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 import circle_zoom from '@/components/style_guide/buttons/circle_zoom'
 
 export default {
@@ -37,7 +37,6 @@ export default {
 	},
 	data () {
 		return {
-			vuer: null,
 			scss: null,
 			pug: null,
 			mixin: null,
@@ -48,15 +47,22 @@ export default {
 		}
 	},
 	mounted(){
-		console.log(this.vuer);
+		console.log(this.$el);
 		this.getSources();
 		this.route = 
 			`/style_guide/${this.$route.params.components}/${this.name}`;
 	},
 	computed: {
-		...mapGetters(['getComponent', 'getHtmlSingleFile'])
+		...mapGetters(['getComponent', 'getHtmlSingleFile']),
+		...mapMutations(['setEl'])
 	},
 	methods: {
+		setTheEl(){
+			console.log(this.$el);
+			console.log("Change the element");
+			this.$store.commit('setEl', this.$el);
+		},
+
 		getSCSSPUG(){
 			//https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3
 			let htmlSingleFile = this.getHtmlSingleFile(this.name);

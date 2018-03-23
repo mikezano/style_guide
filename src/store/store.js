@@ -9,7 +9,8 @@ export const store = new Vuex.Store({
 	state: {
 		counter: 2,
 		registry: registry,
-		isPlaying: true
+		isPlaying: true,
+		el: null
 	},
 	getters: {
 		tripleCounter: state => {
@@ -36,6 +37,9 @@ export const store = new Vuex.Store({
 		},
 		getHtmlSingleFile: (state, getters)=>(name)=>{;
 			return state.registry.singleFileHash[name];
+		},
+		getEl: (state, getters)=>()=>{
+			return state.el;
 		}
 	},
 	mutations: {
@@ -47,6 +51,9 @@ export const store = new Vuex.Store({
 		},
 		toggleIsPlaying: (state) =>{
 			state.isPlaying = !state.isPlaying;
+		},
+		setEl: (state, el) =>{
+			state.el = el;
 		}
 	},
 	actions: {
