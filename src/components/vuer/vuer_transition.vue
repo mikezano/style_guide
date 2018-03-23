@@ -1,5 +1,5 @@
 <template lang="pug">
-	div
+	.vuer-transition
 </template>
 
 <script>
@@ -28,11 +28,9 @@ export default {
 		el(newEl, oldEl){
 			console.log('detected change', newEl, oldEl);
 			let rect = newEl.getBoundingClientRect();
-			console.log(rect);
-			debugger;
 			//console.log(newEl.scrollTop);
 			this.$el.style.position = "absolute";
-			this.$el.style.top = (rect.top  + newEl.scrollTop || 0) + "px";
+			this.$el.style.top = (rect.top  + document.documentElement.scrollTop ) + "px";
 			this.$el.style.left = rect.left + "px";
 			this.$el.style.width =  rect.width + "px";
 			this.$el.style.height = rect.height + "px";
@@ -48,7 +46,7 @@ export default {
 <style lang="scss" scoped>
 
 .vuer-transition.animated{
-	animation: grow .5s ease-in-out forwards;
+	animation: grow .5s ease-in-out;
 }
 
 @keyframes grow {
