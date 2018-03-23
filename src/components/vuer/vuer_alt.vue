@@ -1,5 +1,5 @@
 <template lang="pug">
-	.vuer
+	.vuer(:ref="vuer")
 		.vuer__links
 			button.vuer__examples(title="See examples")
 				router-link(:to="route" tag="div")
@@ -37,6 +37,7 @@ export default {
 	},
 	data () {
 		return {
+			vuer: null,
 			scss: null,
 			pug: null,
 			mixin: null,
@@ -47,6 +48,7 @@ export default {
 		}
 	},
 	mounted(){
+		console.log(this.vuer);
 		this.getSources();
 		this.route = 
 			`/style_guide/${this.$route.params.components}/${this.name}`;
@@ -118,7 +120,7 @@ export default {
 	border:1px solid lightgray;
 	position:relative;
 	background-color: hsla(0, 0%, 0%, .05);
-	max-width:30rem;
+	width:40rem;
 
 	&__component{
 		margin:2rem 0;

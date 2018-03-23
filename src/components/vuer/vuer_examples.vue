@@ -1,12 +1,14 @@
 <template lang="pug">
 	.vuer
+		.vuer__title
+			h1.title {{name}}
 		.vuer__component
 			component(:is="component")
-		//.vuer__scss
+		.vuer__scss
 			label SCSS:
 			pre.language-css
 				code(v-html="scss" contenteditable="true")
-		//.vuer__pug
+		.vuer__pug
 			label PUG:
 			pre.language-js
 				code(v-html="pug"  contenteditable="true")
@@ -83,6 +85,11 @@ export default {
 
 @import '../../sass/global.scss';
 
+.title{
+	text-transform:uppercase;
+	font-weight:bold;
+}
+
 .vuer__links{
 	display:flex;
 	position: absolute;
@@ -104,7 +111,7 @@ export default {
 	border:1px solid lightgray;
 	position:relative;
 	background-color: hsla(0, 0%, 0%, .05);
-	min-width:30rem;
+	width:40rem;
 
 	&__component{
 		margin:2rem 0;

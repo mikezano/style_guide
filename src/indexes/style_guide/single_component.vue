@@ -1,5 +1,7 @@
 <template lang="pug">
-	vuer_examples(:name="example")
+	div
+		div Fake
+		vuer_examples(:name="example")
 </template>
 
 <script>
@@ -14,6 +16,9 @@ export default {
 		return {
 			example: this.single_component + "_examples"
 		}
+	},
+	beforeMount(){
+		alert('boom');
 	},
 	components: {
 		vuer_examples

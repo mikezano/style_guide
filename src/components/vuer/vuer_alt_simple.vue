@@ -1,14 +1,5 @@
 <template lang="pug">
 	.vuer
-		//.vuer__links
-			button.vuer__examples(title="See examples")
-				router-link(:to="route" tag="div")
-					icon(name="code" scale="2")
-			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
-				icon(name="copy" scale="2")
-			button.vuer__copy(title="Copy HTML+CSS")
-				icon(name="copy" scale="2")
-
 		.vuer__header
 			| {{name.replace('_',' ')}}
 		.vuer__component

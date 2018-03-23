@@ -1,7 +1,7 @@
 <template lang="pug">
 	div
 		h1.title {{$route.params.components}}
-		transition(name="fade" v-if="$route.params.single_component != null" mode="out-in")
+		transition(name="fade" v-if="$route.params.single_component != null" mode="in-out")
 			router-view
 		transition(name="fade" v-if="$route.params.single_component == null" mode="out-in")
 			transition-group( name="list" tag="div")
