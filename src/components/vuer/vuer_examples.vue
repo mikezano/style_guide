@@ -1,7 +1,7 @@
 <template lang="pug">
 	.vuer
 		.vuer__title
-			h1.title {{name}}
+			h1.title {{name.replace('_',' ')}}
 		.vuer__component
 			component(:is="component")
 		.vuer__scss
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 
 export default {
 	name: 'vuer_examples',
@@ -42,7 +42,8 @@ export default {
 			`/style_guide/${this.$route.params.components}/${this.name}`;
 	},
 	computed: {
-		...mapGetters(['getComponent', 'getHtmlSingleFile', 'getEl'])
+		...mapGetters(['getComponent', 'getHtmlSingleFile', 'getEl']),
+		...mapMutations(['setEl'])
 	},
 	methods: {
 		getSCSSPUG(){
@@ -75,7 +76,10 @@ export default {
 			let code = source.match(re);
 			let result = code[0].replace(/\n/g, ' ').trim();
 			return result;
-		}
+		},
+		setTheEl(){
+			this.$store.commit('setEl', {el: this.$el, name: this.name});
+		},		
 	}
 }
 </script>
@@ -87,6 +91,7 @@ export default {
 .title{
 	text-transform:uppercase;
 	font-weight:bold;
+	font-size:2rem;
 }
 
 .vuer__links{

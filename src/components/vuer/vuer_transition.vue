@@ -28,16 +28,20 @@ export default {
 		el(newEl, oldEl){
 			console.log('detected change', newEl, oldEl);
 			let rect = newEl.getBoundingClientRect();
+			this.$el.appendChild(newEl.cloneNode(true));
+			let vuer = this.$el.querySelectorAll(".vuer")[0];
+			vuer.className += " fade-out";
 			//console.log(newEl.scrollTop);
 			this.$el.style.position = "absolute";
 			this.$el.style.top = (rect.top  + document.documentElement.scrollTop ) + "px";
 			this.$el.style.left = rect.left + "px";
-			this.$el.style.width =  rect.width + "px";
-			this.$el.style.height = rect.height + "px";
-			this.$el.style.backgroundColor = "hsla(0, 0%, 87%, .5)";
-			this.$el.className.replace(" animated", "");
-			this.$el.className += " animated";
-			this.$el.addEventListener("animationend", this.hideEl);
+			// this.$el.style.width =  rect.width + "px";
+			// this.$el.style.height = rect.height + "px";
+			// this.$el.style.backgroundColor = "hsla(0, 0%, 87%, 1)";
+			//this.$el.className.replace(" animated", "");
+			//this.$el.className += " animated";
+			//this.$el.addEventListener("animationend", this.hideEl);
+			vuer.addEventListener("animationend", this.hideEl);
 		}
 	},
 	methods: {
@@ -49,6 +53,18 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.fade-out{
+	animation: fadeOut 10s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+	100%{
+		opacity:0;
+	}
+}
+</style>
 
 <style lang="scss" scoped>
 
