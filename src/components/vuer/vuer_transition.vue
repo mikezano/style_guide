@@ -35,10 +35,17 @@ export default {
 			this.$el.style.width =  rect.width + "px";
 			this.$el.style.height = rect.height + "px";
 			this.$el.style.backgroundColor = "hsla(0, 0%, 87%, .5)";
+			this.$el.className.replace(" animated", "");
 			this.$el.className += " animated";
+			this.$el.addEventListener("animationend", this.hideEl);
 		}
 	},
 	methods: {
+		hideEl(){
+			console.log("hide");
+			this.$el.style.display = "none";
+			this.$el.className.replace(" animated", "");
+		}
 	}
 }
 </script>
@@ -46,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 
 .vuer-transition.animated{
-	animation: grow .5s ease-in-out;
+	animation: grow .5s ease-in-out forwards;
 }
 
 @keyframes grow {

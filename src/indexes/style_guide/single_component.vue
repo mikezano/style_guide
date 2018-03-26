@@ -1,7 +1,5 @@
 <template lang="pug">
-	div
-		div Fake
-		vuer_examples(:name="example")
+	vuer_examples.example(:name="example")
 </template>
 
 <script>
