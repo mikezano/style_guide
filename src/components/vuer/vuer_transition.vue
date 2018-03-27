@@ -7,11 +7,6 @@ import {mapMutations, mapState} from 'vuex'
 
 export default {
 	name: 'vuer_transition',
-	watch:{
-		localEl: function(newVal, oldVal){
-			console.log('change in item!');
-		}
-	},
 	data () {
 		return {
 			vuer: null,
@@ -23,12 +18,16 @@ export default {
 	},
 	computed: {
 		...mapMutations(['toggleIsTransitioning']),
-		...mapState(['el'])
+		...mapState(['el', 'exampleEl'])
 	},
 	watch: {
 		el(newEl, oldEl){
+
+			if(newEl == null) return;
+
+			console.log('Example El: ', this.exampleEl);
+
 			this.$store.commit('toggleIsTransitioning');//true
-			console.log('detected change', newEl, oldEl);
 			let rect = newEl.getBoundingClientRect();
 			
 			if(this.vuer)
@@ -79,7 +78,7 @@ export default {
 
 @keyframes moveUp {
 	100%{
-		top:100px;
+		top:76px;
 	}
 }
 </style>

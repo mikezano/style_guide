@@ -1,10 +1,10 @@
 <template lang="pug">
-	vuer_examples.example(:name="example" style="display:none;")
+	vuer_examples.example(:name="example" style="opacity:0;")
 </template>
 
 <script>
 import vuer_examples from '@/components/vuer/vuer_examples'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 //const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
@@ -18,8 +18,13 @@ export default {
 	},
 	beforeMount(){
 	},
+	mounted(){
+		console.log("when mounted:", this.$el);
+		this.$store.commit('setExampleEl', this.$el);
+	},
 	computed: {
-		...mapState(['isTransitioning'])
+		...mapState(['isTransitioning']),
+		...mapMutations(['setExampleEl'])
 	},
 	watch:{
 		isTransitioning(newVal, oldVal){

@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
 		registry: registry,
 		isPlaying: true,
 		el: null,
+		exampleEl: null,
 		isTransitioning: false
 	},
 	getters: {
@@ -53,10 +54,14 @@ export const store = new Vuex.Store({
 		toggleIsTransitioning: (state) =>{
 			console.log ('state.isTransitioning', state.isTransitioning);
 			state.isTransitioning = !state.isTransitioning;
-		},		
+		},
 		setEl: (state, data) =>{
 			console.log("setEl:", data.el, data.name);
 			state.el = data.el;
+		},
+		setExampleEl: (state, el) =>{
+			console.log("setEl:", el);
+			state.exampleEl = el;
 		}
 	},
 	actions: {
