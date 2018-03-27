@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
 	name: 'vuer_transition',
@@ -22,15 +22,18 @@ export default {
 		console.log('vuer_transition');
 	},
 	computed: {
+		...mapMutations(['toggleIsTransitioning']),
 		...mapState(['el'])
 	},
 	watch: {
 		el(newEl, oldEl){
+			this.$store.commit('toggleIsTransitioning');//true
 			console.log('detected change', newEl, oldEl);
 			let rect = newEl.getBoundingClientRect();
 			this.$el.appendChild(newEl.cloneNode(true));
 			let vuer = this.$el.querySelectorAll(".vuer")[0];
-			vuer.className += " fade-out";
+			this.$el.style.className += " fade-out";
+			//vuer.className += " fade-out";
 			//console.log(newEl.scrollTop);
 			this.$el.style.position = "absolute";
 			this.$el.style.top = (rect.top  + document.documentElement.scrollTop ) + "px";
@@ -49,13 +52,14 @@ export default {
 			console.log("hide");
 			this.$el.style.display = "none";
 			this.$el.className.replace(" animated", "");
+			this.$store.commit('toggleIsTransitioning');//false
 		}
 	}
 }
 </script>
 
 <style lang="scss">
-.fade-out{
+.fade-out div[class^="vuer__"]{
 	animation: fadeOut 10s ease-in-out forwards;
 }
 

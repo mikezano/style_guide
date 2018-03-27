@@ -10,7 +10,8 @@ export const store = new Vuex.Store({
 		counter: 2,
 		registry: registry,
 		isPlaying: true,
-		el: null
+		el: null,
+		isTransitioning: false
 	},
 	getters: {
 		tripleCounter: state => {
@@ -49,6 +50,10 @@ export const store = new Vuex.Store({
 		toggleIsPlaying: (state) =>{
 			state.isPlaying = !state.isPlaying;
 		},
+		toggleIsTransitioning: (state) =>{
+			console.log ('state.isTransitioning', state.isTransitioning);
+			state.isTransitioning = !state.isTransitioning;
+		},		
 		setEl: (state, data) =>{
 			console.log("setEl:", data.el, data.name);
 			state.el = data.el;
