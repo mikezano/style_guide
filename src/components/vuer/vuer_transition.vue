@@ -14,12 +14,12 @@ export default {
 	},
 	data () {
 		return {
-			scss: null,
-			localEl: ""
+			vuer: null,
 		}
 	},
 	mounted(){
 		console.log('vuer_transition');
+
 	},
 	computed: {
 		...mapMutations(['toggleIsTransitioning']),
@@ -30,28 +30,32 @@ export default {
 			this.$store.commit('toggleIsTransitioning');//true
 			console.log('detected change', newEl, oldEl);
 			let rect = newEl.getBoundingClientRect();
+			
+			if(this.vuer)
+				this.$el.removeChild(this.vuer);
+
 			this.$el.appendChild(newEl.cloneNode(true));
-			let vuer = this.$el.querySelectorAll(".vuer")[0];
-			this.$el.style.className += " fade-out";
-			//vuer.className += " fade-out";
-			//console.log(newEl.scrollTop);
-			this.$el.style.position = "absolute";
-			this.$el.style.top = (rect.top  + document.documentElement.scrollTop ) + "px";
+
+			this.$el.style.display = "block";
+			this.$el.style.position = "fixed";
+			this.$el.style.top = (rect.top ) + "px";
 			this.$el.style.left = rect.left + "px";
-			// this.$el.style.width =  rect.width + "px";
-			// this.$el.style.height = rect.height + "px";
-			// this.$el.style.backgroundColor = "hsla(0, 0%, 87%, 1)";
-			//this.$el.className.replace(" animated", "");
-			//this.$el.className += " animated";
-			//this.$el.addEventListener("animationend", this.hideEl);
-			vuer.addEventListener("animationend", this.hideEl);
+			this.$el.classList.add('move-up');
+
+			this.vuer = this.$el.querySelectorAll(".vuer")[0];
+			this.vuer.className += " fade-out";			
+			this.vuer.addEventListener("animationend", this.hideEl);
 		}
 	},
 	methods: {
+		cleanUp(){
+			
+		},
 		hideEl(){
-			console.log("hide");
 			this.$el.style.display = "none";
-			this.$el.className.replace(" animated", "");
+			this.$el.classList.remove('move-up');
+			this.vuer.classList.remove('fade-out');
+			//this.vuer.removeEventListener("animationend",this.hide);
 			this.$store.commit('toggleIsTransitioning');//false
 		}
 	}
@@ -59,8 +63,12 @@ export default {
 </script>
 
 <style lang="scss">
-.fade-out div[class^="vuer__"]{
-	animation: fadeOut 10s ease-in-out forwards;
+
+.move-up{
+	animation: moveUp .5s ease-in-out forwards;
+}
+.fade-out div[class^='vuer__']{
+	animation: fadeOut 1s ease-in-out forwards;
 }
 
 @keyframes fadeOut {
@@ -68,17 +76,15 @@ export default {
 		opacity:0;
 	}
 }
+
+@keyframes moveUp {
+	100%{
+		top:100px;
+	}
+}
 </style>
 
 <style lang="scss" scoped>
 
-.vuer-transition.animated{
-	animation: grow .5s ease-in-out forwards;
-}
 
-@keyframes grow {
-	100%{
-		transform:scale(4.0);
-	}
-}
 </style>
