@@ -52,15 +52,12 @@ export const store = new Vuex.Store({
 			state.isPlaying = !state.isPlaying;
 		},
 		toggleIsTransitioning: (state) =>{
-			console.log ('state.isTransitioning', state.isTransitioning);
 			state.isTransitioning = !state.isTransitioning;
 		},
 		setEl: (state, data) =>{
-			console.log("setEl:", data.el, data.name);
 			state.el = data.el;
 		},
 		setExampleEl: (state, el) =>{
-			console.log("setEl:", el);
 			state.exampleEl = el;
 		}
 	},

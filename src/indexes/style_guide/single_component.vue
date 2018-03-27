@@ -19,7 +19,7 @@ export default {
 	beforeMount(){
 	},
 	mounted(){
-		console.log("when mounted:", this.$el);
+		console.log("in the mount");
 		this.$store.commit('setExampleEl', this.$el);
 	},
 	computed: {
@@ -28,7 +28,6 @@ export default {
 	},
 	watch:{
 		isTransitioning(newVal, oldVal){
-			console.log('isTransitioning', newVal, oldVal);
 			if(newVal == false)
 				this.$el.style = "display:block";
 		}

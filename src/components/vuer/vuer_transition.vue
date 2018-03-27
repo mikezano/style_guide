@@ -40,6 +40,8 @@ export default {
 			this.$el.style.top = (rect.top ) + "px";
 			this.$el.style.left = rect.left + "px";
 			this.$el.classList.add('move-up');
+			
+			this.$el.style.height = this.exampleEl.getBoundingClientRect().height + "px";
 
 			this.vuer = this.$el.querySelectorAll(".vuer")[0];
 			this.vuer.className += " fade-out";			

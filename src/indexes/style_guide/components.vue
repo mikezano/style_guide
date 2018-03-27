@@ -1,13 +1,13 @@
 <template lang="pug">
 	div(style="width:40rem;")
 		h1.title {{$route.params.components}}
-		vuer_transition
 		transition(name="fade" v-if="$route.params.single_component != null" mode="in-out")
 			router-view
 		transition(name="fade" v-if="$route.params.single_component == null" mode="out-in")
 			transition-group( name="list" tag="div")
 				.list-item(v-for="item in currentSet", :key="item")
 					vuer_alt(:name="item")
+		vuer_transition
 </template>
 
 <script>
