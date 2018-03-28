@@ -1,5 +1,5 @@
 <template lang="pug">
-	vuer_examples.example(:name="example" style="opacity:0;")
+	vuer_examples.example(:name="example" style="display:none")
 </template>
 
 <script>
@@ -23,10 +23,13 @@ export default {
 		this.$store.commit('setExampleEl', this.$el);
 	},
 	computed: {
-		...mapState(['isTransitioning']),
+		...mapState(['isTransitioning', 'el']),
 		...mapMutations(['setExampleEl'])
 	},
 	watch:{
+		el(newVal, oldVal){
+
+		},
 		isTransitioning(newVal, oldVal){
 			if(newVal == false)
 				this.$el.style = "display:block";
@@ -37,3 +40,16 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.example{
+	div[class^='vuer__']{
+		animation: fadeIn .5s ease-in-out forwards;
+	}
+}
+
+@keyframes fadeIn {
+	from{opacity:0; height:0%;}
+	to{opacity:1; height:100%;}
+}
+</style>

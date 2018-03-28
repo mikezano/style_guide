@@ -76,10 +76,7 @@ export default {
 			let code = source.match(re);
 			let result = code[0].replace(/\n/g, ' ').trim();
 			return result;
-		},
-		setTheEl(){
-			this.$store.commit('setEl', {el: this.$el, name: this.name});
-		},		
+		}	
 	}
 }
 </script>
