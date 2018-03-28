@@ -53,19 +53,33 @@ export default {
 			
 		},
 		hideEl(){
-			console.log(this.exampleEl.getBoundingClientRect().height + "px");
-			let height = this.exampleEl.getBoundingClientRect().height + "px";
+			console.log('hideEl');
+			//console.log('example el height:', this.exampleEl.getBoundingClientRect().height + "px");
+			//console.log('vuer height', this.vuer.getBoundingClientRect().height + "px");
+			let toHeight = this.exampleEl.getBoundingClientRect().height + "px";
+			let fromHeight = this.vuer.getBoundingClientRect().height + "px";
 			//this.vuer.style.height = height;
-			console.log('height: ', this.vuer.style.height);
+			//console.log('height: ', this.$el.style.height);
 			//this.$el.style.display = "none";
 			//this.$el.classList.remove('move-up');
 			//this.vuer.classList.remove('fade-out');
 			var idx = document.styleSheets[0].cssRules.length;
-			document.styleSheets[0].insertRule(`@keyframes grow {100%{height:${height};}}`,idx);
-			debugger;
+			document.styleSheets[0].insertRule(`@keyframes grow {0%{height:${fromHeight};}100%{height:${toHeight};}}`,idx);
+
+
+			this.vuer.removeEventListener("animationend", this.hideEl);
+			this.vuer.addEventListener("animationend", this.endEl);
 			this.vuer.classList.add('grow');
 			//this.vuer.removeEventListener("animationend",this.hide);
 			this.$store.commit('toggleIsTransitioning');//false
+		},
+		endEl(){
+			console.log('endEl');
+			//this.$el.style.display = "none";
+			//this.$el.classList.remove('move-up');
+			//this.vuer.classList.remove('fade-out');
+			this.vuer.removeEventListener("animationend", this.endEl);
+			//this.$store.commit('toggleIsTransitioning');//false
 		}
 	}
 }
@@ -74,7 +88,7 @@ export default {
 <style lang="scss">
 
 .grow{
-	animation: grow 10.5s ease-in-out forwards;
+	animation: grow 1s ease-in-out forwards;
 }
 .move-up{
 	animation: moveUp .5s ease-in-out forwards;
