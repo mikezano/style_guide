@@ -25,27 +25,27 @@ export default {
 		fromEl(newEl, oldEl){
 			if(newEl == null) return;
 
-			console.log('toEl: ', this.toEl);
-
-			this.$store.commit('toggleIsTransitioning');//true
-			let rect = newEl.getBoundingClientRect();
-			
-			if(this.vuerFader){
-				debugger;
-				this.$el.removeChild(this.vuerFader);
+			if(this.vuer != null){
+				this.$el.removeChild(this.vuer);
 			}
 
-			this.$el.appendChild(newEl.cloneNode(true));
+			this.vuer = newEl; //vuer is the fromEl
+			
+			this.$el.appendChild(this.vuer.cloneNode(true));
 			this.$el.style.display = "block";
 			this.$el.style.position = "fixed";
-			this.$el.style.top = (rect.top ) + "px";
+
+			let rect = this.vuer.getBoundingClientRect();
+			this.$el.style.top = rect.top + "px";
 			this.$el.style.left = rect.left + "px";
 			this.$el.classList.add('move-up');
-			//this.$el.style.height = this.exampleEl.getBoundingClientRect().height + "px";
 
 			this.vuerFader = this.$el.querySelectorAll(".vuer__fader")[0];
+
 			this.vuerFader.addEventListener("animationend", this.transitionEl);
 			this.vuerFader.classList.add('fade-out');
+
+			this.$store.commit('toggleIsTransitioning');//true
 		}
 	},
 	methods: {
@@ -60,8 +60,6 @@ export default {
 			console.log('toEl height:', toHeight);
 
 			this.vuerFader.removeEventListener("animationend", this.transitionEl);
-
-			this.vuer = this.$el.querySelectorAll(".vuer")[0];
 			this.vuer.addEventListener("animationend", this.endEl);
 
 			var idx = document.styleSheets[0].cssRules.length;
