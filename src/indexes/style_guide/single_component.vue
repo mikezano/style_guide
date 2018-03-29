@@ -1,9 +1,10 @@
 <template lang="pug">
-	vuer_examples.example(:name="example" style="display:none")
+	vuer_alt.example(:name="example" style="opacity:0;")
 </template>
 
 <script>
 import vuer_examples from '@/components/vuer/vuer_examples'
+import vuer_alt from '@/components/vuer/vuer_alt'
 import { mapState, mapMutations } from 'vuex'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 //const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
@@ -19,12 +20,13 @@ export default {
 	beforeMount(){
 	},
 	mounted(){
-		console.log("in the mount");
-		this.$store.commit('setExampleEl', this.$el);
+		console.log("single_component:mounted", this.$el);
+		this.$store.commit('setToEl', this.$el);
+
 	},
 	computed: {
 		...mapState(['isTransitioning', 'el']),
-		...mapMutations(['setExampleEl'])
+		...mapMutations(['setToEl'])
 	},
 	watch:{
 		el(newVal, oldVal){
@@ -36,7 +38,8 @@ export default {
 		}
 	},
 	components: {
-		vuer_examples
+		vuer_examples,
+		vuer_alt
 	}
 }
 </script>
@@ -44,9 +47,11 @@ export default {
 <style lang="scss">
 .example{
 	div[class^='vuer__']{
-		animation: fadeIn .5s ease-in-out forwards;
+		animation: fadeIn .5s ease-in-out 2s forwards;
 	}
 }
+
+
 
 @keyframes fadeIn {
 	from{opacity:0; height:0%;}

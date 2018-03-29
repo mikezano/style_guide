@@ -9,7 +9,8 @@ export default {
 	name: 'vuer_transition',
 	data () {
 		return {
-			vuer: null,
+			vuerFader: null,
+			vuer: null
 		}
 	},
 	mounted(){
@@ -18,20 +19,19 @@ export default {
 	},
 	computed: {
 		...mapMutations(['toggleIsTransitioning']),
-		...mapState(['el', 'exampleEl'])
+		...mapState(['fromEl', 'toEl'])
 	},
 	watch: {
-		el(newEl, oldEl){
-
+		fromEl(newEl, oldEl){
 			if(newEl == null) return;
 
-			console.log('Example El: ', this.exampleEl);
+			console.log('toEl: ', this.toEl);
 
 			this.$store.commit('toggleIsTransitioning');//true
 			let rect = newEl.getBoundingClientRect();
 			
-			if(this.vuer)
-				this.$el.removeChild(this.vuer);
+			if(this.vuerFader)
+				this.$el.removeChild(this.vuerFader);
 
 			this.$el.appendChild(newEl.cloneNode(true));
 			this.$el.style.display = "block";
@@ -42,43 +42,45 @@ export default {
 			//this.$el.style.height = this.exampleEl.getBoundingClientRect().height + "px";
 
 
-			this.vuer = this.$el.querySelectorAll(".vuer")[0];
-			this.vuer.className += " fade-out";
-			console.log("how many times???");
-			this.vuer.addEventListener("animationend", this.hideEl);
+			this.vuerFader = this.$el.querySelectorAll(".vuer__fader")[0];
+			this.vuerFader.addEventListener("animationend", this.transitionEl);
+			this.vuerFader.classList.add('fade-out');
 		}
 	},
 	methods: {
 		cleanUp(){
 			
 		},
-		hideEl(){
-			console.log('hideEl');
-			//console.log('example el height:', this.exampleEl.getBoundingClientRect().height + "px");
-			//console.log('vuer height', this.vuer.getBoundingClientRect().height + "px");
-			let toHeight = this.exampleEl.getBoundingClientRect().height + "px";
-			let fromHeight = this.vuer.getBoundingClientRect().height + "px";
-			//this.vuer.style.height = height;
-			//console.log('height: ', this.$el.style.height);
-			//this.$el.style.display = "none";
-			//this.$el.classList.remove('move-up');
-			//this.vuer.classList.remove('fade-out');
+		transitionEl(e){
+			let fromHeight = this.vuerFader.getBoundingClientRect().height + "px";
+			let toHeight = this.toEl.getBoundingClientRect().height + "px";
+
+			console.log('fromEl height', fromHeight);
+			console.log('toEl height:', toHeight);
+
+			this.vuerFader.removeEventListener("animationend", this.transitionEl);
+			this.vuerFader.classList.remove('fade-out');
+
+			this.vuer = this.$el.querySelectorAll(".vuer")[0];
+			this.vuer.addEventListener("animationend", this.endEl);
+
 			var idx = document.styleSheets[0].cssRules.length;
 			document.styleSheets[0].insertRule(`@keyframes grow {0%{height:${fromHeight};}100%{height:${toHeight};}}`,idx);
+			this.vuer.classList.add('growIt');
 
-
-			this.vuer.removeEventListener("animationend", this.hideEl);
-			this.vuer.addEventListener("animationend", this.endEl);
-			this.vuer.classList.add('grow');
 			//this.vuer.removeEventListener("animationend",this.hide);
-			this.$store.commit('toggleIsTransitioning');//false
+			//this.$store.commit('toggleIsTransitioning');//false
 		},
-		endEl(){
-			console.log('endEl');
-			//this.$el.style.display = "none";
-			//this.$el.classList.remove('move-up');
-			//this.vuer.classList.remove('fade-out');
-			this.vuer.removeEventListener("animationend", this.endEl);
+		endEl(e){
+			console.log('endEl', e);
+			// this.$el.style.display = "none";
+			// this.$el.classList.remove('move-up');
+			// this.$el.classList.remove('fade-out');
+			// this.vuer.classList.remove('grow');
+
+			//this.vuer.removeEventListener("animationend", this.endEl);
+
+
 			//this.$store.commit('toggleIsTransitioning');//false
 		}
 	}
@@ -87,13 +89,16 @@ export default {
 
 <style lang="scss">
 
-.grow{
+.growIt{
 	animation: grow 1s ease-in-out forwards;
 }
 .move-up{
-	animation: moveUp .5s ease-in-out forwards;
+	animation: moveUp 1s ease-in-out forwards;
 }
-.fade-out div[class^='vuer__']{
+// .fade-out div[class^='vuer__']{
+// 	animation: fadeOut 1s ease-in-out forwards;
+// }
+.vuer__fader.fade-out{
 	animation: fadeOut 1s ease-in-out forwards;
 }
 

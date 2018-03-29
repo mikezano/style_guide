@@ -1,26 +1,27 @@
 <template lang="pug">
 	.vuer
-		.vuer__links
-			button.vuer__examples(title="See examples" @click="setTheEl")
-				router-link(:to="route" tag="div")
-					icon(name="code" scale="2")
-			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
-				icon(name="copy" scale="2")
-			button.vuer__copy(title="Copy HTML+CSS")
-				icon(name="copy" scale="2")
+		.vuer__fader
+			.vuer__links
+				button.vuer__examples(title="See examples" @click="setTheEl")
+					router-link(:to="route" tag="div")
+						icon(name="code" scale="2")
+				button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
+					icon(name="copy" scale="2")
+				button.vuer__copy(title="Copy HTML+CSS")
+					icon(name="copy" scale="2")
 
-		.vuer__header
-			| {{name.replace('_',' ')}}
-		.vuer__component
-			component(:is="component")
-		.vuer__scss
-			label SCSS:
-			pre.language-css
-				code(v-html="scss" contenteditable="true")
-		.vuer__pug
-			label PUG:
-			pre.language-js
-				code(v-html="pug"  contenteditable="true")
+			.vuer__header
+				| {{name.replace('_',' ')}}
+			.vuer__component
+				component(:is="component")
+			.vuer__scss
+				label SCSS:
+				pre.language-css
+					code(v-html="scss" contenteditable="true")
+			.vuer__pug
+				label PUG:
+				pre.language-js
+					code(v-html="pug"  contenteditable="true")
 </template>
 
 <script>
@@ -53,11 +54,12 @@ export default {
 	},
 	computed: {
 		...mapGetters(['getComponent', 'getHtmlSingleFile']),
-		...mapMutations(['setEl'])
+		...mapMutations(['setFromEl'])
 	},
 	methods: {
 		setTheEl(){
-			this.$store.commit('setEl', {el: this.$el, name: this.name});
+			console.log("vuer_alt:setTheEl", this.$el);
+			this.$store.commit('setFromEl', this.$el);
 		},
 
 		getSCSSPUG(){
