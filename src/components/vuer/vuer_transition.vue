@@ -30,8 +30,10 @@ export default {
 			this.$store.commit('toggleIsTransitioning');//true
 			let rect = newEl.getBoundingClientRect();
 			
-			if(this.vuerFader)
+			if(this.vuerFader){
+				debugger;
 				this.$el.removeChild(this.vuerFader);
+			}
 
 			this.$el.appendChild(newEl.cloneNode(true));
 			this.$el.style.display = "block";
@@ -40,7 +42,6 @@ export default {
 			this.$el.style.left = rect.left + "px";
 			this.$el.classList.add('move-up');
 			//this.$el.style.height = this.exampleEl.getBoundingClientRect().height + "px";
-
 
 			this.vuerFader = this.$el.querySelectorAll(".vuer__fader")[0];
 			this.vuerFader.addEventListener("animationend", this.transitionEl);
@@ -59,7 +60,6 @@ export default {
 			console.log('toEl height:', toHeight);
 
 			this.vuerFader.removeEventListener("animationend", this.transitionEl);
-			this.vuerFader.classList.remove('fade-out');
 
 			this.vuer = this.$el.querySelectorAll(".vuer")[0];
 			this.vuer.addEventListener("animationend", this.endEl);
@@ -72,16 +72,17 @@ export default {
 			//this.$store.commit('toggleIsTransitioning');//false
 		},
 		endEl(e){
+			if(e.target != this.vuer) return;
 			console.log('endEl', e);
-			// this.$el.style.display = "none";
-			// this.$el.classList.remove('move-up');
-			// this.$el.classList.remove('fade-out');
-			// this.vuer.classList.remove('grow');
+			 this.$el.style.display = "none";
+			 this.$el.classList.remove('move-up');
+			 this.$el.classList.remove('fade-out');
+			 this.vuer.classList.remove('grow');
 
 			//this.vuer.removeEventListener("animationend", this.endEl);
 
 
-			//this.$store.commit('toggleIsTransitioning');//false
+			this.$store.commit('toggleIsTransitioning');//false
 		}
 	}
 }
@@ -90,16 +91,16 @@ export default {
 <style lang="scss">
 
 .growIt{
-	animation: grow 1s ease-in-out forwards;
+	animation: grow .5s ease-in-out forwards;
 }
 .move-up{
-	animation: moveUp 1s ease-in-out forwards;
+	animation: moveUp .5s ease-in-out forwards;
 }
 // .fade-out div[class^='vuer__']{
 // 	animation: fadeOut 1s ease-in-out forwards;
 // }
 .vuer__fader.fade-out{
-	animation: fadeOut 1s ease-in-out forwards;
+	animation: fadeOut .5s ease-in-out forwards;
 }
 
 @keyframes fadeOut {

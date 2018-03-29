@@ -47,7 +47,7 @@ export default {
 <style lang="scss">
 .example{
 	div[class^='vuer__']{
-		animation: fadeIn .5s ease-in-out 2s forwards;
+		animation: fadeIn 2.5s ease-in-out forwards;
 	}
 }
 
