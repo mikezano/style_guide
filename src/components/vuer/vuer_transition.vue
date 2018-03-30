@@ -31,6 +31,7 @@ export default {
 
 			this.vuer = newEl; //vuer is the fromEl
 			
+			//TODO: maybe no clone, so adding class trigger animation?
 			this.$el.appendChild(this.vuer.cloneNode(true));
 			this.$el.style.display = "block";
 			this.$el.style.position = "fixed";
@@ -46,6 +47,15 @@ export default {
 			this.$el.classList.add('move-up');
 			this.vuerFader.classList.add('fade-out');
 
+			let elHeight = this.$el.getBoundingClientRect().height + "px";
+			let fromHeight = this.vuerFader.getBoundingClientRect().height + "px";
+			let toHeight = this.toEl.getBoundingClientRect().height + "px";
+			console.log('Before:');
+			console.log('el height', elHeight);
+			console.log('fromEl height', fromHeight);
+			console.log('toEl height:', toHeight);
+
+
 			this.$store.commit('toggleIsTransitioning');//true
 		}
 	},
@@ -55,20 +65,24 @@ export default {
 		},
 		endTransitionFromEl(e){
 			console.log('endTransitionFromEl');
+
+			this.vuer = this.$el.querySelectorAll(".vuer")[0];
+
 			let elHeight = this.$el.getBoundingClientRect().height + "px";
+			let vuerHeight = this.vuer.getBoundingClientRect().height + "px";
 			let fromHeight = this.vuerFader.getBoundingClientRect().height + "px";
 			let toHeight = this.toEl.getBoundingClientRect().height + "px";
-
+			console.log('After:');
 			console.log('el height', elHeight);
+			console.log('vuer height', vuerHeight);
 			console.log('fromEl height', fromHeight);
 			console.log('toEl height:', toHeight);
 
-			this.vuer = this.$el.querySelectorAll(".vuer")[0];
 			this.vuerFader.removeEventListener("animationend", this.endTransitionFromEl);
 			this.vuer.addEventListener("animationend", this.endTransitionToEl);
 
 			var idx = document.styleSheets[0].cssRules.length;
-			document.styleSheets[0].insertRule(`@keyframes grow {0%{height:${elHeight};}100%{height:${toHeight};}}`,idx);
+			document.styleSheets[0].insertRule(`@keyframes grow {0%{height:${vuerHeight};}100%{height:${toHeight};}}`,idx);
 			this.vuer.classList.add('growIt');
 
 			//this.$store.commit('toggleIsTransitioning');//false

@@ -1,5 +1,5 @@
 <template lang="pug">
-	vuer_alt.example(:name="example" style="opacity:0;")
+	vuer_alt.example(:name="example" )
 </template>
 
 <script>
@@ -22,6 +22,8 @@ export default {
 	mounted(){
 		console.log("single_component:mounted", this.$el);
 		this.$store.commit('setToEl', this.$el);
+		if(this.isTransitioning == false)
+			this.$el.style = "opacity:0;";
 
 	},
 	computed: {
@@ -47,7 +49,7 @@ export default {
 <style lang="scss">
 .example{
 	div[class^='vuer__']{
-		animation: fadeIn 2.5s ease-in-out forwards;
+		animation: fadeIn 1s ease-in-out forwards;
 	}
 }
 

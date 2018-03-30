@@ -1,7 +1,7 @@
 <template lang="pug">
 	.vuer
 		.vuer__fader
-			.vuer__links
+			.vuer__links(v-if="$route.params.single_component == null")
 				button.vuer__examples(title="See examples" @click="setTheEl")
 					router-link(:to="route" tag="div")
 						icon(name="code" scale="2")
@@ -11,7 +11,7 @@
 					icon(name="copy" scale="2")
 
 			.vuer__header
-				| {{name.replace('_',' ')}}
+				| {{name.replace(/_/g,' ')}}
 			.vuer__component
 				component(:is="component")
 			.vuer__scss
