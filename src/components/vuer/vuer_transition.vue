@@ -38,11 +38,12 @@ export default {
 			let rect = this.vuer.getBoundingClientRect();
 			this.$el.style.top = rect.top + "px";
 			this.$el.style.left = rect.left + "px";
-			this.$el.classList.add('move-up');
 
 			this.vuerFader = this.$el.querySelectorAll(".vuer__fader")[0];
+			this.vuerFader.addEventListener("animationend", this.endTransitionFromEl);
 
-			this.vuerFader.addEventListener("animationend", this.transitionEl);
+			//start animations by adding classes
+			this.$el.classList.add('move-up');
 			this.vuerFader.classList.add('fade-out');
 
 			this.$store.commit('toggleIsTransitioning');//true
@@ -52,24 +53,28 @@ export default {
 		cleanUp(){
 			
 		},
-		transitionEl(e){
+		endTransitionFromEl(e){
+			console.log('endTransitionFromEl');
+			let elHeight = this.$el.getBoundingClientRect().height + "px";
 			let fromHeight = this.vuerFader.getBoundingClientRect().height + "px";
 			let toHeight = this.toEl.getBoundingClientRect().height + "px";
 
+			console.log('el height', elHeight);
 			console.log('fromEl height', fromHeight);
 			console.log('toEl height:', toHeight);
 
-			this.vuerFader.removeEventListener("animationend", this.transitionEl);
-			this.vuer.addEventListener("animationend", this.endEl);
+			this.vuer = this.$el.querySelectorAll(".vuer")[0];
+			this.vuerFader.removeEventListener("animationend", this.endTransitionFromEl);
+			this.vuer.addEventListener("animationend", this.endTransitionToEl);
 
 			var idx = document.styleSheets[0].cssRules.length;
-			document.styleSheets[0].insertRule(`@keyframes grow {0%{height:${fromHeight};}100%{height:${toHeight};}}`,idx);
+			document.styleSheets[0].insertRule(`@keyframes grow {0%{height:${elHeight};}100%{height:${toHeight};}}`,idx);
 			this.vuer.classList.add('growIt');
 
-			//this.vuer.removeEventListener("animationend",this.hide);
 			//this.$store.commit('toggleIsTransitioning');//false
 		},
-		endEl(e){
+		endTransitionToEl(e){
+			console.log('endTransitionToEl');
 			if(e.target != this.vuer) return;
 			console.log('endEl', e);
 			 this.$el.style.display = "none";
@@ -92,13 +97,13 @@ export default {
 	animation: grow .5s ease-in-out forwards;
 }
 .move-up{
-	animation: moveUp .5s ease-in-out forwards;
+	animation: moveUp .5s cubic-bezier(.32,1,.48,.98) forwards;
 }
 // .fade-out div[class^='vuer__']{
 // 	animation: fadeOut 1s ease-in-out forwards;
 // }
 .vuer__fader.fade-out{
-	animation: fadeOut .5s ease-in-out forwards;
+	animation: fadeOut .5s cubic-bezier(.32,1,.48,.98) forwards;
 }
 
 @keyframes fadeOut {
