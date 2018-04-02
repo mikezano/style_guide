@@ -118,7 +118,7 @@
 		}
 	}
 }//rollover end
-@mixin rotating-btn($width, $height, $color, $fontColor){
+@mixin rotating-btn($width, $height, $color, $fontColor, $fontSize){
 
 	.rotating-btn{
 		width:$width;
@@ -132,6 +132,8 @@
 		transform-style:preserve-3d;
 		transition:0.25s;
 		position:relative;
+		border:1px solid blue;
+		font-size: $fontSize;
 	}
 	.rotating-btn__container:hover{
 		transform:rotateX(-90deg);

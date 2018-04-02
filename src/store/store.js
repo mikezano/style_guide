@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
 		isPlaying: true,
 		fromEl: null,
 		toEl: null,
-		isTransitioning: false
+		isTransitioning: false,
+		scrollPosition: 0
 	},
 	getters: {
 		tripleCounter: state => {
@@ -39,6 +40,9 @@ export const store = new Vuex.Store({
 		},
 		getHtmlSingleFile: (state, getters)=>(name)=>{;
 			return state.registry.singleFileHash[name];
+		},
+		getScrollPosition: (state, getters)=>()=>{
+			return state.scrollPosition;
 		}
 	},
 	mutations: {
@@ -59,6 +63,9 @@ export const store = new Vuex.Store({
 		},
 		setToEl: (state, el) =>{
 			state.toEl = el;
+		},
+		setScrollPosition: (state, el) =>{
+			state.scrollPosition = el;
 		}
 	},
 	actions: {

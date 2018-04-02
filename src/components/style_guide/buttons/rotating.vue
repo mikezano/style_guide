@@ -16,7 +16,7 @@ export default{name: "rotating"}
 
 <style lang="scss" scoped>
 @import '../../../sass/colors';
-@mixin rotating-btn($width, $height, $color, $fontColor){
+@mixin rotating-btn($width, $height, $color, $fontColor, $fontSize){
 
 	.rotating-btn{
 		width:$width;
@@ -30,6 +30,8 @@ export default{name: "rotating"}
 		transform-style:preserve-3d;
 		transition:0.25s;
 		position:relative;
+		border:1px solid blue;
+		font-size: $fontSize;
 	}
 	.rotating-btn__container:hover{
 		transform:rotateX(-90deg);
@@ -55,6 +57,6 @@ export default{name: "rotating"}
 }//rotate_down end
 
 $primary: map-get($colors, primary);
-@include rotating-btn(200px, 60px, $primary, white);
+@include rotating-btn(200px, 60px, $primary, white, 1rem);
 
 </style>

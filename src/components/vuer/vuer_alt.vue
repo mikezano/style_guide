@@ -26,7 +26,6 @@
 
 <script>
 import {mapGetters, mapMutations} from 'vuex'
-import circle_zoom from '@/components/style_guide/buttons/circle_zoom'
 
 export default {
 	name: 'viewer_alt',
@@ -93,9 +92,6 @@ export default {
 			let result = code[0].replace(/\n/g, ' ').trim();
 			return result;
 		}
-	},
-	components: {
-		circle_zoom
 	}
 }
 </script>

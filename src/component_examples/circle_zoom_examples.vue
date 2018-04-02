@@ -34,5 +34,6 @@ export default{
 .examples{
 	display:flex;
 	align-items:center;
+	justify-content: space-around;
 }
 </style>

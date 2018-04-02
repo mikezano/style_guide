@@ -1,62 +1,78 @@
 <template lang="pug">
-	vuer_alt.example(:name="example" )
+	vuer_alt(:name="example" :class="{'dont-show' : single_component != null}")
 </template>
 
 <script>
-import vuer_examples from '@/components/vuer/vuer_examples'
 import vuer_alt from '@/components/vuer/vuer_alt'
 import { mapState, mapMutations } from 'vuex'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
 //const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
 export default {
-	name: 'one_component',
+	name: 'single_component',
 	props: ['single_component'],
 	data () {
 		return {
+			vuer_fader: null,
 			example: this.single_component + "_examples"
 		}
-	},
-	beforeMount(){
 	},
 	mounted(){
 		console.log("single_component:mounted", this.$el);
 		this.$store.commit('setToEl', this.$el);
-		if(this.isTransitioning == false)
-			this.$el.style = "opacity:0;";
 
+		this.vuerFader = this.$el.querySelectorAll(".vuer__fader")[0];
+
+		if(this.$route.params.single_component != null){
+			this.reveal();
+		}
+
+	},
+	destroyed(){
+		this.$el.classList.add('dont-show');
+		this.vuerFader.classList.add('dont-show');
 	},
 	computed: {
-		...mapState(['isTransitioning', 'el']),
+		...mapState(['isTransitioning']),
 		...mapMutations(['setToEl'])
 	},
+	methods:{
+		reveal(){
+			this.$el.classList.remove('dont-show');
+			this.vuerFader.classList.add('fade-in');
+		}
+	},
 	watch:{
-		el(newVal, oldVal){
-
-		},
 		isTransitioning(newVal, oldVal){
-			if(newVal == false)
-				this.$el.style = "display:block";
+
+			if(newVal == false){
+				this.reveal();
+			}
 		}
 	},
 	components: {
-		vuer_examples,
 		vuer_alt
 	}
 }
 </script>
 
+<style lang="scss" scoped>
+
+.dont-show{
+	opacity:0;
+}
+</style>
 <style lang="scss">
-.example{
-	div[class^='vuer__']{
-		animation: fadeIn 1s ease-in-out forwards;
+
+.vuer__fader{
+
+	&.fade-in{
+		animation: fadeIn .5s cubic-bezier(.32,1,.48,.98) forwards;
 	}
 }
-
-
-
 @keyframes fadeIn {
 	from{opacity:0; height:0%;}
 	to{opacity:1; height:100%;}
 }
 </style>
+

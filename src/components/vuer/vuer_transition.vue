@@ -50,10 +50,10 @@ export default {
 			let elHeight = this.$el.getBoundingClientRect().height + "px";
 			let fromHeight = this.vuerFader.getBoundingClientRect().height + "px";
 			let toHeight = this.toEl.getBoundingClientRect().height + "px";
-			console.log('Before:');
-			console.log('el height', elHeight);
-			console.log('fromEl height', fromHeight);
-			console.log('toEl height:', toHeight);
+			// console.log('Before:');
+			// console.log('el height', elHeight);
+			// console.log('fromEl height', fromHeight);
+			// console.log('toEl height:', toHeight);
 
 
 			this.$store.commit('toggleIsTransitioning');//true
@@ -64,7 +64,7 @@ export default {
 			
 		},
 		endTransitionFromEl(e){
-			console.log('endTransitionFromEl');
+			//console.log('endTransitionFromEl');
 
 			this.vuer = this.$el.querySelectorAll(".vuer")[0];
 
@@ -72,11 +72,11 @@ export default {
 			let vuerHeight = this.vuer.getBoundingClientRect().height + "px";
 			let fromHeight = this.vuerFader.getBoundingClientRect().height + "px";
 			let toHeight = this.toEl.getBoundingClientRect().height + "px";
-			console.log('After:');
-			console.log('el height', elHeight);
-			console.log('vuer height', vuerHeight);
-			console.log('fromEl height', fromHeight);
-			console.log('toEl height:', toHeight);
+			// console.log('After:');
+			// console.log('el height', elHeight);
+			// console.log('vuer height', vuerHeight);
+			// console.log('fromEl height', fromHeight);
+			// console.log('toEl height:', toHeight);
 
 			this.vuerFader.removeEventListener("animationend", this.endTransitionFromEl);
 			this.vuer.addEventListener("animationend", this.endTransitionToEl);
@@ -88,9 +88,9 @@ export default {
 			//this.$store.commit('toggleIsTransitioning');//false
 		},
 		endTransitionToEl(e){
-			console.log('endTransitionToEl');
+			//console.log('endTransitionToEl');
 			if(e.target != this.vuer) return;
-			console.log('endEl', e);
+			//console.log('endEl', e);
 			 this.$el.style.display = "none";
 			 this.$el.classList.remove('move-up');
 			 this.$el.classList.remove('fade-out');

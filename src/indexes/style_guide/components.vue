@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState, mapMutations} from 'vuex'
 import vuer_alt from '@/components/vuer/vuer_alt'
 import vuer_transition from '@/components/vuer/vuer_transition'
 //https://stackoverflow.com/questions/42199872/is-it-possible-to-import-vue-files-in-a-folder
@@ -31,18 +31,29 @@ export default {
 		this.buildRegistry();
 	},
 	mounted(){
+		console.log('again in mounted');
 		this.getHtmlSingleFiles();
 		this.currentSet = this.hash[this.components];
 	},	
 	computed: {
-		...mapGetters(['getHtmlSingleFiles'])
+		...mapGetters(['getHtmlSingleFiles', 'getScrollPosition']),
+		...mapState(['scrollPosition']),
+		...mapMutations(['setScrollPosition'])
 	},
 	methods: {
 		elChanged(newEl, oldEl){
 			console.log("El Changed 2", newEl, oldEl);
 		},
 		routeChanged(route){
+			console.log(window.pageYOffset);
+			this.$store.commit('setScrollPosition', window.pageYOffset);
 			this.currentSet = this.hash[route.params.components];
+
+			//we came back to this page
+			if(this.$route.params.single_component == null){
+				document.documentElement.scrollTop = this.scrollPosition;
+				console.log("route chagned", this.getScrollPosition());
+			}
 		},
 		buildRegistry(){
 			//Loading file names from a folder
