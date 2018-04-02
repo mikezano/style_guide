@@ -65,6 +65,7 @@ export const store = new Vuex.Store({
 			state.toEl = el;
 		},
 		setScrollPosition: (state, el) =>{
+			console.log("store scroll pos:", el)
 			state.scrollPosition = el;
 		}
 	},

@@ -3,7 +3,10 @@
 		h1.title {{$route.params.components}}
 		transition(name="fade" v-if="$route.params.single_component != null" mode="in-out")
 			router-view
-		transition(name="fade" v-if="$route.params.single_component == null" mode="out-in")
+		transition(name="fade" 
+					v-if="$route.params.single_component == null" 
+					mode="out-in"
+					v-on:enter="afterEnter")
 			transition-group( name="list" tag="div")
 				.list-item(v-for="item in currentSet", :key="item")
 					vuer_alt(:name="item")
@@ -41,19 +44,20 @@ export default {
 		...mapMutations(['setScrollPosition'])
 	},
 	methods: {
-		elChanged(newEl, oldEl){
-			console.log("El Changed 2", newEl, oldEl);
-		},
 		routeChanged(route){
-			console.log(window.pageYOffset);
-			this.$store.commit('setScrollPosition', window.pageYOffset);
+			console.log(route);
 			this.currentSet = this.hash[route.params.components];
 
-			//we came back to this page
-			if(this.$route.params.single_component == null){
-				document.documentElement.scrollTop = this.scrollPosition;
+			//we go away from this page
+			if(route.params.single_component != null){
+				console.log("single component", route.single_component);
 				console.log("route chagned", this.getScrollPosition());
+				this.$store.commit('setScrollPosition', window.pageYOffset);
 			}
+		},
+		afterEnter(){
+			if(this.$route.params.single_component == null)
+				document.documentElement.scrollTop = this.getScrollPosition();
 		},
 		buildRegistry(){
 			//Loading file names from a folder
