@@ -58,6 +58,7 @@ export default {
 	methods: {
 		setTheEl(){
 			console.log("vuer_alt:setTheEl", this.$el);
+			this.$store.commit('toggleIsTransitioning');//true
 			this.$store.commit('setFromEl', this.$el);
 		},
 

@@ -56,7 +56,7 @@ export default {
 			// console.log('toEl height:', toHeight);
 
 
-			this.$store.commit('toggleIsTransitioning');//true
+			//this.$store.commit('toggleIsTransitioning');//true
 		}
 	},
 	methods: {

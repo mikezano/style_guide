@@ -23,7 +23,8 @@ export default {
 
 		this.vuerFader = this.$el.querySelectorAll(".vuer__fader")[0];
 
-		if(this.$route.params.single_component != null){
+		if(this.$route.params.single_component != null && this.isTransitioning == false){
+			console.log("redirect from: ",this.$route.redirectedFrom);
 			this.reveal();
 		}
 
@@ -37,6 +38,9 @@ export default {
 		...mapMutations(['setToEl'])
 	},
 	methods:{
+		routeChanged(newRoute, oldRoute){
+			console.log("Single: ", newRoute, oldRoute);
+		},
 		reveal(){
 			this.$el.classList.remove('dont-show');
 			this.vuerFader.classList.add('fade-in');
@@ -65,9 +69,8 @@ export default {
 <style lang="scss">
 
 .vuer__fader{
-
 	&.fade-in{
-		animation: fadeIn .5s cubic-bezier(.32,1,.48,.98) forwards;
+		animation: fadeIn 2.5s cubic-bezier(.32,1,.48,.98) forwards;
 	}
 }
 @keyframes fadeIn {
