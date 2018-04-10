@@ -23,28 +23,32 @@
 </template>
 
 <script>
-import vuer_alt from '@/components/vuer/vuer_alt'
-import vuer_examples from '@/components/vuer/vuer_examples'
+import vuer_examples from '@/components/vuer/vuer_examples';
 
-export default{
-	name: 'rollover_examples',
-	components: {
-		vuer_alt,
-		vuer_examples
-	}
-}
+export default {
+  name: 'rollover_examples',
+  components: {
+    vuer_examples
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 @import 'mixifier/ads_mixer.scss';
 @import '../sass/colors';
 
-.good{ @include rollover(50px, $bs_blue, white);}
-.bad{ @include rollover(100px, $bs_red, white);}
-.shrug{ @include rollover(100px, $bs_green, white);}
-.examples{
-	display:flex;
-	align-items:center;
-	justify-content: space-around;
+.good {
+  @include rollover(50px, $bs_blue, white);
+}
+.bad {
+  @include rollover(100px, $bs_red, white);
+}
+.shrug {
+  @include rollover(100px, $bs_green, white);
+}
+.examples {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>
