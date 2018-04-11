@@ -35,8 +35,6 @@ export default {
 			this.$refs.cc.goForward();
 		},
 		togglePlayer(){
-			debugger;
-			console.log(this.cc);
 			this.isPlaying = !this.isPlaying;
 		}
 	},

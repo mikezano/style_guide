@@ -27,7 +27,6 @@ export default {
       this.$route.params.single_component != null &&
       this.isTransitioning == false
     ) {
-      console.log('redirect from: ', this.$route.redirectedFrom);
       this.reveal();
     }
   },
@@ -40,9 +39,6 @@ export default {
     ...mapMutations(['setToEl'])
   },
   methods: {
-    routeChanged(newRoute, oldRoute) {
-      console.log('Single: ', newRoute, oldRoute);
-    },
     reveal() {
       this.$el.classList.remove('dont-show');
       this.vuerFader.classList.add('fade-in');

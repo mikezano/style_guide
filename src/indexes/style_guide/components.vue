@@ -5,8 +5,7 @@
 			router-view
 		transition(name="fade" 
 					v-if="$route.params.single_component == null" 
-					mode="out-in"
-					@enter="afterEnter")
+					mode="out-in")
 			transition-group( name="list" tag="div")
 				.list-item(v-for="item in currentSet", :key="item")
 					vuer(:name="item")
@@ -34,7 +33,6 @@ export default {
     this.buildRegistry();
   },
   mounted() {
-    console.log('again in mounted');
     this.getHtmlSingleFiles();
     this.currentSet = this.hash[this.components];
   },
@@ -45,19 +43,7 @@ export default {
   },
   methods: {
     routeChanged(route, old) {
-      //console.log("Routes: ", route, old);
       this.currentSet = this.hash[route.params.components];
-
-      //we go away from this page
-      if (route.params.single_component != null) {
-        console.log('single component', route.single_component);
-        console.log('route chagned', this.getScrollPosition());
-        //this.$store.commit('setScrollPosition', window.pageYOffset);
-      }
-    },
-    afterEnter() {
-      //if(this.$route.params.single_component == null)
-      //document.documentElement.scrollTop = this.getScrollPosition();
     },
     buildRegistry() {
       //Loading file names from a folder
